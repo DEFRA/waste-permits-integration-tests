@@ -8,4 +8,13 @@ defineSupportCode(function ({Given, When}) {
     const {permitHolderSelectPage} = this.pages
     return permitHolderSelectPage.checkError(message)
   })
+
+  // I enter a contact with <Field> set to <Value>
+  When(/^I enter a contact with (.*) set to (.*)$/, async function (field, value) {
+    const {taskListPage, contactDetailsPage} = this.pages
+    await taskListPage.selectTask(taskListPage.contactDetailsLink)
+    const {contact} = require('../support/testData')
+    contact[field] = value
+    return contactDetailsPage.completePage(contact)
+  })
 })

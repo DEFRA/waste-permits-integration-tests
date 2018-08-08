@@ -53,6 +53,11 @@ class TaskListPage extends PageObject {
     await this.waitForPage()
     return this.hasText(this[`${name}Completed`], 'COMPLETED')
   }
+
+  async selectTask (link) {
+    await this.waitForPage()
+    await this.click(link)
+  }
 }
 
 module.exports = TaskListPage
