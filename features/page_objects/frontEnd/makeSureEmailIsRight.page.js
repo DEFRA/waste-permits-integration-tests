@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class MakeSureEmailIsRightPage extends PageObject {
+class MakeSureEmailIsRightPage extends FrontEndPageObject {
   get title () { return 'Make sure this is right' }
 
   get emailInput () { return {css: '#save-and-return-email'} }

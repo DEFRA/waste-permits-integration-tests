@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class DirectorsEmailPage extends PageObject {
+class DirectorsEmailPage extends FrontEndPageObject {
   get title () { return 'What is the email address for the Company Secretary or a director?' }
   get limitedLiabilityPartnershipTitle () { return 'Email address for one of the designated members' }
 

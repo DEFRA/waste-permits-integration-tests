@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class DirectorsDateOfBirthPage extends PageObject {
+class DirectorsDateOfBirthPage extends FrontEndPageObject {
   get title () { return `What is the director's date of birth?` }
   get alternateTitle () { return `What are the directors' dates of birth?` }
   get limitedLiabilityPartnershipTitle () { return `What is the member's date of birth?` }

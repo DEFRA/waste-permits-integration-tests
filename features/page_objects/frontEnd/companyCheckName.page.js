@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class CompanyCheckNamePage extends PageObject {
+class CompanyCheckNamePage extends FrontEndPageObject {
   get title () { return 'Is this the right company?' }
   get limitedLiabilityPartnershipTitle () { return 'Is this the right limited liability partnership?' }
 

@@ -4,13 +4,6 @@ const config = require('../../../config')
 const until = webdriver.until
 
 class PageObject {
-  get continueButton () { return {css: '#submit-button'} }
-
-  get pageHeading () { return {css: '#page-heading'} }
-
-  get errorMsg () { return {css: '#error-summary-list'} }
-
-  /****************************************************************************/
 
   constructor (browser, testdata) {
     this.browser = browser
@@ -18,8 +11,7 @@ class PageObject {
   }
 
   async waitForPage (title, timeout = config.timeout) {
-    const expectedTitle = title || this.title
-    return this.hasText(this.pageHeading, expectedTitle)
+    throw new Error('Todo: Not implemented')
   }
 
   async hasText (locator, text, timeout = config.timeout) {
@@ -54,10 +46,6 @@ class PageObject {
 
   async waitUntilLoaded (locator, timeout = config.timeout) {
     return this.browser.wait(until.elementLocated(locator), timeout)
-  }
-
-  async checkError (message, timeout = config.timeout) {
-    return this.containsText(this.errorMsg, message, timeout)
   }
 }
 

@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class ConvictionsPage extends PageObject {
+class ConvictionsPage extends FrontEndPageObject {
   get title () { return 'Does anyone connected with your business have a conviction for a relevant offence?' }
 
   get declaredRadio () { return {css: '#declared'} }

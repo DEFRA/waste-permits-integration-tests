@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class TaskListPage extends PageObject {
+class TaskListPage extends FrontEndPageObject {
   get title () { return 'Apply for a standard rules environmental permit' }
 
   get checkCostAndProcessingTimeLink () { return {css: '#check-permit-cost-and-time-link'} }

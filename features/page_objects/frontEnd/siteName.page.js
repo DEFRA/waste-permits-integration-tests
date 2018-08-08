@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class SiteNamePage extends PageObject {
+class SiteNamePage extends FrontEndPageObject {
   get title () { return 'What is the site name?' }
 
   get siteNameInput () { return {css: '#site-name'} }

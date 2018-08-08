@@ -1,6 +1,6 @@
-const PageObject = require('./PageObject').PageObject
+const FrontEndPageObject = require('./FrontEndPageObject').FrontEndPageObject
 
-class AddressSelectPageObject extends PageObject {
+class AddressSelectPageObject extends FrontEndPageObject {
   get postcodeInput () { return {css: '#postcode'} }
   get manualAddressLink () { return {css: '#manual-address-link'} }
 

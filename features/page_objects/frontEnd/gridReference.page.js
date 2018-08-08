@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class GridReferencePage extends PageObject {
+class GridReferencePage extends FrontEndPageObject {
   get title () { return 'What is the grid reference for the centre of the site?' }
 
   get gridReferenceInput () { return {css: '#site-grid-reference'} }

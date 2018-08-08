@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class SaveApplicationPage extends PageObject {
+class SaveApplicationPage extends FrontEndPageObject {
   get title () { return 'Save your application' }
 
   get emailInput () { return {css: '#save-and-return-email'} }

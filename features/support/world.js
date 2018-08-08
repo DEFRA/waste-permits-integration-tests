@@ -1,7 +1,7 @@
 const {setWorldConstructor, setDefaultTimeout} = require('cucumber')
 
 const driver = require('./driver').driver
-const Pages = require('../page_objects/pages')
+const Pages = require('../page_objects/frontEnd/pages')
 const Application = require('./application')
 const AppConfiguration = require('./app-configuration')
 const {'world-parameters': parameters, timeout} = require('../../config')

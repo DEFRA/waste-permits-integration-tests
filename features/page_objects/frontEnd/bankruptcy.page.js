@@ -1,7 +1,7 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class ConfidentialityPage extends PageObject {
-  get title () { return 'Is part of your application commercially confidential?' }
+class BankruptcyPage extends FrontEndPageObject {
+  get title () { return 'Do you have current or past bankruptcy or insolvency proceedings to declare?' }
 
   get declaredRadio () { return {css: '#declared'} }
   get declaredDetailsInput () { return {css: '#declaration-details'} }
@@ -19,4 +19,4 @@ class ConfidentialityPage extends PageObject {
   }
 }
 
-module.exports = ConfidentialityPage
+module.exports = BankruptcyPage

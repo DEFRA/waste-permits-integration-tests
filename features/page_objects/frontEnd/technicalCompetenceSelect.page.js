@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class TechnicalCompetenceSelectPage extends PageObject {
+class TechnicalCompetenceSelectPage extends FrontEndPageObject {
   get title () { return 'What evidence of technical competence do you have?' }
 
   competence (competence) {

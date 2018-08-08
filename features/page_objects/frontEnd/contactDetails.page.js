@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class ContactDetailsPage extends PageObject {
+class ContactDetailsPage extends FrontEndPageObject {
   get title () { return 'Who should we contact about this application?' }
 
   get firstNameInput () { return {css: '#first-name'} }

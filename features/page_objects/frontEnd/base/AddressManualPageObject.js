@@ -1,6 +1,6 @@
-const PageObject = require('./PageObject').PageObject
+const FrontEndPageObject = require('./FrontEndPageObject').FrontEndPageObject
 
-class AddressManualPageObject extends PageObject {
+class AddressManualPageObject extends FrontEndPageObject {
   get buildingNameOrNumberInput () { return {css: '#building-name-or-number'} }
   get addressLine1Input () { return {css: '#address-line-1'} }
   get addressLine2Input () { return {css: '#address-line-2'} }

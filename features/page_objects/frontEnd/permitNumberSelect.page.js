@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class PermitCategorySelectPage extends PageObject {
+class PermitCategorySelectPage extends FrontEndPageObject {
   get title () { return 'Select a permit' }
 
   permit (permitNumber) {

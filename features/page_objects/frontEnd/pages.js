@@ -6,7 +6,7 @@ class Pages {
       dirname: __dirname,
       filter: /(.+).page.js$/,
       map: (name) => `${name}Page`,
-      resolve: (PageObject) => new PageObject(browser, testdata)
+      resolve: (FrontEndPageObject) => new FrontEndPageObject(browser, testdata)
     })
     Object.entries(pageObjects).forEach(([name, pageObject]) => {
       this[name] = pageObject

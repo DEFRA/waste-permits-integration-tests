@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class PermitHolderTradingNamePage extends PageObject {
+class PermitHolderTradingNamePage extends FrontEndPageObject {
   get title () { return `Do they do business using their own name or a trading name?` }
 
   get useTradingNameOnRadio () { return {css: '#use-trading-name-on'} }

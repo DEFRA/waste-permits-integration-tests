@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class CheckCostPage extends PageObject {
+class CheckCostPage extends FrontEndPageObject {
   get title () { return 'Costs and processing time' }
 
   async completePage () {

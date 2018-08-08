@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class ConfirmOperationMeetsRulesPage extends PageObject {
+class ConfirmOperationMeetsRulesPage extends FrontEndPageObject {
   get title () { return 'Confirm your operation meets the rules' }
 
   get confirmButton () { return {css: '#operation-meets-rules-button'} }

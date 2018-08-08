@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class ConfirmSuitableVehicleStoragePage extends PageObject {
+class ConfirmSuitableVehicleStoragePage extends FrontEndPageObject {
   get title () { return 'Where does the vehicle storage area drain to?' }
 
   get sewerUnderConsentRadio () { return {css: '#sewer'} }

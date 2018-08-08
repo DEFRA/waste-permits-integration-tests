@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class WasteRecoverySelectPage extends PageObject {
+class WasteRecoverySelectPage extends FrontEndPageObject {
   get title () { return 'You need to upload your waste recovery plan' }
 
   choice (choice) {

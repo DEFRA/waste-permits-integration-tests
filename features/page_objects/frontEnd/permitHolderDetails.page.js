@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class PermitHolderDetailsPage extends PageObject {
+class PermitHolderDetailsPage extends FrontEndPageObject {
   get title () { return 'Who will be the permit holder?' }
 
   get firstNameInput () { return {css: '#first-name'} }

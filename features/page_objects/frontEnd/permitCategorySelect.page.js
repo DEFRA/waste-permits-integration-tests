@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class PermitCategorySelectPage extends PageObject {
+class PermitCategorySelectPage extends FrontEndPageObject {
   get title () { return 'What do you want the permit for?' }
 
   get 'Anaerobic digestion including storing digestate' () { return {css: '#chosen-category-anaerobic-input'} }

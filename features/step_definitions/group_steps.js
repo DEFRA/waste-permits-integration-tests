@@ -1,6 +1,6 @@
 var {defineSupportCode} = require('cucumber')
 var path = require('path')
-const tasks = require('../page_objects/helpers/tasks')
+const tasks = require('../page_objects/frontEnd/helpers/tasks')
 const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, site, invoice, confidentialityNeeds} = require('../support/testData')
 
 function file (filename) {

@@ -1,6 +1,6 @@
-const PageObject = require('./base/PageObject').PageObject
+const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class CheckYourEmailPage extends PageObject {
+class CheckYourEmailPage extends FrontEndPageObject {
   get title () { return 'Check your email' }
 
   get gotItRadio () { return {css: '#got-email'} }

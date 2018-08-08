@@ -1,6 +1,6 @@
-const PageObject = require('./PageObject').PageObject
+const FrontEndPageObject = require('./FrontEndPageObject').FrontEndPageObject
 
-class UploadPageObject extends PageObject {
+class UploadPageObject extends FrontEndPageObject {
   get uploadFileInput () { return {css: '#file'} }
   get uploadFileCheckbox () { return {css: '#is-upload-file'} }
 
