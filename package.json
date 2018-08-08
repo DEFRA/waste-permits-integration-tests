@@ -1,0 +1,42 @@
+{
+  "name": "waste-permits-integration-tests",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Department for Environment, Food & Rural Affairs",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "test:chrome-desktop-test-smoke": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEFRA/waste-permits-integration-tests.git"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "bugs": {
+    "url": "https://github.com/ajaxscape/waste-permits-integration/issues"
+  },
+  "homepage": "https://github.com/ajaxscape/waste-permits-integration#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "command-line-args": "^5.0.2",
+    "cucumber": "^2.3.1",
+    "cucumber-html-reporter": "^4.0.3",
+    "geckodriver": "^1.3.0",
+    "iedriver": "^3.9.2",
+    "lodash": "^4.17.10",
+    "mkdirp": "^0.5.1",
+    "require-all": "^3.0.0",
+    "selenium-webdriver": "^3.0.1"
+  },
+  "devDependencies": {
+    "chromedriver": "^2.40.0",
+    "standard": "^11.0.1"
+  },
+  "standard": {
+    "ignore": [
+      "node_modules/"
+    ]
+  }
+}
