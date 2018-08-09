@@ -54,19 +54,19 @@ defineSupportCode(function ({Given, When}) {
   })
 
   When(/^I start a new application$/, async function () {
-    return this.pages.startOrOpenSavedPage.completePage()
+    return this.pages.frontEnd.startOrOpenSavedPage.completePage()
   })
 
   When(/^I select (.*) as the permit holder$/, async function (permitHolder) {
-    return this.pages.permitHolderSelectPage.completePage(permitHolder)
+    return this.pages.frontEnd.permitHolderSelectPage.completePage(permitHolder)
   })
 
   When(/^I select (.*) as the permit category$/, async function (permitCategory) {
-    return this.pages.permitCategorySelectPage.completePage(permitCategory)
+    return this.pages.frontEnd.permitCategorySelectPage.completePage(permitCategory)
   })
 
   When(/^I select (.*) as the permit number$/, async function (permitNumber) {
-    return this.pages.permitNumberSelectPage.completePage(permitNumber)
+    return this.pages.frontEnd.permitNumberSelectPage.completePage(permitNumber)
   })
 
   When(/^I check costs$/, async function () {
@@ -147,7 +147,7 @@ defineSupportCode(function ({Given, When}) {
   })
 
   When(/^I submit my application$/, async function () {
-    const {taskListPage} = this.pages
+    const {taskListPage} = this.pages.frontEnd
     return taskListPage.click(taskListPage.submitPayLink)
   })
 })

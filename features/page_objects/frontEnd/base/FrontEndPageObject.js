@@ -16,7 +16,7 @@ class FrontEndPageObject extends PageObject {
   }
 
   async checkError (message, timeout = config.timeout) {
-    return this.containsText(this.errorMsg, message, timeout)
+    return this.hasLinesOfText(this.errorMsg, message.split(`//`), timeout)
   }
 }
 

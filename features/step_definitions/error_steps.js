@@ -4,14 +4,14 @@ var {defineSupportCode} = require('cucumber')
 // const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, site, invoice, confidentialityNeeds} = require('../support/testData')
 
 defineSupportCode(function ({Given, When}) {
-  When(/^I should see an error "(.*?)"$/, async function (message) {
-    const {permitHolderSelectPage} = this.pages
+  When(/^I should see an error "(.*)"$/, async function (message) {
+    const {permitHolderSelectPage} = this.pages.frontEnd
     return permitHolderSelectPage.checkError(message)
   })
 
   // I enter a contact with <Field> set to <Value>
-  When(/^I enter a contact with (.*) set to (.*)$/, async function (field, value) {
-    const {taskListPage, contactDetailsPage} = this.pages
+  When(/^I enter a contact with (.*) set to "(.*)"$/, async function (field, value) {
+    const {taskListPage, contactDetailsPage} = this.pages.frontEnd
     await taskListPage.selectTask(taskListPage.contactDetailsLink)
     const {contact} = require('../support/testData')
     contact[field] = value

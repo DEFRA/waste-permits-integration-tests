@@ -1,10 +1,13 @@
-const Assert = require('assert')
+const chai = require('chai')
+const chaiAsPromised = require('chai-as-promised')
 const webdriver = require('selenium-webdriver')
 const config = require('../../../config')
 const until = webdriver.until
 
-class PageObject {
+chai.use(chaiAsPromised)
+const assert = chai.assert
 
+class PageObject {
   constructor (browser, testdata) {
     this.browser = browser
     this.testdata = testdata
@@ -14,24 +17,20 @@ class PageObject {
     throw new Error('Todo: Not implemented')
   }
 
-  async hasText (locator, text, timeout = config.timeout) {
+  async hasText (locator, expectedText, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
-    const actualtext = await element.getText()
-    Assert.equal(actualtext, text)
+    return assert.eventually.equal(element.getText(), expectedText)
   }
 
-  async containsText (locator, text, timeout = config.timeout) {
+  async hasLinesOfText (locator, expectedLines, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
-    const actualtext = await element.getText()
-    // Assert.containsText(actualtext, text)
-    const value = actualtext.indexOf(text)
-    Assert.notEqual(value, -1, `Found Actual:- ${actualtext}, Expected was :-${text}`)
+    const lines = (await element.getText()).split('\n')
+    return Promise.resolve(assert.sameMembers(lines, expectedLines))
   }
 
-  async hasValue (locator, value, timeout = config.timeout) {
+  async hasValue (locator, expectedValue, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
-    const actualvalue = await element.getAttribute('value')
-    Assert.equal(actualvalue, value)
+    return assert.eventually.equal(element.getAttribute('value'), expectedValue)
   }
 
   async click (locator, timeout = config.timeout) {
