@@ -1,1 +1,1 @@
-#Waste permits integration tests
+# waste-permits-integration
