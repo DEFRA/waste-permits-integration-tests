@@ -72,6 +72,51 @@ const data = Object.freeze({
     bankruptcy: 'This is a test bankruptcy for a limited liability partnership'
   },
 
+  partnership: {
+    tradingName: 'Trading Name',
+    partners: [
+      {
+        firstName: 'First',
+        lastName: 'Partner',
+        dob: {day: 1, month: 2, year: 1990},
+        email: 'first.partner@defra.test.gov.uk',
+        telephone: '001 001 001 001',
+        buildingNameOrNumber: 'Horizon House',
+        addressLine1: 'Deanery Rd',
+        townOrCity: 'Bristol',
+        postcode: 'BS1 5AH',
+        convictions: 'This is a test conviction for the first partner',
+        bankruptcy: 'This is a test bankruptcy for the first partner'
+      },
+      {
+        firstName: 'Second',
+        lastName: 'Partner',
+        dob: {day: 2, month: 3, year: 1991},
+        email: 'second.partner@defra.test.gov.uk',
+        telephone: '002 002 002 002',
+        buildingNameOrNumber: 'Horizon House',
+        addressLine1: 'Deanery Rd',
+        townOrCity: 'Bristol',
+        postcode: 'BS1 5AH',
+        convictions: 'This is a test conviction for the second partner',
+        bankruptcy: 'This is a test bankruptcy for the second partner'
+      },
+      {
+        firstName: 'Third',
+        lastName: 'Partner',
+        dob: {day: 3, month: 4, year: 1992},
+        email: 'third.partner@defra.test.gov.uk',
+        telephone: '003 003 003 003',
+        buildingNameOrNumber: 'Horizon House',
+        addressLine1: 'Deanery Rd',
+        townOrCity: 'Bristol',
+        postcode: 'BS1 5AH',
+        convictions: 'This is a test conviction for the third partner',
+        bankruptcy: 'This is a test bankruptcy for the third partner'
+      }
+    ]
+  },
+
   site: {
     name: 'Our Test Site',
     gridReference: 'ST 58132 72695',

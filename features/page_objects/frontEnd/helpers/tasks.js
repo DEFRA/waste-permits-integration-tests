@@ -85,6 +85,55 @@ class Tasks {
     })
   }
 
+  async partnershipPermitHolderDetails (partnership = {}, pages) {
+    const {taskListPage, partnershipListPage, partnershipDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, partnershipTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
+    return taskListPage.completeTask('permitHolderDetails', async () => {
+      await partnershipTradingNamePage.completePage(partnership)
+      const {partners} = partnership
+      for (let index = 0; index < partners.length; index++) {
+        const partner = partners[index]
+        const contactDetailsTitle = index ? partnershipDetailsPage.title : partnershipDetailsPage.firstTitle
+        await partnershipDetailsPage.completePage(partner, contactDetailsTitle)
+        await permitHolderContactDetailsPage.completePage(partner, `What are the contact details for ${partner.firstName} ${partner.lastName}?`)
+        await permitHolderAddressSelectPage.completePage('', `What is the address for ${partner.firstName} ${partner.lastName}?`)
+        await permitHolderAddressManualPage.completePage(partner, `What is the address for ${partner.firstName} ${partner.lastName}?`)
+        await partnershipListPage.waitForPage()
+        if (!index || index === partners.length - 1) {
+          // Add second and last partner
+          await partnershipListPage.click(partnershipListPage.continueButton)
+        } else {
+          // Add all other partners
+          await partnershipListPage.click(partnershipListPage.addPartnerLink)
+        }
+      }
+      await convictionsPage.completePage(partnership.convictions)
+      return bankruptcyPage.completePage(partnership.bankruptcy)
+    })
+  }
+
+  async permitHolderDetails (permitHolder, data, pages) {
+    const {individual, limitedCompany, limitedLiabilityPartnership, partnership, soleTrader} = data
+    switch (permitHolder.toLowerCase()) {
+      case 'individual': {
+        return this.individualPermitHolderDetails(individual, pages)
+      }
+      case 'limited company': {
+        return this.limitedCompanyPermitHolderDetails(limitedCompany, pages)
+      }
+      case 'limited liability partnership': {
+        return this.limitedLiabilityPartnershipPermitHolderDetails(limitedLiabilityPartnership, pages)
+      }
+      case 'sole trader': {
+        return this.soleTraderPermitHolderDetails(soleTrader, pages)
+      }
+      case 'partnership': {
+        return this.partnershipPermitHolderDetails(partnership, pages)
+      }
+      default:
+        throw new Error(`Todo: Support for "${permitHolder}"`)
+    }
+  }
+
   async firePreventionPlan (files = [], pages) {
     const {taskListPage, firePreventionPlanPage} = pages.frontEnd
     return taskListPage.completeTask('firePreventionPlan', async () => {
