@@ -1,4 +1,15 @@
 /* This loads all the page object classes and creates an object of their instances */
+const PageObject = require('./base/PageObject').PageObject
+
+function validatePageEntries (object) {
+  if (object instanceof PageObject) return
+  Object.entries(object).forEach(([pageObjectName, pageObject]) => {
+    const expectedPageObject = `${pageObjectName[0].toUpperCase()}${pageObjectName.substr(1)}`
+    if (expectedPageObject !== pageObject.constructor.name) {
+      throw new Error(`Mismatching page object: ${pageObjectName} !== ${pageObject.constructor.name}`)
+    }
+  })
+}
 
 class Pages {
   constructor (browser, testdata) {
@@ -8,8 +19,9 @@ class Pages {
       map: (name) => name.replace('.page', 'Page'),
       resolve: (PageObject) => new PageObject(browser, testdata)
     })
-    Object.entries(pageObjects).forEach(([name, pageObject]) => {
-      this[name] = pageObject
+    Object.entries(pageObjects).forEach(([name, object]) => {
+      validatePageEntries(object)
+      this[name] = object
     })
   }
 }

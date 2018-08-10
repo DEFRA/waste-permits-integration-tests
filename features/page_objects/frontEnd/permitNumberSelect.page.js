@@ -1,6 +1,6 @@
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
-class PermitCategorySelectPage extends FrontEndPageObject {
+class PermitNumberSelectPage extends FrontEndPageObject {
   get title () { return 'Select a permit' }
 
   permit (permitNumber) {
@@ -15,4 +15,4 @@ class PermitCategorySelectPage extends FrontEndPageObject {
   }
 }
 
-module.exports = PermitCategorySelectPage
+module.exports = PermitNumberSelectPage
