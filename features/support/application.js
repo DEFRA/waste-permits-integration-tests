@@ -13,6 +13,13 @@ class Application {
     ), 10000)
   }
 
+  async launchCRM (appConfiguration) {
+    await this.browser.get(config.appUrlCRM)
+    await this.browser.wait(async () => (
+      await this.browser.wait(appConfiguration.getReadyState()) === 'complete'
+    ), 10000)
+  }
+
   async takeScreenshots (filename) {
     const filenameNoSpecialChars = filename.replace(/[^a-zA-Z ]/g, '')
     const titleDateStamp = filenameNoSpecialChars + Date.now() + '.png'
