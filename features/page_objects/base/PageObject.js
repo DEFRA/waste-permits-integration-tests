@@ -13,13 +13,35 @@ class PageObject {
     this.data = data
   }
 
+  async retry (fn, retries = 5, timeout = 100) {
+    try {
+      return fn()
+    } catch (e) {
+      retries--
+      if (!retries) {
+        throw e
+      }
+      await this.sleep(timeout)
+      return this.retry(fn, retries)
+    }
+  }
+
   async waitForPage (title, timeout = config.timeout) {
     throw new Error('Todo: Not implemented')
+  }
+
+  async sleep (timer) {
+    return this.browser.sleep(timer)
   }
 
   async getText (locator, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
     return element.getText()
+  }
+
+  async getValue (locator, timeout = config.timeout) {
+    const element = await this.waitUntilLoaded(locator, timeout)
+    return element.getAttribute('value')
   }
 
   async hasText (locator, expectedText, timeout = config.timeout) {
@@ -49,18 +71,61 @@ class PageObject {
   }
 
   async click (locator, timeout = config.timeout) {
-    const element = await this.waitUntilLoaded(locator, timeout)
+    this.log('click', locator)
+    const element = await this.waitUntilEnabled(locator, timeout)
     return element.click()
   }
 
   async input (locator, text = '', timeout = config.timeout) {
-    const element = await this.waitUntilLoaded(locator, timeout)
+    this.log(`input "${text}" into`, locator)
+    const element = await this.waitUntilEnabled(locator, timeout)
     await element.clear()
     return element.sendKeys(text)
   }
 
   async waitUntilLoaded (locator, timeout = config.timeout) {
     return this.browser.wait(until.elementLocated(locator), timeout)
+  }
+
+  async waitUntilStale (locator, timeout = config.timeout) {
+    return this.browser.wait(until.stalenessOf(await this.waitUntilLoaded(locator, timeout)), timeout)
+  }
+
+  async waitUntilVisible (locator, timeout = config.timeout) {
+    return this.browser.wait(until.elementIsVisible(await this.waitUntilEnabled(locator, timeout)), timeout)
+  }
+
+  async waitUntilEnabled (locator, timeout = config.timeout) {
+    return this.browser.wait(until.elementIsEnabled(await this.waitUntilLoaded(locator, timeout)), timeout)
+  }
+
+  async waitForText (locator, text, timeout = config.timeout) {
+    this.log(`waiting for "${text}" within`, locator)
+    const element = await this.waitUntilLoaded(locator, timeout)
+    return this.browser.wait(until.elementTextIs(element, text), timeout)
+  }
+
+  async withIFrame (locator, completeIFrame, timeout = config.timeout) {
+    // Wait for iframe to be loaded and switch to iframe context
+
+    this.browser.switchTo().frame(await this.waitUntilLoaded(locator, timeout))
+    const body = await this.waitUntilVisible({ css: 'body' })
+
+    // Run a function within the iframe context
+    await completeIFrame()
+
+    // Wait for the Iframe to be unloaded and switch to main context
+    await this.browser.switchTo().defaultContent()
+    try {
+      await this.browser.wait(until.stalenessOf(body), timeout)
+    } catch (e) { }
+    return Promise.resolve(true)
+  }
+
+  log (...args) {
+    if (config.env.toLowerCase() === 'development') {
+      console.log(...args)
+    }
   }
 }
 
