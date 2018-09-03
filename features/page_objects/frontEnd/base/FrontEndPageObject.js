@@ -13,15 +13,23 @@ class FrontEndPageObject extends PageObject {
   /****************************************************************************/
 
   async waitForPage (title = this.title, timeout = config.timeout) {
-    return this.hasText(this.pageHeading, title)
-  }
-
-  async waitForPaymentCompletionPage (title = this.paymentTitle, timeout = config.timeout) {
-    return this.hasText(this.pageHeading, title)
+    let hasText
+    try {
+      this.log(`wait for page "${title}"`)
+      hasText = await this.hasText(this.pageHeading, title)
+    } catch (e) {
+      if (timeout > 0) {
+        await this.sleep(1000)
+        hasText = await this.waitForPage(title, timeout - 1000)
+      } else {
+        throw e
+      }
+    }
+    return Promise.resolve(hasText)
   }
 
   async waitForGovUKPage (title = this.title, timeout = config.timeout) {
-    // console.log('HEADING' + this.pageHeadingGovUK.getText())
+    // this.log('HEADING' + this.pageHeadingGovUK.getText())
     return this.hasText(this.pageHeadingGovUK, title)
   }
 

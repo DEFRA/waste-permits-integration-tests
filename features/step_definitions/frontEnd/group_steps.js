@@ -1,54 +1,54 @@
-var {defineSupportCode} = require('cucumber')
-var path = require('path')
-const Tasks = require('../page_objects/frontEnd/helpers/tasks')
-const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, validCardDetails} = require('../support/testData')
+const { defineSupportCode } = require('cucumber')
+const path = require('path')
+const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
+const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, validCardDetails} = require('../../support/testData')
 
 function file (filename) {
-  return path.join(__dirname, `../uploadTestFiles/${filename}`)
+  return path.join(__dirname, `../../uploadTestFiles/${filename}`)
 }
 
 const validFirePreventionPlanFiles = [
-  {name: file('DOC-file-test.doc')},
-  {name: file('DOCX-file-test.docx')},
-  {name: file('PDF-file-test.pdf')},
-  {name: file('ODS-file-test.ods')},
-  {name: file('ODT-file-test.odt')},
-  {name: file('JPG-file-test.jpg')}
+  { name: file('DOC-file-test.doc') },
+  { name: file('DOCX-file-test.docx') },
+  { name: file('PDF-file-test.pdf') },
+  { name: file('ODS-file-test.ods') },
+  { name: file('ODT-file-test.odt') },
+  { name: file('JPG-file-test.jpg') }
 ]
 
 const validSitePlanFiles = [
-  {name: file('DOC-file-test.doc')},
-  {name: file('DOCX-file-test.docx')},
-  {name: file('PDF-file-test.pdf')},
-  {name: file('ODS-file-test.ods')},
-  {name: file('ODT-file-test.odt')},
-  {name: file('JPG-file-test.jpg')}
+  { name: file('DOC-file-test.doc') },
+  { name: file('DOCX-file-test.docx') },
+  { name: file('PDF-file-test.pdf') },
+  { name: file('ODS-file-test.ods') },
+  { name: file('ODT-file-test.odt') },
+  { name: file('JPG-file-test.jpg') }
 ]
 
 const validTechnicalQualificationFiles = [
-  {name: file('DOC-file-test.doc')},
-  {name: file('DOCX-file-test.docx')},
-  {name: file('PDF-file-test.pdf')},
-  {name: file('ODS-file-test.ods')},
-  {name: file('ODT-file-test.odt')},
-  {name: file('JPG-file-test.jpg')}
+  { name: file('DOC-file-test.doc') },
+  { name: file('DOCX-file-test.docx') },
+  { name: file('PDF-file-test.pdf') },
+  { name: file('ODS-file-test.ods') },
+  { name: file('ODT-file-test.odt') },
+  { name: file('JPG-file-test.jpg') }
 ]
 
 const validTechnicalManagerFiles = [
-  {name: file('DOC-file-test.doc')},
-  {name: file('DOCX-file-test.docx')},
-  {name: file('PDF-file-test.pdf')},
-  {name: file('ODT-file-test.odt')}
+  { name: file('DOC-file-test.doc') },
+  { name: file('DOCX-file-test.docx') },
+  { name: file('PDF-file-test.pdf') },
+  { name: file('ODT-file-test.odt') }
 ]
 
 const validWasteRecoveryPlanFiles = [
-  {name: file('DOC-file-test.doc')},
-  {name: file('DOCX-file-test.docx')},
-  {name: file('PDF-file-test.pdf')},
-  {name: file('ODT-file-test.odt')}
+  { name: file('DOC-file-test.doc') },
+  { name: file('DOCX-file-test.docx') },
+  { name: file('PDF-file-test.pdf') },
+  { name: file('ODT-file-test.odt') }
 ]
 
-defineSupportCode(function ({Given, When}) {
+defineSupportCode(function ({ Given, When }) {
   Given(/^the application has been launched$/, async function () {
     this.tasks = new Tasks(this)
     return this.application.launch(this.appConfiguration)
@@ -162,7 +162,7 @@ defineSupportCode(function ({Given, When}) {
   })
 
   When(/^I submit my application$/, async function () {
-    const {taskListPage} = this.pages.frontEnd
+    const { taskListPage } = this.pages.frontEnd
     return taskListPage.click(taskListPage.submitPayLink)
   })
 
