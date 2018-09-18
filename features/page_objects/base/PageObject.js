@@ -40,6 +40,7 @@ class PageObject {
 
   async input (locator, text = '', timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
+    await element.clear()
     return element.sendKeys(text)
   }
 
