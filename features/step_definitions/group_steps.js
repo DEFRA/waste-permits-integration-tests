@@ -135,4 +135,12 @@ defineSupportCode(function ({Given, When}) {
     const {taskListPage} = this.pages.frontEnd
     return taskListPage.click(taskListPage.submitPayLink)
   })
+
+  When(/^I check my answers$/, async function () {
+    return this.pages.frontEnd.checkBeforeSendingPage.completePage()
+  })
+
+  When(/^I choose to pay by (.*)$/, async function (paymentType) {
+    return tasks.makePayment(paymentType, this.pages)
+  })
 })

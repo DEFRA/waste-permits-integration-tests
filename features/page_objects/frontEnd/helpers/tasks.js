@@ -207,6 +207,23 @@ class Tasks {
       return confidentialityPage.completePage(details)
     })
   }
+
+  async makePayment (paymentType = 'BACS', pages) {
+    const {applicationReceivedPage, bacsPaymentPage, paymentTypePage} = pages.frontEnd
+    await paymentTypePage.completePage(paymentType)
+    switch (paymentType.toLowerCase()) {
+      case 'card': {
+        break
+      }
+      case 'bacs': {
+        await bacsPaymentPage.completePage()
+        break
+      }
+      default:
+        throw new Error(`Unknown payment type "${paymentType}"`)
+    }
+    return applicationReceivedPage.completePage(paymentType)
+  }
 }
 
 module.exports = new Tasks()

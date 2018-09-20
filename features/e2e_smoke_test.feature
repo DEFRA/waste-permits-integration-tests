@@ -21,10 +21,12 @@ Feature: End to end Smoke test
     And I enter my invoicing details
     And I confirm my confidentiality needs
     And I submit my application
+    And I check my answers
+    And I choose to pay by <PaymentType>
     Examples:
-      | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   |
-      | Limited company               | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip              | upload             | upload   | enter         | WAMITAB               |
-      | Sole trader                   | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip              | upload             | upload   | enter         | Getting Qualification |
-      | Limited liability partnership | Deposit for recovery                                         | SR2015 No 39 | is not required           | changed           | skip               | upload   | enter         | Deemed                |
-      | Individual                    | Composting, sewage or sludge treatment, biogas               | SR2010 No 14 | is not required           | skip              | skip               | upload   | enter         | ESA EU                |
-      | Partnership                   | Electrical insulating oil storage                            | SR2012 No 15 | is not required           | skip              | skip               | upload   | enter         | ESA EU                |
+      | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
+      | Limited company               | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip              | upload             | upload   | enter         | WAMITAB               | BACS        |
+      | Sole trader                   | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip              | upload             | upload   | enter         | Getting Qualification | BACS        |
+      | Limited liability partnership | Deposit for recovery                                         | SR2015 No 39 | is not required           | changed           | skip               | upload   | enter         | Deemed                | BACS        |
+      | Individual                    | Composting, sewage or sludge treatment, biogas               | SR2010 No 14 | is not required           | skip              | skip               | upload   | enter         | ESA EU                | BACS        |
+      | Partnership                   | Electrical insulating oil storage                            | SR2012 No 15 | is not required           | skip              | skip               | upload   | enter         | ESA EU                | BACS        |
