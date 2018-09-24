@@ -108,6 +108,8 @@ defineSupportCode(function ({Given, When}) {
   })
 
   When(/^I prove our technical competence as (.*)$/, async function (competence) {
+    if (competence.toLowerCase() === 'skip') return
+
     return tasks.proveTechnicalCompetence(competence, validTechnicalQualificationFiles, validTechnicalManagerFiles, this.pages)
   })
 
