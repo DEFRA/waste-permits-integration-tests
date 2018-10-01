@@ -17,9 +17,14 @@ class PageObject {
     throw new Error('Todo: Not implemented')
   }
 
-  async hasText (locator, expectedText, timeout = config.timeout) {
+  async getText (locator, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
-    return assert.eventually.equal(element.getText(), expectedText)
+    return element.getText()
+  }
+
+  async hasText (locator, expectedText, timeout = config.timeout) {
+    const actualText = await this.getText(locator, timeout)
+    return assert.equal(actualText, expectedText)
   }
 
   async hasLinesOfText (locator, expectedLines, timeout = config.timeout) {

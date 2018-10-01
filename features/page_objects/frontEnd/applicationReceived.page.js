@@ -4,8 +4,7 @@ class ApplicationReceivedPage extends FrontEndPageObject {
   get title () { return 'Application received' }
 
   async completePage (paymentType, title) {
-    await this.waitForPage(title || this.title)
-    return this.click(this.continueButton)
+    return this.waitForPage(title || this.title)
   }
 }
 
