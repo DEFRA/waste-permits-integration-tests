@@ -1,7 +1,7 @@
 var {defineSupportCode} = require('cucumber')
 var path = require('path')
 const tasks = require('../page_objects/frontEnd/helpers/tasks')
-const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, partnership, soleTrader, site, invoice, confidentialityNeeds} = require('../support/testData')
+const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds} = require('../support/testData')
 
 function file (filename) {
   return path.join(__dirname, `../uploadTestFiles/${filename}`)
@@ -92,7 +92,7 @@ defineSupportCode(function ({Given, When}) {
   })
 
   When(/^I enter my permit holder details for a (.*)$/, async function (permitHolder) {
-    return tasks.permitHolderDetails(permitHolder, {individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership}, this.pages)
+    return tasks.permitHolderDetails(permitHolder, {individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody}, this.pages)
   })
 
   When(/^I (.*) the waste recovery plan$/, async function (state) {
@@ -144,5 +144,11 @@ defineSupportCode(function ({Given, When}) {
 
   When(/^I choose to pay by (.*)$/, async function (paymentType) {
     return tasks.makePayment(paymentType, this.pages)
+  })
+
+  When(/^I (.*) confirmation of mining waste weight$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return tasks.confirmMiningWaste(miningWaste, this.pages)
   })
 })

@@ -8,6 +8,8 @@ class CompanyCheckNamePage extends FrontEndPageObject {
   get useTradingNameCheckbox () { return {css: '#use-business-trading-name'} }
   get tradingNameInput () { return {css: '#business-trading-name'} }
 
+  /****************************************************************************/
+
   async completePage (company, title) {
     const {name, tradingName} = company
     await this.waitForPage(title)

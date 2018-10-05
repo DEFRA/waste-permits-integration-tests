@@ -7,7 +7,7 @@ class PermitHolderContactDetailsPage extends FrontEndPageObject {
   get telephoneInput () { return {css: '#telephone'} }
 
   async completePage ({telephone, email}, title) {
-    await this.waitForPage(title || this.title)
+    await this.waitForPage(title)
     await this.input(this.emailInput, email)
     await this.input(this.telephoneInput, telephone)
     return this.click(this.continueButton)

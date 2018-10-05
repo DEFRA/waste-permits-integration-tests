@@ -72,6 +72,19 @@ const data = Object.freeze({
     bankruptcy: 'This is a test bankruptcy for a limited liability partnership'
   },
 
+  publicBody: {
+    firstName: 'Joe',
+    lastName: 'Public',
+    email: 'joe.public@defra.test.gov.uk',
+    jobTitle: 'Chairman',
+    tradingName: 'Public body Name',
+    buildingNameOrNumber: 'Council Chambers',
+    addressLine1: 'Authority Rd',
+    townOrCity: 'Bristol',
+    postcode: 'BS1 5AH',
+    name: 'This is a test public body'
+  },
+
   partnership: {
     tradingName: 'Trading Name',
     partners: [
@@ -131,6 +144,11 @@ const data = Object.freeze({
     addressLine1: 'Invoice Rd',
     townOrCity: 'Bristol',
     postcode: 'BS1 5AH'
+  },
+
+  miningWaste: {
+    miningWasteWeight: '1000,000',
+    miningWastePlan: 'Water based'
   },
 
   confidentialityNeeds: 'Test confidentiality needs'
