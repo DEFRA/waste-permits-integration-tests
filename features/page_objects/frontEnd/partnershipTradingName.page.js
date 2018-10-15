@@ -1,15 +1,7 @@
-const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
+const TradingNamePageObject = require('./base/TradingNamePageObject').TradingNamePageObject
 
-class PartnershipTradingNamePage extends FrontEndPageObject {
+class PartnershipTradingNamePage extends TradingNamePageObject {
   get title () { return 'What name do you use for the partnership?' }
-
-  get tradingNameInput () { return {css: '#trading-name'} }
-
-  async completePage ({tradingName}) {
-    await this.waitForPage()
-    await this.input(this.tradingNameInput, tradingName)
-    return this.click(this.continueButton)
-  }
 }
 
 module.exports = PartnershipTradingNamePage

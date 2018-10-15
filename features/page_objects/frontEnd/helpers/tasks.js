@@ -72,6 +72,18 @@ class Tasks {
     })
   }
 
+  async publicBodyPermitHolderDetails (publicBody = {}, pages) {
+    const {taskListPage, publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyTradingNamePage, publicBodyOfficerPage, publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
+    return taskListPage.completeTask('permitHolderDetails', async () => {
+      await publicBodyTradingNamePage.completePage(publicBody)
+      await publicBodyAddressSelectPage.completePage()
+      await publicBodyAddressManualPage.completePage(publicBody)
+      await publicBodyOfficerPage.completePage(publicBody)
+      await publicBodyConvictionsPage.completePage(publicBody.convictions)
+      await publicBodyBankruptcyPage.completePage(publicBody.bankruptcy)
+    })
+  }
+
   async soleTraderPermitHolderDetails (soleTrader = {}, pages) {
     const {taskListPage, permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, permitHolderTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
     return taskListPage.completeTask('permitHolderDetails', async () => {
@@ -112,7 +124,7 @@ class Tasks {
   }
 
   async permitHolderDetails (permitHolder, data, pages) {
-    const {individual, limitedCompany, limitedLiabilityPartnership, partnership, soleTrader} = data
+    const {individual, limitedCompany, limitedLiabilityPartnership, partnership, publicBody, soleTrader} = data
     switch (permitHolder.toLowerCase()) {
       case 'individual': {
         return this.individualPermitHolderDetails(individual, pages)
@@ -123,11 +135,14 @@ class Tasks {
       case 'limited liability partnership': {
         return this.limitedLiabilityPartnershipPermitHolderDetails(limitedLiabilityPartnership, pages)
       }
-      case 'sole trader': {
-        return this.soleTraderPermitHolderDetails(soleTrader, pages)
-      }
       case 'partnership': {
         return this.partnershipPermitHolderDetails(partnership, pages)
+      }
+      case 'public body': {
+        return this.publicBodyPermitHolderDetails(publicBody, pages)
+      }
+      case 'sole trader': {
+        return this.soleTraderPermitHolderDetails(soleTrader, pages)
       }
       default:
         throw new Error(`Todo: Support for "${permitHolder}"`)
@@ -146,6 +161,14 @@ class Tasks {
     return taskListPage.completeTask('wasteRecoveryPlan', async () => {
       await wasteRecoverySelectPage.completePage(state)
       return wasteRecoveryPlanPage.completePage(files)
+    })
+  }
+
+  async confirmMiningWaste (miningWaste = {}, pages) {
+    const {taskListPage, confirmMiningWastePage, miningWasteWeightPage} = pages.frontEnd
+    return taskListPage.completeTask('miningWaste', async () => {
+      await confirmMiningWastePage.completePage(miningWaste)
+      return miningWasteWeightPage.completePage(miningWaste)
     })
   }
 

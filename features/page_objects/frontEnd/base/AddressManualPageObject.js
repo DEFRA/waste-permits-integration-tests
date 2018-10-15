@@ -8,7 +8,7 @@ class AddressManualPageObject extends FrontEndPageObject {
   get postcodeInput () { return {css: '#postcode'} }
 
   async completePage ({buildingNameOrNumber, addressLine1, addressLine2, townOrCity, postcode}, title) {
-    await this.waitForPage(title || this.title)
+    await this.waitForPage(title)
 
     await this.input(this.buildingNameOrNumberInput, buildingNameOrNumber)
     await this.input(this.addressLine1Input, addressLine1)

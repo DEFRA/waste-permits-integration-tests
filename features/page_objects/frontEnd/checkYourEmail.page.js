@@ -11,6 +11,8 @@ class CheckYourEmailPage extends FrontEndPageObject {
 
   get recoveryLink () { return {css: '#recovery-link'} }
 
+  /****************************************************************************/
+
   async completePage () {
     await this.waitForPage()
     await this.click(this.gotItRadio)

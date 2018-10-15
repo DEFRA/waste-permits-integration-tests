@@ -10,9 +10,8 @@ class FrontEndPageObject extends PageObject {
 
   /****************************************************************************/
 
-  async waitForPage (title, timeout = config.timeout) {
-    const expectedTitle = title || this.title
-    return this.hasText(this.pageHeading, expectedTitle)
+  async waitForPage (title = this.title, timeout = config.timeout) {
+    return this.hasText(this.pageHeading, title)
   }
 
   async checkError (message, timeout = config.timeout) {

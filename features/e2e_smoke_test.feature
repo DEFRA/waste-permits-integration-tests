@@ -14,6 +14,7 @@ Feature: End to end Smoke test
     And I enter my contact details
     And I enter my permit holder details for a <PermitHolder>
     And I <EnterSiteName> my site name and location
+    And I <EnterMiningWaste> confirmation of mining waste weight
     And I <WasteRecoveryPlan> the waste recovery plan
     And I <FirePreventionPlan> the fire plan
     And I <SitePlan> the site plan
@@ -24,9 +25,11 @@ Feature: End to end Smoke test
     And I check my answers
     And I choose to pay by <PaymentType>
     Examples:
-      | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
-      | Limited company               | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip              | upload             | upload   | enter         | WAMITAB               | BACS        |
-      | Sole trader                   | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip              | upload             | upload   | enter         | Getting Qualification | BACS        |
-      | Limited liability partnership | Deposit for recovery                                         | SR2015 No 39 | is not required           | changed           | skip               | upload   | enter         | Deemed                | BACS        |
-      | Individual                    | Composting, sewage or sludge treatment, biogas               | SR2009 No 4  | is not required           | skip              | skip               | upload   | enter         | skip                  | BACS        |
-      | Partnership                   | Electrical insulating oil storage                            | SR2012 No 15 | is not required           | skip              | skip               | upload   | enter         | ESA EU                | BACS        |
+      | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
+#      | Public body                   | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |
+      | Limited company               | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |
+      | Limited company               | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip             | skip              | upload             | upload   | enter         | WAMITAB               | BACS        |
+      | Sole trader                   | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip             | skip              | upload             | upload   | enter         | Getting Qualification | BACS        |
+      | Limited liability partnership | Deposit for recovery                                         | SR2015 No 39 | is not required           | skip             | changed           | skip               | upload   | enter         | Deemed                | BACS        |
+      | Individual                    | Composting, sewage or sludge treatment, biogas               | SR2009 No 4  | is not required           | skip             | skip              | skip               | upload   | enter         | skip                  | BACS        |
+      | Partnership                   | Electrical insulating oil storage                            | SR2012 No 15 | is not required           | skip             | skip              | skip               | upload   | enter         | ESA EU                | BACS        |
