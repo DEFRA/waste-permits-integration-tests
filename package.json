@@ -5,7 +5,7 @@
   "author": "Department for Environment, Food & Rural Affairs",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "test:chrome-desktop-test-smoke": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke -f json:features/reports/cucumber_report_desktop.json"
+    "test:chrome-desktop-test-smoke": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke -f json:cucumberjs/features/reports/cucumber_report_desktop.json"
   },
   "repository": {
     "type": "git",
