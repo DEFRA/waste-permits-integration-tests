@@ -18,8 +18,8 @@ After(function () {
 registerHandler('BeforeFeatures', ([feature]) => {
   const options = {
     theme: 'bootstrap',
-    jsonDir: 'features/reports',
-    output: 'features/reports/cucumber_report.html',
+    jsonDir: 'cucumberjs/features/reports',
+    output: 'cucumberjs/features/reports/cucumber_report.html',
     reportSuiteAsScenarios: true,
     launchReport: true,
     ignoreBadJsonFile: true,
