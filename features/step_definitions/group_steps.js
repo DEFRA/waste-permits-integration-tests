@@ -57,6 +57,10 @@ defineSupportCode(function ({Given, When}) {
     return this.pages.frontEnd.startOrOpenSavedPage.completePage()
   })
 
+  When(/^I select (.*) as the permit type$/, async function (permitType) {
+    return this.pages.frontEnd.bespokeOrStandardRulesPage.completePage(permitType)
+  })
+
   When(/^I select (.*) as the permit holder$/, async function (permitHolder) {
     return this.pages.frontEnd.permitHolderSelectPage.completePage(permitHolder)
   })
