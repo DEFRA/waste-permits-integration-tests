@@ -7,6 +7,7 @@ defineSupportCode(function ({When}) {
   When(/^As a (.*) I apply for waste permit (.*) \((.*)\)$/, async function (permitHolder, permitNumber, permitCategory) {
     const {
       startOrOpenSavedPage,
+      bespokeOrStandardRulesPage,
       permitHolderSelectPage,
       permitCategorySelectPage,
       permitNumberSelectPage
@@ -16,6 +17,7 @@ defineSupportCode(function ({When}) {
 
     // Start Application
     await startOrOpenSavedPage.completePage()
+    await bespokeOrStandardRulesPage.completePage('Standard rules')
 
     // Select Permit
     await permitHolderSelectPage.completePage(permitHolder)
