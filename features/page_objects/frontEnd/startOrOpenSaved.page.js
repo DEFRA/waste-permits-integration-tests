@@ -3,7 +3,7 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class StartOrOpenSavedPage extends FrontEndPageObject {
   get title () { return 'Apply for a standard rules environmental permit' }
 
-  get startApplicationRadio () { return {css: '#start-application'} }
+  get startApplicationRadio () { return {id: 'start-application'} }
   get openApplicationRadio () { return {css: '#open-application'} }
 
   async completePage () {

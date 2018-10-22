@@ -1,7 +1,7 @@
 var {defineSupportCode} = require('cucumber')
 var path = require('path')
 const tasks = require('../page_objects/frontEnd/helpers/tasks')
-const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds} = require('../support/testData')
+const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, validCardDetails} = require('../support/testData')
 
 function file (filename) {
   return path.join(__dirname, `../uploadTestFiles/${filename}`)
@@ -147,7 +147,9 @@ defineSupportCode(function ({Given, When}) {
   })
 
   When(/^I choose to pay by (.*)$/, async function (paymentType) {
-    return tasks.makePayment(paymentType, this.pages)
+    if (paymentType.toLowerCase() === 'skip') return
+
+    return tasks.makePayment(validCardDetails, paymentType, this.pages)
   })
 
   When(/^I (.*) confirmation of mining waste weight$/, async function (confirm) {

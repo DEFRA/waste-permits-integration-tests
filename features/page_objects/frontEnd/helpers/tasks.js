@@ -36,6 +36,11 @@ class Tasks {
     })
   }
 
+  async enterCardDetails (card = {}, pages) {
+    const { cardPaymentPage } = pages.frontEnd
+    return cardPaymentPage.completePage(card)
+  }
+
   async individualPermitHolderDetails (individual = {}, pages) {
     const {taskListPage, permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, convictionsPage, bankruptcyPage} = pages.frontEnd
     return taskListPage.completeTask('permitHolderDetails', async () => {
@@ -231,11 +236,13 @@ class Tasks {
     })
   }
 
-  async makePayment (paymentType = 'BACS', pages) {
-    const {applicationReceivedPage, bacsPaymentPage, paymentTypePage} = pages.frontEnd
+  async makePayment (cardDetails = {}, paymentType, pages) {
+    const {applicationReceivedPage, bacsPaymentPage, paymentTypePage, cardPaymentPage, confirmPaymentPage} = pages.frontEnd
     await paymentTypePage.completePage(paymentType)
     switch (paymentType.toLowerCase()) {
       case 'card': {
+        await cardPaymentPage.completePage(cardDetails)
+        await confirmPaymentPage.completePage()
         break
       }
       case 'bacs': {
