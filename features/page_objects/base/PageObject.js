@@ -38,6 +38,11 @@ class PageObject {
     return assert.eventually.equal(element.getAttribute('value'), expectedValue)
   }
 
+  async haslink (locator, expectedValue, timeout = config.timeout) {
+    const element = await this.waitUntilLoaded(locator, timeout)
+    return assert.eventually.equal(element.getAttribute('href'), expectedValue)
+  }
+
   async click (locator, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
     return element.click()

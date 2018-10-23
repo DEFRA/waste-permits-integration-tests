@@ -77,8 +77,18 @@ defineSupportCode(function ({Given, When}) {
     return tasks.checkCostAndProcessingTime(this.pages)
   })
 
+ // I check <Cost> on Cost and processing time page
+ When(/^I check (.*) on Cost and processing time page$/, async function (cost) {
+  return tasks.checkCostAndProcessingTimeValidations(cost, this.pages)
+})
+
   When(/^I confirm I meet the rules$/, async function () {
     return tasks.confirmOperationMeetsRules(this.pages)
+  })
+
+  //
+  When(/^I confirm I meet the rules (.*)$/, async function (link) {
+    return tasks.confirmOperationMeetsRulesValidation(link, this.pages)
   })
 
   When(/^I confirm my vehicle storage area (.*)$/, async function (vehicleStorage) {
