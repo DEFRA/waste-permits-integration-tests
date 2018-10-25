@@ -5,7 +5,7 @@ Feature: Tests to check Standard rules which are applicable online and SR's whic
     Scenario Outline: As a user, I should be able to fill the forms online for the permits which are available for apply online
         Given the application has been launched
         And I start a new application
-        #And I select Standard rules as the permit type
+        And I select Standard rules as the permit type
         And I select <PermitHolder> as the permit holder
         And I select <PermitCategory> as the permit category
         And I select <Permit> as the permit number
