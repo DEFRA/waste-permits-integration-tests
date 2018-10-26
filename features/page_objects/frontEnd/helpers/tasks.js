@@ -6,10 +6,24 @@ class Tasks {
     })
   }
 
+  async checkCostAndProcessingTimeValidations (cost, pages) {
+    const {taskListPage, checkCostPage} = pages.frontEnd
+    return taskListPage.completeTask('checkCostAndProcessingTime', async () => {
+      return checkCostPage.completePageValidation(cost)
+    })
+  }
+
   async confirmOperationMeetsRules (pages) {
     const {taskListPage, confirmOperationMeetsRulesPage} = pages.frontEnd
     return taskListPage.completeTask('confirmOperationMeetsRules', async () => {
       return confirmOperationMeetsRulesPage.completePage()
+    })
+  }
+
+  async confirmOperationMeetsRulesValidation (link, pages) {
+    const {taskListPage, confirmOperationMeetsRulesPage} = pages.frontEnd
+    return taskListPage.completeTask('confirmOperationMeetsRules', async () => {
+      return confirmOperationMeetsRulesPage.completePageValidation(link)
     })
   }
 

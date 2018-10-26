@@ -41,7 +41,7 @@ Feature: End to end Smoke test
   Scenario Outline: As a user I should be able to apply for waste permit <Permit> when the permit holder is a <PermitHolder>
     Given the application has been launched
     And I start a new application
-    And I select Standard rules as the permit type
+    #And I select Standard rules as the permit type
     And I select <PermitHolder> as the permit holder
     And I select <PermitCategory> as the permit category
     And I select <Permit> as the permit number
