@@ -14,7 +14,7 @@ module.exports = class Logger {
       fs.appendFile(this.filename, data + '\n', 'utf8', (err) => {
         if (err) throw err
         // if no error
-        console.log(`Data is appended to ${this.filename} successfully.`)
+        console.log(`Data "${data}" has been appended to ${this.filename} successfully.`)
       })
     })
   }
