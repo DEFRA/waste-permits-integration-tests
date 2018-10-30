@@ -1,5 +1,6 @@
 const Logger = require('./helpers/logger')
-const logger = new Logger('../temp/links.txt')
+const path = require('path')
+const logger = new Logger(path.resolve(`${__dirname}/../../../temp/links.txt`))
 const {env} = require('../../../config')
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
