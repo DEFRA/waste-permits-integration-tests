@@ -16,7 +16,7 @@ Feature: Error test trial
         And I start a new application
         #And I select Standard rules as the permit type
         And I select none as the permit holder
-        And I should see an error "Select who will be the permit holder"    
+        And I should see an error "Select who will be the permit holder"
 
 
     @Smoke_dev
