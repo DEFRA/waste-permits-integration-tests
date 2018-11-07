@@ -21,8 +21,6 @@ Feature: Error test trial
 
     @Smoke_dev
     @Smoke_test
-    @Smoke_preprod
-    @Smoke_prod
     Scenario Outline: As a user I should get error for invalid contact details
         Given the application has been launched
         And I start a new application
