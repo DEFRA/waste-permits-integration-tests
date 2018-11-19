@@ -51,6 +51,7 @@ class TaskListPage extends FrontEndPageObject {
 
   async completeTask (name, task) {
     await this.waitForPage()
+    await this.isAbsent(this[`${name}Completed`])
     await this.click(this[`${name}Link`])
 
     await task()
