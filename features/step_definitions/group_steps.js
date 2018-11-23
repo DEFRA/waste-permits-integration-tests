@@ -167,4 +167,9 @@ defineSupportCode(function ({Given, When}) {
 
     return tasks.confirmMiningWaste(miningWaste, this.pages)
   })
+
+  When(/^I am on (.*) apply offline page with (.*) link$/, async function (header, link) {
+    return this.pages.frontEnd.offlineApplyPage.completePage(header, link)
+  })
+
 })
