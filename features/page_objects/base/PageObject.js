@@ -43,6 +43,11 @@ class PageObject {
     return assert.eventually.equal(element.getAttribute('href'), expectedValue)
   }
 
+  async isAbsent (locator) {
+    const found = await this.browser.findElements(locator)
+    return assert.equal(found.length, 0)
+  }
+
   async click (locator, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
     return element.click()
