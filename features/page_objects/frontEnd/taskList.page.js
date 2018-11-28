@@ -42,10 +42,16 @@ class TaskListPage extends FrontEndPageObject {
   get confirmConfidentialityNeedsLink () { return {css: '#confirm-confidentiality-needs-link'} }
   get confirmConfidentialityNeedsCompleted () { return {css: '#confidentiality-completed'} }
 
+  get miningWasteLink () { return {css: '#confirm-mining-data-link'} }
+  get miningWasteCompleted () { return {css: '#mining-data-completed'} }
+
   get submitPayLink () { return {css: '#submit-pay-link'} }
+
+  /****************************************************************************/
 
   async completeTask (name, task) {
     await this.waitForPage()
+    await this.isAbsent(this[`${name}Completed`])
     await this.click(this[`${name}Link`])
 
     await task()

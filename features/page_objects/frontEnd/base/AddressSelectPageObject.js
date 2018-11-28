@@ -4,8 +4,8 @@ class AddressSelectPageObject extends FrontEndPageObject {
   get postcodeInput () { return {css: '#postcode'} }
   get manualAddressLink () { return {css: '#manual-address-link'} }
 
-  async completePage (postcode) {
-    await this.waitForPage()
+  async completePage (postcode, title) {
+    await this.waitForPage(title)
 
     if (postcode) {
       await this.input(this.postcodeInput, postcode)

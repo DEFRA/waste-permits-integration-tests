@@ -1,7 +1,7 @@
 var { defineSupportCode } = require('cucumber')
 var path = require('path')
 const tasks = require('../page_objects/frontEnd/helpers/tasks')
-const { email, contact, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, site, invoice, confidentialityNeeds } = require('../support/testData')
+const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, validCardDetails} = require('../support/testData')
 
 function file (filename) {
   return path.join(__dirname, `../uploadTestFiles/${filename}`)
@@ -71,6 +71,10 @@ defineSupportCode(function ({ Given, When }) {
     return this.pages.frontEnd.startOrOpenSavedPage.completePage()
   })
 
+  When(/^I select (.*) as the permit type$/, async function (permitType) {
+    return this.pages.frontEnd.bespokeOrStandardRulesPage.completePage(permitType)
+  })
+
   When(/^I select (.*) as the permit holder$/, async function (permitHolder) {
     return this.pages.frontEnd.permitHolderSelectPage.completePage(permitHolder)
   })
@@ -87,8 +91,18 @@ defineSupportCode(function ({ Given, When }) {
     return tasks.checkCostAndProcessingTime(this.pages)
   })
 
+ // I check <Cost> on Cost and processing time page
+ When(/^I check (.*) on Cost and processing time page$/, async function (cost) {
+  return tasks.checkCostAndProcessingTimeValidations(cost, this.pages)
+})
+
   When(/^I confirm I meet the rules$/, async function () {
     return tasks.confirmOperationMeetsRules(this.pages)
+  })
+
+  //
+  When(/^I confirm I meet the rules (.*)$/, async function (link) {
+    return tasks.confirmOperationMeetsRulesValidation(link, this.pages)
   })
 
   When(/^I confirm my vehicle storage area (.*)$/, async function (vehicleStorage) {
@@ -106,22 +120,7 @@ defineSupportCode(function ({ Given, When }) {
   })
 
   When(/^I enter my permit holder details for a (.*)$/, async function (permitHolder) {
-    switch (permitHolder.toLowerCase()) {
-      case 'individual': {
-        return tasks.individualPermitHolderDetails(individual, this.pages)
-      }
-      case 'limited company': {
-        return tasks.limitedCompanyPermitHolderDetails(limitedCompany, this.pages)
-      }
-      case 'limited liability partnership': {
-        return tasks.limitedLiabilityPartnershipPermitHolderDetails(limitedLiabilityPartnership, this.pages)
-      }
-      case 'sole trader': {
-        return tasks.soleTraderPermitHolderDetails(soleTrader, this.pages)
-      }
-      default:
-        throw new Error(`Todo: Support for "${permitHolder}"`)
-    }
+    return tasks.permitHolderDetails(permitHolder, {individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody}, this.pages)
   })
 
   When(/^I (.*) the waste recovery plan$/, async function (state) {
@@ -137,6 +136,8 @@ defineSupportCode(function ({ Given, When }) {
   })
 
   When(/^I prove our technical competence as (.*)$/, async function (competence) {
+    if (competence.toLowerCase() === 'skip') return
+
     return tasks.proveTechnicalCompetence(competence, validTechnicalQualificationFiles, validTechnicalManagerFiles, this.pages)
   })
 
@@ -164,4 +165,25 @@ defineSupportCode(function ({ Given, When }) {
     const { taskListPage } = this.pages.frontEnd
     return taskListPage.click(taskListPage.submitPayLink)
   })
+
+  When(/^I check my answers$/, async function () {
+    return this.pages.frontEnd.checkBeforeSendingPage.completePage()
+  })
+
+  When(/^I choose to pay by (.*)$/, async function (paymentType) {
+    if (paymentType.toLowerCase() === 'skip') return
+
+    return tasks.makePayment(validCardDetails, paymentType, this.pages)
+  })
+
+  When(/^I (.*) confirmation of mining waste weight$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return tasks.confirmMiningWaste(miningWaste, this.pages)
+  })
+
+  When(/^I am on (.*) apply offline page with (.*) link$/, async function (header, link) {
+    return this.pages.frontEnd.offlineApplyPage.completePage(header, link)
+  })
+
 })

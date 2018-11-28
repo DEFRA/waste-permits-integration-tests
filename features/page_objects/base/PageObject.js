@@ -17,9 +17,14 @@ class PageObject {
     throw new Error('Todo: Not implemented')
   }
 
-  async hasText (locator, expectedText, timeout = config.timeout) {
+  async getText (locator, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
-    return assert.eventually.equal(element.getText(), expectedText)
+    return element.getText()
+  }
+
+  async hasText (locator, expectedText, timeout = config.timeout) {
+    const actualText = await this.getText(locator, timeout)
+    return assert.equal(actualText, expectedText)
   }
 
   async hasLinesOfText (locator, expectedLines, timeout = config.timeout) {
@@ -33,6 +38,16 @@ class PageObject {
     return assert.eventually.equal(element.getAttribute('value'), expectedValue)
   }
 
+  async haslink (locator, expectedValue, timeout = config.timeout) {
+    const element = await this.waitUntilLoaded(locator, timeout)
+    return assert.eventually.equal(element.getAttribute('href'), expectedValue)
+  }
+
+  async isAbsent (locator) {
+    const found = await this.browser.findElements(locator)
+    return assert.equal(found.length, 0)
+  }
+
   async click (locator, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
     return element.click()
@@ -40,6 +55,7 @@ class PageObject {
 
   async input (locator, text = '', timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
+    await element.clear()
     return element.sendKeys(text)
   }
 

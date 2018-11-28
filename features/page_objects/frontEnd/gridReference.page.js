@@ -5,6 +5,8 @@ class GridReferencePage extends FrontEndPageObject {
 
   get gridReferenceInput () { return {css: '#site-grid-reference'} }
 
+  /****************************************************************************/
+
   async completePage ({gridReference}, title) {
     await this.waitForPage(title)
     await this.input(this.gridReferenceInput, gridReference)

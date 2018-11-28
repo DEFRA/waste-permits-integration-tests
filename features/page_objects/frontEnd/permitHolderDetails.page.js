@@ -9,8 +9,8 @@ class PermitHolderDetailsPage extends FrontEndPageObject {
   get monthOfBirthInput () { return {css: '#dob-month'} }
   get yearOfBirthInput () { return {css: '#dob-year'} }
 
-  async completePage ({firstName, lastName, dob}) {
-    await this.waitForPage()
+  async completePage ({firstName, lastName, dob}, title) {
+    await this.waitForPage(title)
     await this.input(this.firstNameInput, firstName)
     await this.input(this.lastNameInput, lastName)
     await this.input(this.dayOfBirthInput, dob.day)

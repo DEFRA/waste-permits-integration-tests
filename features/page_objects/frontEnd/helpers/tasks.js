@@ -6,10 +6,24 @@ class Tasks {
     })
   }
 
+  async checkCostAndProcessingTimeValidations (cost, pages) {
+    const {taskListPage, checkCostPage} = pages.frontEnd
+    return taskListPage.completeTask('checkCostAndProcessingTime', async () => {
+      return checkCostPage.completePageValidation(cost)
+    })
+  }
+
   async confirmOperationMeetsRules (pages) {
     const {taskListPage, confirmOperationMeetsRulesPage} = pages.frontEnd
     return taskListPage.completeTask('confirmOperationMeetsRules', async () => {
       return confirmOperationMeetsRulesPage.completePage()
+    })
+  }
+
+  async confirmOperationMeetsRulesValidation (link, pages) {
+    const {taskListPage, confirmOperationMeetsRulesPage} = pages.frontEnd
+    return taskListPage.completeTask('confirmOperationMeetsRules', async () => {
+      return confirmOperationMeetsRulesPage.completePageValidation(link)
     })
   }
 
@@ -34,6 +48,11 @@ class Tasks {
     return taskListPage.completeTask('contactDetails', async () => {
       return contactDetailsPage.completePage(contact)
     })
+  }
+
+  async enterCardDetails (card = {}, pages) {
+    const { cardPaymentPage } = pages.frontEnd
+    return cardPaymentPage.completePage(card)
   }
 
   async individualPermitHolderDetails (individual = {}, pages) {
@@ -72,6 +91,18 @@ class Tasks {
     })
   }
 
+  async publicBodyPermitHolderDetails (publicBody = {}, pages) {
+    const {taskListPage, publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyTradingNamePage, publicBodyOfficerPage, publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
+    return taskListPage.completeTask('permitHolderDetails', async () => {
+      await publicBodyTradingNamePage.completePage(publicBody)
+      await publicBodyAddressSelectPage.completePage()
+      await publicBodyAddressManualPage.completePage(publicBody)
+      await publicBodyOfficerPage.completePage(publicBody)
+      await publicBodyConvictionsPage.completePage(publicBody.convictions)
+      await publicBodyBankruptcyPage.completePage(publicBody.bankruptcy)
+    })
+  }
+
   async soleTraderPermitHolderDetails (soleTrader = {}, pages) {
     const {taskListPage, permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, permitHolderTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
     return taskListPage.completeTask('permitHolderDetails', async () => {
@@ -83,6 +114,58 @@ class Tasks {
       await convictionsPage.completePage(soleTrader.convictions)
       return bankruptcyPage.completePage(soleTrader.bankruptcy)
     })
+  }
+
+  async partnershipPermitHolderDetails (partnership = {}, pages) {
+    const {taskListPage, partnershipListPage, partnershipDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, partnershipTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
+    return taskListPage.completeTask('permitHolderDetails', async () => {
+      await partnershipTradingNamePage.completePage(partnership)
+      const {partners} = partnership
+      for (let index = 0; index < partners.length; index++) {
+        const partner = partners[index]
+        const contactDetailsTitle = index ? partnershipDetailsPage.title : partnershipDetailsPage.firstTitle
+        await partnershipDetailsPage.completePage(partner, contactDetailsTitle)
+        await permitHolderContactDetailsPage.completePage(partner, `What are the contact details for ${partner.firstName} ${partner.lastName}?`)
+        await permitHolderAddressSelectPage.completePage('', `What is the address for ${partner.firstName} ${partner.lastName}?`)
+        await permitHolderAddressManualPage.completePage(partner, `What is the address for ${partner.firstName} ${partner.lastName}?`)
+        await partnershipListPage.waitForPage()
+        if (!index || index === partners.length - 1) {
+          // Add second and last partner
+          await partnershipListPage.click(partnershipListPage.continueButton)
+        } else {
+          // Add all other partners
+          await partnershipListPage.click(partnershipListPage.addPartnerLink)
+        }
+      }
+      await convictionsPage.completePage(partnership.convictions)
+      return bankruptcyPage.completePage(partnership.bankruptcy)
+    })
+  }
+
+  async permitHolderDetails (permitHolder, data, pages) {
+    const {individual, limitedCompany, limitedLiabilityPartnership, partnership, publicBody, soleTrader} = data
+    switch (permitHolder.toLowerCase()) {
+      case 'individual': {
+        return this.individualPermitHolderDetails(individual, pages)
+      }
+      case 'limited company': {
+        return this.limitedCompanyPermitHolderDetails(limitedCompany, pages)
+      }
+      case 'limited liability partnership': {
+        return this.limitedLiabilityPartnershipPermitHolderDetails(limitedLiabilityPartnership, pages)
+      }
+      case 'partnership': {
+        return this.partnershipPermitHolderDetails(partnership, pages)
+      }
+      case 'public body': {
+        return this.publicBodyPermitHolderDetails(publicBody, pages)
+      }
+      case 'sole trader': {
+        return this.soleTraderPermitHolderDetails(soleTrader, pages)
+      }
+      default:
+        throw new Error(`Todo: Support for "${permitHolder}"`)
+    }
   }
 
   async firePreventionPlan (files = [], pages) {
@@ -97,6 +180,14 @@ class Tasks {
     return taskListPage.completeTask('wasteRecoveryPlan', async () => {
       await wasteRecoverySelectPage.completePage(state)
       return wasteRecoveryPlanPage.completePage(files)
+    })
+  }
+
+  async confirmMiningWaste (miningWaste = {}, pages) {
+    const {taskListPage, confirmMiningWastePage, miningWasteWeightPage} = pages.frontEnd
+    return taskListPage.completeTask('miningWaste', async () => {
+      await confirmMiningWastePage.completePage(miningWaste)
+      return miningWasteWeightPage.completePage(miningWaste)
     })
   }
 
@@ -157,6 +248,25 @@ class Tasks {
     return taskListPage.completeTask('confirmConfidentialityNeeds', async () => {
       return confidentialityPage.completePage(details)
     })
+  }
+
+  async makePayment (cardDetails = {}, paymentType, pages) {
+    const {applicationReceivedPage, bacsPaymentPage, paymentTypePage, cardPaymentPage, confirmPaymentPage} = pages.frontEnd
+    await paymentTypePage.completePage(paymentType)
+    switch (paymentType.toLowerCase()) {
+      case 'card': {
+        await cardPaymentPage.completePage(cardDetails)
+        await confirmPaymentPage.completePage()
+        break
+      }
+      case 'bacs': {
+        await bacsPaymentPage.completePage()
+        break
+      }
+      default:
+        throw new Error(`Unknown payment type "${paymentType}"`)
+    }
+    return applicationReceivedPage.completePage(paymentType)
   }
 }
 
