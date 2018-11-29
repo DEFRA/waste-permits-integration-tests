@@ -12,12 +12,12 @@ function validatePageEntries (object) {
 }
 
 class Pages {
-  constructor (browser, testdata) {
+  constructor (browser, data) {
     const pageObjects = require('require-all')({
       dirname: __dirname,
       filter: /(.+.page).js$/,
       map: (name) => name.replace('.page', 'Page'),
-      resolve: (PageObject) => new PageObject(browser, testdata)
+      resolve: (PageObject) => new PageObject(browser, data)
     })
     Object.entries(pageObjects).forEach(([name, object]) => {
       validatePageEntries(object)
