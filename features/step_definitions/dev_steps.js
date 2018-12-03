@@ -1,6 +1,6 @@
 const {defineSupportCode} = require('cucumber')
 const config = require('../../config')
-const tasks = require('../page_objects/frontEnd/helpers/tasks')
+const Tasks = require('../page_objects/frontEnd/helpers/tasks')
 const {email, contact, partnership} = require('../support/testData')
 
 defineSupportCode(function ({When}) {
@@ -12,6 +12,8 @@ defineSupportCode(function ({When}) {
       permitCategorySelectPage,
       permitNumberSelectPage
     } = this.pages.frontEnd
+
+    const tasks = this.tasks = new Tasks(this)
 
     await this.application.launch(this.appConfiguration)
 

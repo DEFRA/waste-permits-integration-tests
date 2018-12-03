@@ -1,4 +1,17 @@
 class Tasks {
+  constructor (world) {
+    this.__world = world
+    this.__testdata = world.data
+  }
+
+  get data () {
+    return this.__testdata
+  }
+
+  get world () {
+    return this.__world
+  }
+
   async checkCostAndProcessingTime (pages) {
     const {taskListPage, checkCostPage} = pages.frontEnd
     return taskListPage.completeTask('checkCostAndProcessingTime', async () => {
@@ -60,8 +73,7 @@ class Tasks {
     return taskListPage.completeTask('permitHolderDetails', async () => {
       await permitHolderDetailsPage.completePage(individual)
       await permitHolderContactDetailsPage.completePage(individual)
-      await permitHolderAddressSelectPage.completePage()
-      await permitHolderAddressManualPage.completePage(individual)
+      await this.addressDetails(individual, permitHolderAddressSelectPage, permitHolderAddressManualPage)
       await convictionsPage.completePage(individual.convictions)
       return bankruptcyPage.completePage(individual.bankruptcy)
     })
@@ -95,8 +107,7 @@ class Tasks {
     const {taskListPage, publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyTradingNamePage, publicBodyOfficerPage, publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
     return taskListPage.completeTask('permitHolderDetails', async () => {
       await publicBodyTradingNamePage.completePage(publicBody)
-      await publicBodyAddressSelectPage.completePage()
-      await publicBodyAddressManualPage.completePage(publicBody)
+      await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage)
       await publicBodyOfficerPage.completePage(publicBody)
       await publicBodyConvictionsPage.completePage(publicBody.convictions)
       await publicBodyBankruptcyPage.completePage(publicBody.bankruptcy)
@@ -109,8 +120,7 @@ class Tasks {
       await permitHolderDetailsPage.completePage(soleTrader)
       await permitHolderTradingNamePage.completePage(soleTrader)
       await permitHolderContactDetailsPage.completePage(soleTrader)
-      await permitHolderAddressSelectPage.completePage()
-      await permitHolderAddressManualPage.completePage(soleTrader)
+      await this.addressDetails(soleTrader, permitHolderAddressSelectPage, permitHolderAddressManualPage)
       await convictionsPage.completePage(soleTrader.convictions)
       return bankruptcyPage.completePage(soleTrader.bankruptcy)
     })
@@ -126,8 +136,7 @@ class Tasks {
         const contactDetailsTitle = index ? partnershipDetailsPage.title : partnershipDetailsPage.firstTitle
         await partnershipDetailsPage.completePage(partner, contactDetailsTitle)
         await permitHolderContactDetailsPage.completePage(partner, `What are the contact details for ${partner.firstName} ${partner.lastName}?`)
-        await permitHolderAddressSelectPage.completePage('', `What is the address for ${partner.firstName} ${partner.lastName}?`)
-        await permitHolderAddressManualPage.completePage(partner, `What is the address for ${partner.firstName} ${partner.lastName}?`)
+        await this.addressDetails(partner, permitHolderAddressSelectPage, permitHolderAddressManualPage, `What is the address for ${partner.firstName} ${partner.lastName}?`)
         await partnershipListPage.waitForPage()
         if (!index || index === partners.length - 1) {
           // Add second and last partner
@@ -196,8 +205,7 @@ class Tasks {
     return taskListPage.completeTask('siteNameAndLocation', async () => {
       await siteNamePage.completePage(site)
       await gridReferencePage.completePage(site)
-      await siteAddressSelectPage.completePage()
-      return siteAddressManualPage.completePage(site)
+      await this.addressDetails(site, siteAddressSelectPage, siteAddressManualPage)
     })
   }
 
@@ -238,8 +246,7 @@ class Tasks {
   async invoicingDetails (invoice = {}, pages) {
     const {taskListPage, invoiceAddressSelectPage, invoiceAddressManualPage} = pages.frontEnd
     return taskListPage.completeTask('invoicingDetails', async () => {
-      await invoiceAddressSelectPage.completePage()
-      return invoiceAddressManualPage.completePage(invoice)
+      return this.addressDetails(invoice, invoiceAddressSelectPage, invoiceAddressManualPage)
     })
   }
 
@@ -248,6 +255,14 @@ class Tasks {
     return taskListPage.completeTask('confirmConfidentialityNeeds', async () => {
       return confidentialityPage.completePage(details)
     })
+  }
+
+  async addressDetails (address, addressSelectPage, addressManualPage, title) {
+    if (this.data.selectAddress) {
+      return addressSelectPage.completePage(address, title)
+    }
+    await addressSelectPage.completePage(address, title)
+    return addressManualPage.completePage(address, title)
   }
 
   async makePayment (cardDetails = {}, paymentType, pages) {
@@ -270,4 +285,4 @@ class Tasks {
   }
 }
 
-module.exports = new Tasks()
+module.exports = Tasks

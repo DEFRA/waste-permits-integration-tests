@@ -8,9 +8,9 @@ chai.use(chaiAsPromised)
 const assert = chai.assert
 
 class PageObject {
-  constructor (browser, testdata) {
+  constructor (browser, data) {
     this.browser = browser
-    this.testdata = testdata
+    this.data = data
   }
 
   async waitForPage (title, timeout = config.timeout) {

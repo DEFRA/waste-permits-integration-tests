@@ -12,9 +12,16 @@ class CustomWorld {
     this.parameters = parameters
     console.log('PARAM' + JSON.stringify(parameters))
     const browser = driver.getBrowser(parameters)
-    this.pages = new Pages(browser, this.testdata)
+    this.pages = new Pages(browser, this.data)
     this.application = new Application(browser)
     this.appConfiguration = new AppConfiguration(browser)
+  }
+
+  get data () {
+    if (!this.__testdata) {
+      this.__testdata = {}
+    }
+    return this.__testdata
   }
 }
 
