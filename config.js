@@ -13,6 +13,8 @@ const {
 const optionDefinitions = [
   { name: 'appUrl', type: String, defaultValue: APP_URL },
   { name: 'appUrlCRM', type: String },
+  { name: 'user1PSCCRM', type: String, defaultValue: 'enter name' },
+  { name: 'pass1PSCCRM', type: String, defaultValue: 'enter pass' },
   { name: 'format', type: String },
   { name: 'format-options', type: JSON.parse },
   { name: 'loadChromeNmpExtension', type: Boolean, defaultOption: false },

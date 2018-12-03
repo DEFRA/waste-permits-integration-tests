@@ -17,6 +17,10 @@ class PageObject {
     throw new Error('Todo: Not implemented')
   }
 
+  async sleep (timer) {
+    return this.browser.sleep(timer)
+  }
+
   async getText (locator, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
     return element.getText()

@@ -61,7 +61,8 @@ defineSupportCode(function ({ Given, When }) {
     switch (user.toLowerCase()) {
       case 'p&sc':
         await this.pages.backEnd.loginPage.completePage()
-        return this.pages.backEnd.passwordPage.completePage()
+        await this.pages.backEnd.passwordPage.completePage()
+        break
       default:
         throw new Error(`Todo: Support for "${user}"`)
     }
