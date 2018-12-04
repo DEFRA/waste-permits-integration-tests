@@ -4,6 +4,7 @@ Feature: End to end Smoke test
   Scenario: As a user I should be able to open an application in CRM
     Given the CRM application has been launched
     And I login as a "P&SC" user
+    #And I open the application "WE3186MC/A001"
 
 
   @CRM
@@ -33,6 +34,7 @@ Feature: End to end Smoke test
     And I choose to pay by <PaymentType>
     When the CRM application has been launched
     And I login as a "P&SC" user
+    # And I open the application "WE3186MC/A001"
     Examples:
       | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
       | Public body                   | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |   

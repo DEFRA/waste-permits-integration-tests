@@ -3,6 +3,7 @@ const chaiAsPromised = require('chai-as-promised')
 const webdriver = require('selenium-webdriver')
 const config = require('../../../config')
 const until = webdriver.until
+// const By = webdriver.By
 
 chai.use(chaiAsPromised)
 const assert = chai.assert
@@ -65,6 +66,10 @@ class PageObject {
 
   async waitUntilLoaded (locator, timeout = config.timeout) {
     return this.browser.wait(until.elementLocated(locator), timeout)
+  }
+
+  async waitUntilLoadedArray (locator, timeout = config.timeout) {
+    return this.browser.wait(until.elementsLocated(locator), timeout)
   }
 }
 

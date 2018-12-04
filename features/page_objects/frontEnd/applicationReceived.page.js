@@ -12,12 +12,6 @@ class ApplicationReceivedPage extends FrontEndPageObject {
         const appNo = await this.getText(this.applicationNumber)
         const {application} = require('../../support/testData')
         application['applicationNo'] = appNo
-        if(Modernizr.localstorage) {
-  localstorage.setItem("name", appNo);
-} else {
-  // can't be used
-}
-        
         console.log(application['applicationNo'])
         break
       case 'card':

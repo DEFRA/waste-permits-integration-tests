@@ -18,11 +18,6 @@ class PasswordPage extends CRMPageObject {
     await this.waitUntilLoaded(this.signinButtonP)
     await this.click(this.signinButtonP)
     await this.sleep(7000)
-    if(Modernizr.localstorage) {
-    const name = localstorage.getItem("name");
-    console.log('LOCAL:' + name)
-    }
-    else {}
     return this.click(this.staySigninNoButton)
   }
 }

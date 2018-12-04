@@ -69,6 +69,10 @@ defineSupportCode(function ({ Given, When }) {
     }
   })
 
+  Given(/^I open the application "(.*)"$/, { timeout: 20000000 }, async function (appNo) {
+    await this.pages.backEnd.applicationPage.completePage(appNo)
+  })
+
   When(/^I start a new application$/, async function () {
     return this.pages.frontEnd.startOrOpenSavedPage.completePage()
   })

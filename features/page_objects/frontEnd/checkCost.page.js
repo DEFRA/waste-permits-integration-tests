@@ -5,7 +5,6 @@ class CheckCostPage extends FrontEndPageObject {
   get costText () { return {id: 'cost'} }
   get timeToWaitAfterApplyingText () { return {id: 'length-of-time-text'} }
 
-
   async completePage () {
     await this.waitForPage()
     return this.click(this.continueButton)
