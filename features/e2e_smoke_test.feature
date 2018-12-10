@@ -2,7 +2,7 @@ Feature: End to end Smoke test
 
   @Smoke_dev
   @Smoke_test
-  Scenario Outline: As a user I should be able to apply for waste permit <Permit> when the permit holder is a <PermitHolder>
+  Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>
     Given the application has been launched
     And I start a new application
     And I select Standard rules as the permit type
@@ -30,6 +30,7 @@ Feature: End to end Smoke test
       | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
       | Public body                   | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |
       | Limited company               | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip             | skip              | upload             | upload   | enter         | WAMITAB               | BACS        |
+      | Limited company               | Mobile plant for land-spreading or treatment                 | SR2010 No 4  | is not required           | skip             | skip              | skip               | skip     | skip          | WAMITAB               | BACS        |
       | Sole trader                   | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip             | skip              | upload             | upload   | enter         | Getting Qualification | CARD        |
       | Limited liability partnership | Deposit for recovery                                         | SR2015 No 39 | is not required           | skip             | changed           | skip               | upload   | enter         | Deemed                | BACS        |
       | Individual                    | Composting, sewage or sludge treatment, biogas               | SR2009 No 4  | is not required           | skip             | skip              | skip               | upload   | enter         | skip                  | CARD        |
@@ -38,7 +39,7 @@ Feature: End to end Smoke test
 
   @Smoke_preprod
   @Smoke_prod
-  Scenario Outline: As a user I should be able to apply for waste permit <Permit> when the permit holder is a <PermitHolder>
+  Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>
     Given the application has been launched
     And I start a new application
     #And I select Standard rules as the permit type
@@ -66,6 +67,7 @@ Feature: End to end Smoke test
       | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
       | Public body                   | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |
       | Limited company               | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip             | skip              | upload             | upload   | enter         | WAMITAB               | BACS        |
+      | Limited company               | Mobile plant for land-spreading or treatment                 | SR2010 No 4  | is not required           | skip             | skip              | skip               | skip     | skip          | WAMITAB               | BACS        |
       | Sole trader                   | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip             | skip              | upload             | upload   | enter         | Getting Qualification | BACS        |
       | Limited liability partnership | Deposit for recovery                                         | SR2015 No 39 | is not required           | skip             | changed           | skip               | upload   | enter         | Deemed                | BACS        |
       | Individual                    | Composting, sewage or sludge treatment, biogas               | SR2010 No 14 | is not required           | skip             | skip              | skip               | upload   | enter         | ESA EU                | BACS        |
