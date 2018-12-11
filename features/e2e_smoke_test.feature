@@ -1,4 +1,4 @@
-Feature: End to end Smoke test
+Feature: Standard rules end to end Smoke test
 
   @Smoke_dev
   @Smoke_test
