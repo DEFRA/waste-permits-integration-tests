@@ -14,7 +14,7 @@ Feature: Address entry Smoke test
     And I confirm I meet the rules
     And I save my application
     And I enter my contact details
-    And I enter my permit holder details for a Partnership
+    And I enter my permit holder details
     And I enter my site name and location
     And I upload the site plan
     And I enter my invoicing details
@@ -37,7 +37,7 @@ Feature: Address entry Smoke test
     And I confirm I meet the rules
     And I save my application
     And I enter my contact details
-    And I enter my permit holder details for a Partnership
+    And I enter my permit holder details
     And I enter my site name and location
     And I upload the site plan
     And I enter my invoicing details
