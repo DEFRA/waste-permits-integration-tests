@@ -14,7 +14,7 @@ Feature: Bespoke end to end Smoke test
 #    And I confirm my vehicle storage area <SuitableVehicleStorage>
 #    And I save my application
 #    And I enter my contact details
-#    And I enter my permit holder details for a <PermitHolder>
+#    And I enter my permit holder details
 #    And I <EnterSiteName> my site name and location
 #    And I <EnterMiningWaste> confirmation of mining waste weight
 #    And I <WasteRecoveryPlan> the waste recovery plan

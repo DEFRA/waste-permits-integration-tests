@@ -59,18 +59,22 @@ defineSupportCode(function ({Given, When}) {
   })
 
   When(/^I select (.*) as the permit type$/, async function (permitType) {
+    this.data.permitType = permitType
     return this.pages.frontEnd.bespokeOrStandardRulesPage.completePage(permitType)
   })
 
   When(/^I select (.*) as the permit holder$/, async function (permitHolder) {
+    this.data.permitHolder = permitHolder
     return this.pages.frontEnd.permitHolderSelectPage.completePage(permitHolder)
   })
 
   When(/^I select (.*) as the permit category$/, async function (permitCategory) {
+    this.data.permitCategory = permitCategory
     return this.pages.frontEnd.permitCategorySelectPage.completePage(permitCategory)
   })
 
   When(/^I select (.*) as the permit number$/, async function (permitNumber) {
+    this.data.permitNumber = permitNumber
     return this.pages.frontEnd.permitNumberSelectPage.completePage(permitNumber)
   })
 
@@ -93,6 +97,7 @@ defineSupportCode(function ({Given, When}) {
   When(/^I confirm my vehicle storage area (.*)$/, async function (vehicleStorage) {
     if (vehicleStorage.toLowerCase() === 'is not required') return
 
+    this.data.vehicleStorage = vehicleStorage
     return this.tasks.confirmSuitableVehicleStorage(vehicleStorage, this.pages)
   })
 
@@ -104,8 +109,8 @@ defineSupportCode(function ({Given, When}) {
     return this.tasks.contactDetails(contact, this.pages)
   })
 
-  When(/^I enter my permit holder details for a (.*)$/, async function (permitHolder) {
-    return this.tasks.permitHolderDetails(permitHolder, {individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody}, this.pages)
+  When(/^I enter my permit holder details$/, async function () {
+    return this.tasks.permitHolderDetails(this.data.permitHolder, {individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody}, this.pages)
   })
 
   When(/^I (.*) the waste recovery plan$/, async function (state) {
