@@ -73,6 +73,16 @@ defineSupportCode(function ({Given, When}) {
     return this.pages.frontEnd.permitCategorySelectPage.completePage(permitCategory)
   })
 
+  When(/^I select (.*) as the type of facility$/, async function (facility) {
+    this.data.facility = facility
+    return this.pages.frontEnd.facilitySelectPage.completePage(facility)
+  })
+
+  When(/^I select the following activities I want the permit to cover: (.*)$/, async function (activities) {
+    this.data.activities = activities.split(',').map((activity) => activity.trim())
+    return this.pages.frontEnd.activitiesSelectPage.completePage(this.data.activities)
+  })
+
   When(/^I select (.*) as the permit number$/, async function (permitNumber) {
     this.data.permitNumber = permitNumber
     return this.pages.frontEnd.permitNumberSelectPage.completePage(permitNumber)
