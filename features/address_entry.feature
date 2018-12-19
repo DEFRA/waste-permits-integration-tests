@@ -9,7 +9,7 @@ Feature: Address entry Smoke test
     And I select Standard rules as the permit type
     And I select Partnership as the permit holder
     And I select Composting, sewage or sludge treatment, biogas as the permit category
-    And I select SR2009 No 4 as the permit number
+    And I select SR2012 No 7 as the permit number
     And I check costs
     And I confirm I meet the rules
     And I save my application
@@ -31,7 +31,7 @@ Feature: Address entry Smoke test
     And I will select each address
     And I select Partnership as the permit holder
     And I select Composting, sewage or sludge treatment, biogas as the permit category
-    And I select SR2009 No 4 as the permit number
+    And I select SR2012 No 7 as the permit number
     And I check costs
     And I confirm I meet the rules
     And I save my application
