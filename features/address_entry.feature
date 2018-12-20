@@ -17,6 +17,7 @@ Feature: Address entry Smoke test
     And I enter my permit holder details
     And I enter my site name and location
     And I upload the site plan
+    And I prove our technical competence as WAMITAB
     And I enter my invoicing details
     And I confirm my confidentiality needs
     And I submit my application
@@ -39,6 +40,7 @@ Feature: Address entry Smoke test
     And I enter my permit holder details
     And I enter my site name and location
     And I upload the site plan
+    And I prove our technical competence as WAMITAB
     And I enter my invoicing details
     And I confirm my confidentiality needs
     And I submit my application
