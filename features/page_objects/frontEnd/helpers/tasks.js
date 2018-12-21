@@ -244,9 +244,10 @@ class Tasks {
   }
 
   async invoicingDetails (invoice = {}, pages) {
-    const {taskListPage, invoiceAddressSelectPage, invoiceAddressManualPage} = pages.frontEnd
+    const {taskListPage, invoiceAddressSelectPage, invoiceAddressManualPage, invoiceContactPage} = pages.frontEnd
     return taskListPage.completeTask('invoicingDetails', async () => {
-      return this.addressDetails(invoice, invoiceAddressSelectPage, invoiceAddressManualPage)
+      await this.addressDetails(invoice, invoiceAddressSelectPage, invoiceAddressManualPage)
+      return invoiceContactPage.completePage(invoice)
     })
   }
 

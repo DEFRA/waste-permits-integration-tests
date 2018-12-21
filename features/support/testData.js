@@ -143,7 +143,11 @@ const data = Object.freeze({
     buildingNameOrNumber: 'Invoice House',
     addressLine1: 'Invoice Rd',
     townOrCity: 'Bristol',
-    postcode: 'BS1 5AH'
+    postcode: 'BS1 5AH',
+    firstName: 'Hugo',
+    lastName: 'Drax',
+    telephone: '001 002 003 004',
+    email: 'hugo.drax@defra.test.gov.uk'
   },
 
   miningWaste: {
