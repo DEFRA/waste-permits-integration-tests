@@ -19,6 +19,8 @@ const parameters = {
   'chrome-tablet-test': `--tags @tablet --world-parameters '${JSON.stringify({ platform: 'chrome-tablet-test', width: 1050, height: 850 })}'`,
   'firefox-desktop-dev': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-dev', width: 1800, height: 1180 })}'`,
   'firefox-desktop-test': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
+  'firefox-desktop-test-smoke-dev': `--tags @Smoke_dev --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
+  'firefox-desktop-test-smoke-test': `--tags @Smoke_test --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
   'ie-desktop-dev': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'ie-desktop-dev', width: 1800, height: 1180 })}'`,
   'ie-desktop-test': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'ie-desktop-test', width: 1800, height: 1180 })}'`
 }

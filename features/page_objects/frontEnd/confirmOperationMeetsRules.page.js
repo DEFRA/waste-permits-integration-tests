@@ -5,7 +5,6 @@ class ConfirmOperationMeetsRulesPage extends FrontEndPageObject {
 
   get confirmButton () { return {css: '#operation-meets-rules-button'} }
   get standardRulesLink () { return {css: '#standard-rule-link'} }
-  
 
   async completePage () {
     await this.waitForPage()
