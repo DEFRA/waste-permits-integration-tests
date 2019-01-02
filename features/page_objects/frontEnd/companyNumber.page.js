@@ -2,6 +2,7 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 
 class CompanyNumberPage extends FrontEndPageObject {
   get title () { return 'What is the UK company registration number?' }
+  get charityTitle () { return 'What is the company or Charitable Incorporated Organisation registration number?' }
   get limitedLiabilityPartnershipTitle () { return 'What is the company number for the limited liability partnership?' }
 
   get companyNumberInput () { return {css: '#company-number'} }

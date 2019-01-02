@@ -11,6 +11,11 @@ const data = Object.freeze({
     email: 'james.bond@defra.test.gov.uk'
   },
 
+  charity: {
+    charityName: 'Test Charity',
+    charityNumber: '1234567'
+  },
+
   individual: {
     firstName: 'Money',
     lastName: 'Penny',

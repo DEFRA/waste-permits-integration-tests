@@ -68,6 +68,53 @@ class Tasks {
     return cardPaymentPage.completePage(card)
   }
 
+  async charityPermitHolderDetails (data, pages) {
+    const { charity, individual, limitedCompany, publicBody } = data
+    const { taskListPage, charityDetailsPage, charityPermitHolderPage } = pages.frontEnd
+    return taskListPage.completeTask('permitHolderDetails', async () => {
+      await charityPermitHolderPage.completePage(this.data.charityHolder)
+      await charityDetailsPage.completePage(charity)
+      let permitHolder
+      switch (this.data.charityHolder.toLowerCase()) {
+        case 'individual': {
+          const {permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage} = pages.frontEnd
+          permitHolder = individual
+          await permitHolderDetailsPage.completePage(individual, permitHolderDetailsPage.charityTitle)
+          await permitHolderContactDetailsPage.completePage(individual)
+          await this.addressDetails(individual, permitHolderAddressSelectPage, permitHolderAddressManualPage)
+          break
+        }
+        case 'limited company': {
+          const {companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage} = pages.frontEnd
+          permitHolder = limitedCompany
+          await companyNumberPage.completePage(limitedCompany.number, companyNumberPage.charityTitle)
+          await companyCheckNamePage.completePage(limitedCompany)
+          await directorsDateOfBirthPage.completePage(limitedCompany.directors)
+          await directorsEmailPage.completePage(limitedCompany.directors[0].email)
+          break
+        }
+        case 'public body': {
+          const {publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyOfficerPage} = pages.frontEnd
+          permitHolder = publicBody
+          await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage)
+          await publicBodyOfficerPage.completePage(publicBody)
+          break
+        }
+        default:
+          throw new Error(`Todo: Support for "${this.data.charityHolder}"`)
+      }
+      if (permitHolder === publicBody) {
+        const {publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
+        await publicBodyConvictionsPage.completePage(permitHolder.convictions)
+        return publicBodyBankruptcyPage.completePage(permitHolder.bankruptcy)
+      } else {
+        const {bankruptcyPage, convictionsPage} = pages.frontEnd
+        await convictionsPage.completePage(permitHolder.convictions)
+        return bankruptcyPage.completePage(permitHolder.bankruptcy)
+      }
+    })
+  }
+
   async individualPermitHolderDetails (individual = {}, pages) {
     const {taskListPage, permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, convictionsPage, bankruptcyPage} = pages.frontEnd
     return taskListPage.completeTask('permitHolderDetails', async () => {
@@ -154,6 +201,9 @@ class Tasks {
   async permitHolderDetails (permitHolder, data, pages) {
     const {individual, limitedCompany, limitedLiabilityPartnership, partnership, publicBody, soleTrader} = data
     switch (permitHolder.toLowerCase()) {
+      case 'charity or trust': {
+        return this.charityPermitHolderDetails(data, pages)
+      }
       case 'individual': {
         return this.individualPermitHolderDetails(individual, pages)
       }
