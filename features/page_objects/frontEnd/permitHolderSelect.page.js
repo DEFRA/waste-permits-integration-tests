@@ -1,16 +1,21 @@
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
+const findInput = (type) => {
+  const css = `#chosen-holder-${type}-input, #permit-holder-type-${type}-input`
+  return { css }
+}
+
 class PermitHolderSelectPage extends FrontEndPageObject {
   get title () { return 'Who will be the permit holder?' }
 
-  get 'Limited company' () { return { css: '#chosen-holder-limited-company-input' } }
-  get 'Sole trader' () { return { css: '#chosen-holder-sole-trader-input' } }
-  get 'Individual' () { return { css: '#chosen-holder-individual-input' } }
-  get 'Public body' () { return { css: '#chosen-holder-public-body-type' } }
-  get 'Partnership' () { return { css: '#chosen-holder-partnership-input' } }
-  get 'Registered charity' () { return { css: '#chosen-holder-registered-charity-input' } }
-  get 'Limited liability partnership' () { return { css: '#chosen-holder-limited-liability-partnership-input' } }
-  get 'Other organisation' () { return { css: '#chosen-holder-other-organisation-input' } }
+  get 'Limited company' () { return findInput('limited-company') }
+  get 'Sole trader' () { return findInput('sole-trader') }
+  get 'Individual' () { return findInput('individual') }
+  get 'Public body' () { return findInput('public-body') }
+  get 'Registered charity' () { return findInput('registered-charity') }
+  get 'Partnership' () { return findInput('partnership') }
+  get 'Limited liability partnership' () { return findInput('limited-liability-partnership') }
+  get 'Other organisation' () { return findInput('other-organisation') }
 
   /***************************************************************************************/
 

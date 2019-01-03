@@ -1,11 +1,33 @@
-Feature: End to end Smoke test
+Feature: CRM end to end Smoke test
 
   @CRM1
   Scenario: As a user I should be able to open an application in CRM
     Given the CRM application has been launched
     And I login as a "P&SC" user
-    #And I open the application "WE3186MC/A001"
+    And I skip the navigation tour
+    And I set the application as "EPR/WE5735MC/A001"
+    Then I open the application
 
+  @CRM
+  Scenario: As a user I should be able to open an application in CRM
+    Given the CRM application has been launched
+    And I login as a "P&SC" user
+    And I set the application as "EPR/WE7119QB/A001"
+    Then I open the application
+
+  @CRM1
+  Scenario: As a user I should be able to open an application in CRM
+    Given the CRM application has been launched
+    And I login as a "P&SC" user
+    And I set the application as "EPR/WE5735MC/A001"
+    Then I open the application
+
+  @CRM1
+  Scenario: As a user I should be able to open an application in CRM
+    Given the CRM application has been launched
+    And I login as a "P&SC" user
+    And I set the application as "EPR/WE5735MC/A001"
+    Then I open the application
 
   @CRM
   Scenario Outline: As a user I should be able to apply for waste permit <Permit> when the permit holder is a <PermitHolder>
@@ -20,7 +42,7 @@ Feature: End to end Smoke test
     And I confirm my vehicle storage area <SuitableVehicleStorage>
     And I save my application
     And I enter my contact details
-    And I enter my permit holder details for a <PermitHolder>
+    And I enter my permit holder details
     And I <EnterSiteName> my site name and location
     And I <EnterMiningWaste> confirmation of mining waste weight
     And I <WasteRecoveryPlan> the waste recovery plan
@@ -32,9 +54,10 @@ Feature: End to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by <PaymentType>
-    When the CRM application has been launched
+    And the CRM application has been launched
     And I login as a "P&SC" user
-    # And I open the application "WE3186MC/A001"
+    And I skip the navigation tour
+    Then I open the application
     Examples:
       | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
-      | Public body                   | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |   
+      | Limited company               | Mobile plant for land-spreading or treatment                 | SR2010 No 4  | is not required           | skip             | skip              | skip               | skip     | skip          | WAMITAB               | BACS        |

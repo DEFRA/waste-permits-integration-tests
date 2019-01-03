@@ -3,8 +3,11 @@ require('dotenv').config()
 
 const {
   APP_URL = 'http://localhost:8000',
+  APP_URL_CRM = 'http://localhost:8000',
+  PSC_CRM_USER = 'enter name',
+  PSC_CRM_PASSWORD = 'enter pass',
   NODE_ENV = 'production',
-  PLATFORM = 'chrome-desktop-test',
+  PLATFORM = 'firefox-desktop-test',
   WIDTH = '1070',
   HEIGHT = '1180',
   TIMEOUT = '240000'
@@ -12,9 +15,9 @@ const {
 
 const optionDefinitions = [
   { name: 'appUrl', type: String, defaultValue: APP_URL },
-  { name: 'appUrlCRM', type: String },
-  { name: 'user1PSCCRM', type: String, defaultValue: 'enter name' },
-  { name: 'pass1PSCCRM', type: String, defaultValue: 'enter pass' },
+  { name: 'appUrlCRM', type: String, defaultValue: APP_URL_CRM },
+  { name: 'user1PSCCRM', type: String, defaultValue: PSC_CRM_USER },
+  { name: 'pass1PSCCRM', type: String, defaultValue: PSC_CRM_PASSWORD },
   { name: 'format', type: String },
   { name: 'format-options', type: JSON.parse },
   { name: 'loadChromeNmpExtension', type: Boolean, defaultOption: false },

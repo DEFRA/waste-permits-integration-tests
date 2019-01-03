@@ -1,10 +1,10 @@
-var { defineSupportCode } = require('cucumber')
-var path = require('path')
-const Tasks = require('../page_objects/frontEnd/helpers/tasks')
-const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, validCardDetails} = require('../support/testData')
+const { defineSupportCode } = require('cucumber')
+const path = require('path')
+const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
+const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, validCardDetails} = require('../../support/testData')
 
 function file (filename) {
-  return path.join(__dirname, `../uploadTestFiles/${filename}`)
+  return path.join(__dirname, `../../uploadTestFiles/${filename}`)
 }
 
 const validFirePreventionPlanFiles = [
@@ -78,18 +78,32 @@ defineSupportCode(function ({ Given, When }) {
   })
 
   When(/^I select (.*) as the permit type$/, async function (permitType) {
+    this.data.permitType = permitType
     return this.pages.frontEnd.bespokeOrStandardRulesPage.completePage(permitType)
   })
 
   When(/^I select (.*) as the permit holder$/, async function (permitHolder) {
+    this.data.permitHolder = permitHolder
     return this.pages.frontEnd.permitHolderSelectPage.completePage(permitHolder)
   })
 
   When(/^I select (.*) as the permit category$/, async function (permitCategory) {
+    this.data.permitCategory = permitCategory
     return this.pages.frontEnd.permitCategorySelectPage.completePage(permitCategory)
   })
 
+  When(/^I select (.*) as the type of facility$/, async function (facility) {
+    this.data.facility = facility
+    return this.pages.frontEnd.facilitySelectPage.completePage(facility)
+  })
+
+  When(/^I select the following activities I want the permit to cover: (.*)$/, async function (activities) {
+    this.data.activities = activities.split(',').map((activity) => activity.trim())
+    return this.pages.frontEnd.activitiesSelectPage.completePage(this.data.activities)
+  })
+
   When(/^I select (.*) as the permit number$/, async function (permitNumber) {
+    this.data.permitNumber = permitNumber
     return this.pages.frontEnd.permitNumberSelectPage.completePage(permitNumber)
   })
 
@@ -112,6 +126,7 @@ defineSupportCode(function ({ Given, When }) {
   When(/^I confirm my vehicle storage area (.*)$/, async function (vehicleStorage) {
     if (vehicleStorage.toLowerCase() === 'is not required') return
 
+    this.data.vehicleStorage = vehicleStorage
     return this.tasks.confirmSuitableVehicleStorage(vehicleStorage, this.pages)
   })
 
@@ -123,8 +138,8 @@ defineSupportCode(function ({ Given, When }) {
     return this.tasks.contactDetails(contact, this.pages)
   })
 
-  When(/^I enter my permit holder details for a (.*)$/, async function (permitHolder) {
-    return this.tasks.permitHolderDetails(permitHolder, {individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody}, this.pages)
+  When(/^I enter my permit holder details$/, async function () {
+    return this.tasks.permitHolderDetails(this.data.permitHolder, {individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody}, this.pages)
   })
 
   When(/^I (.*) the waste recovery plan$/, async function (state) {

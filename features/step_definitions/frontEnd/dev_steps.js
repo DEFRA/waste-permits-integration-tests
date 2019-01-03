@@ -1,7 +1,7 @@
 const {defineSupportCode} = require('cucumber')
-const config = require('../../config')
-const Tasks = require('../page_objects/frontEnd/helpers/tasks')
-const {email, contact, partnership} = require('../support/testData')
+const config = require('../../../config')
+const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
+const {email, contact, partnership} = require('../../support/testData')
 
 defineSupportCode(function ({When}) {
   When(/^As a (.*) I apply for waste permit (.*) \((.*)\)$/, async function (permitHolder, permitNumber, permitCategory) {

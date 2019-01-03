@@ -22,7 +22,7 @@ class Pages {
     Object.entries(pageObjects).forEach(([name, object]) => {
       validatePageEntries(object)
       this[name] = object
-    // console.log('*********************************', object)
+    // this.log('*********************************', object)
     })
   }
 }
