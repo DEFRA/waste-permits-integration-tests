@@ -12,7 +12,7 @@ Before(function ({scenario}) {
 })
 
 After(function () {
-  return driver.quitBrowser()
+ return driver.quitBrowser()
 })
 
 registerHandler('BeforeFeatures', ([feature]) => {

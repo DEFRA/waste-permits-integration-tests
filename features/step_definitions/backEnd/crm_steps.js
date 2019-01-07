@@ -2,6 +2,11 @@ const { defineSupportCode } = require('cucumber')
 const config = require('../../../config')
 
 defineSupportCode(function ({ Given, When }) {
+
+  Given(/^I take screenshots$/, { timeout: 2000000 }, async function () {
+    return this.application.takeScreenshots('Screenshots')
+  })
+
   Given(/^the CRM application has been launched$/, {timeout: 20000000}, async function () {
     return this.application.launchCRM(this.appConfiguration)
   })

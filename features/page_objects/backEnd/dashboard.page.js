@@ -2,7 +2,7 @@ const CRMPageObject = require('./base/CRMPageObject').CRMPageObject
 
 class DashboardPage extends CRMPageObject {
   get navActionListContainer () { return { css: '.navActionListContainer' } }
-  get applicationsButton () { return { css: 'a[title="Applications"]' } }
+  get applicationsButton () { return { css: '.navActionListContainer a[title="Applications"]' } }
 
   async selectApplications () {
     await this.sleep(1000)

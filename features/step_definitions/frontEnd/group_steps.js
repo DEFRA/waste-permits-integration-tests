@@ -54,25 +54,6 @@ defineSupportCode(function ({ Given, When }) {
     return this.application.launch(this.appConfiguration)
   })
 
-  Given(/^the CRM application has been launched$/, { timeout: 20000000 }, async function () {
-    return this.application.launchCRM(this.appConfiguration)
-  })
-
-  When(/^I login as a "(.*)" user$/, { timeout: 20000000 }, async function (user) {
-    switch (user.toLowerCase()) {
-      case 'p&sc':
-        await this.pages.backEnd.loginPage.completePage()
-        await this.pages.backEnd.passwordPage.completePage()
-        break
-      default:
-        throw new Error(`Todo: Support for "${user}"`)
-    }
-  })
-
-  Given(/^I open the application "(.*)"$/, { timeout: 20000000 }, async function (appNo) {
-    await this.pages.backEnd.applicationPage.completePage(appNo)
-  })
-
   When(/^I start a new application$/, async function () {
     return this.pages.frontEnd.startOrOpenSavedPage.completePage()
   })
