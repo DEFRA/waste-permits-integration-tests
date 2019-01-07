@@ -4,6 +4,7 @@ require('chromedriver')
 require('geckodriver')
 require('iedriver')
 require('cucumber')
+const fs = require('fs')
 
 const PLATFORMS = {
   CHROME_PHONE_DEV: 'chrome-phone-dev',
@@ -163,6 +164,21 @@ class Driver {
     const browser = this.browser
     this.browser = null
     return browser.quit()
+  }
+
+  takeScreenshots1 (filename) {
+    const browser = this.browser
+    const filenameNoSpecialChars = filename.replace(/[^a-zA-Z ]/g, '')
+    const titleDateStamp = filenameNoSpecialChars + Date.now() + '.png'
+    if (!fs.existsSync('AllScreenshots')) {
+      fs.mkdirSync('AllScreenshots')
+    }
+    browser.takeScreenshot().then(function (data) {
+      const base64Data = data.replace(/^data:image\/png;base64,/, '')
+      fs.writeFile('AllScreenshots/' + titleDateStamp, base64Data, 'base64', function (err) {
+        if (err) console.log(err)
+      })
+    })
   }
 }
 

@@ -3,9 +3,7 @@ Feature: CRM end to end Smoke test
   @CRM1
   Scenario: As a user I should be able to open an application in CRM
     Given the CRM application has been launched
-    And I take screenshots
     And I login as a "P&SC" user
-    And I take screenshots
     And I skip the navigation tour
     And I set the application as "EPR/WE5735MC/A001"
     Then I open the application
