@@ -12,7 +12,7 @@ class PermitHolderSelectPage extends FrontEndPageObject {
   get 'Sole trader' () { return findInput('sole-trader') }
   get 'Individual' () { return findInput('individual') }
   get 'Public body' () { return findInput('public-body') }
-  get 'Registered charity' () { return findInput('registered-charity') }
+  get 'Charity or trust' () { return findInput('charity-or-trust') }
   get 'Partnership' () { return findInput('partnership') }
   get 'Limited liability partnership' () { return findInput('limited-liability-partnership') }
   get 'Other organisation' () { return findInput('other-organisation') }
