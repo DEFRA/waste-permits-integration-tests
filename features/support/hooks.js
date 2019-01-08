@@ -1,6 +1,5 @@
 const mkdirp = require('mkdirp')
 const { driver } = require('./driver')
-const util = require('util')
 const {'world-parameters': {platform}, appUrl, appUrlCRM} = require('../../config')
 
 let frontEndVersion
@@ -13,8 +12,8 @@ Before(function ({scenario}) {
 })
 
 After(function () {
-//Moved this to ScenarioResult below
- //return driver.quitBrowser()
+// Moved this to ScenarioResult below
+// return driver.quitBrowser()
 })
 
 registerHandler('BeforeFeatures', ([feature]) => {
@@ -49,12 +48,11 @@ registerHandler('AfterFeatures', ([{options}]) => {
   reporter.generate(options)
 })
 
-registerHandler('ScenarioResult', function(scenario) {
+registerHandler('ScenarioResult', function (scenario) {
   if (scenario.status === 'failed') {
-    driver.takeScreenshots1('Screenshots1')  
+    driver.takeScreenshots1('Screenshots1')
+    return driver.quitBrowser()
+  } else {
     return driver.quitBrowser()
   }
-  else {
-    return driver.quitBrowser()
-  }  
 })

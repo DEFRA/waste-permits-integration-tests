@@ -2,7 +2,6 @@ const { defineSupportCode } = require('cucumber')
 const config = require('../../../config')
 
 defineSupportCode(function ({ Given, When }) {
-
   Given(/^I take screenshots$/, { timeout: 2000000 }, async function () {
     return this.application.takeScreenshots('Screenshots')
   })
