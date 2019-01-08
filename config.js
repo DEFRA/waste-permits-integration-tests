@@ -7,7 +7,7 @@ const {
   PSC_CRM_USER = 'enter name',
   PSC_CRM_PASSWORD = 'enter pass',
   NODE_ENV = 'production',
-  PLATFORM = 'chrome-desktop-test',
+  PLATFORM = 'firefox-desktop-test',
   WIDTH = '1070',
   HEIGHT = '1180',
   TIMEOUT = '240000'
