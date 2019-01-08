@@ -5,11 +5,13 @@ class NavigationBarPage extends CRMPageObject {
   get lPTabLink () { return { css: '#TabLP a' } }
 
   async selectDashboard () {
-    await this.sleep(4000)
+    await this.sleep(8000)
     await this.waitUntilVisible(this.navBar)
-    await this.sleep(1000)
-    await this.waitUntilEnabled(this.lPTabLink)
-    return this.click(this.lPTabLink)
+    return this.retry(async () => {
+      await this.sleep(1000)
+      await this.waitUntilEnabled(this.lPTabLink)
+      return this.click(this.lPTabLink)
+    }, 100)
   }
 }
 

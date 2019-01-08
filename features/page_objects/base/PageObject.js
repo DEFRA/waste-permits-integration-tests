@@ -3,6 +3,7 @@ const chaiAsPromised = require('chai-as-promised')
 const webdriver = require('selenium-webdriver')
 const config = require('../../../config')
 const until = webdriver.until
+// const By = webdriver.By
 
 chai.use(chaiAsPromised)
 const assert = chai.assert
