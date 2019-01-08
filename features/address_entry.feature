@@ -25,7 +25,6 @@ Feature: Address entry Smoke test
     And I choose to pay by BACS
     And the CRM application has been launched
     And I login as a "P&SC" user
-    And I close the navigation tour
     Then I open the application
 
   @Smoke_preprod
