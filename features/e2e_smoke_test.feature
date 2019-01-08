@@ -1,7 +1,7 @@
 Feature: Standard rules end to end Smoke test
 
   @Smoke_dev
-  @Smoke_test
+  @Smoke_test @Ben
   Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>
     Given the application has been launched
     And I start a new application

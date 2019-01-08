@@ -3,16 +3,17 @@ const {cloneDeep} = require('lodash')
 const data = Object.freeze({
   email: 'save.application@defra.test.gov.uk',
 
-  application: {
-    applicationNo: 'WE000000/A001'
-  },
-
   contact: {
     firstName: 'James',
     lastName: 'Bond',
     agentCompany: 'Agent Company',
     telephone: '007 007 007 007',
     email: 'james.bond@defra.test.gov.uk'
+  },
+
+  charity: {
+    charityName: 'Test Charity',
+    charityNumber: '1234567'
   },
 
   individual: {
