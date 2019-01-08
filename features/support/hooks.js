@@ -14,7 +14,7 @@ Before(function ({scenario}) {
 
 After(function () {
 //Moved this to ScenarioResult below
-// return driver.quitBrowser()
+ //return driver.quitBrowser()
 })
 
 registerHandler('BeforeFeatures', ([feature]) => {
@@ -47,11 +47,14 @@ registerHandler('BeforeFeatures', ([feature]) => {
 registerHandler('AfterFeatures', ([{options}]) => {
   const reporter = require('cucumber-html-reporter')
   reporter.generate(options)
-  return driver.quitBrowser()
 })
 
 registerHandler('ScenarioResult', function(scenario) {
   if (scenario.status === 'failed') {
-    return driver.takeScreenshots1('Screenshots1')  
+    driver.takeScreenshots1('Screenshots1')  
+    return driver.quitBrowser()
+  }
+  else {
+    return driver.quitBrowser()
   }  
 })
