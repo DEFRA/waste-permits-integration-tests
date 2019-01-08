@@ -13,8 +13,8 @@ Feature: Standard rules end to end Smoke test
     And I confirm I meet the rules
     And I confirm my vehicle storage area <SuitableVehicleStorage>
     And I save my application
-    And I enter my permit holder details
     And I enter my contact details
+    And I enter my permit holder details
     And I <EnterSiteName> my site name and location
     And I <EnterMiningWaste> confirmation of mining waste weight
     And I <WasteRecoveryPlan> the waste recovery plan
@@ -26,6 +26,10 @@ Feature: Standard rules end to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by <PaymentType>
+    And the CRM application has been launched
+    And I login as a "P&SC" user
+    And I close the navigation tour
+    Then I open the application
     Examples:
       | PermitHolder                     | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
       | Charity or trust:Public body     | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |

@@ -84,7 +84,6 @@ class PageObject {
   }
 
   async waitUntilLoaded (locator, timeout = config.timeout) {
-    await this.sleep(100)
     return this.browser.wait(until.elementLocated(locator), timeout)
   }
 
