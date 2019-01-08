@@ -31,7 +31,6 @@ Feature: CRM end to end Smoke test
     And I choose to pay by <PaymentType>
     And the CRM application has been launched
     And I login as a "P&SC" user
-    And I skip the navigation tour
     Then I open the application
     Examples:
       | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
