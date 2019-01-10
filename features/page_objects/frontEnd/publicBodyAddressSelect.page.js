@@ -2,7 +2,7 @@ const AddressSelectPageObject = require('./base/AddressSelectPageObject').Addres
 
 class PublicBodyAddressSelectPage extends AddressSelectPageObject {
   get title () { return 'What is the main address for the local authority or public body?' }
-  get charityTitle () { return 'What is the main address for the public body?' }
+  get charityTitle () { return 'What is the main address for the body?' }
 }
 
 module.exports = PublicBodyAddressSelectPage
