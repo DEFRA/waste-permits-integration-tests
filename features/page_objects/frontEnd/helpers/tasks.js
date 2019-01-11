@@ -96,7 +96,7 @@ class Tasks {
         case 'public body': {
           const {publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyOfficerPage} = pages.frontEnd
           permitHolder = publicBody
-          await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage)
+          await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage, publicBodyAddressSelectPage.charityTitle)
           await publicBodyOfficerPage.completePage(publicBody)
           break
         }

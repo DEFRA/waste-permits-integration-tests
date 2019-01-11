@@ -21,6 +21,8 @@ const parameters = {
   'firefox-desktop-test': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
   'firefox-desktop-test-smoke-dev': `--tags @Smoke_dev --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
   'firefox-desktop-test-smoke-test': `--tags @Smoke_test --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
+  'firefox-desktop-test-smoke-preprod': `--tags @Smoke_preprod --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
+  'firefox-desktop-test-smoke-prod': `--tags @Smoke_prod --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
   'ie-desktop-dev': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'ie-desktop-dev', width: 1800, height: 1180 })}'`,
   'ie-desktop-test': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'ie-desktop-test', width: 1800, height: 1180 })}'`
 }

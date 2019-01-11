@@ -4,6 +4,7 @@ require('chromedriver')
 require('geckodriver')
 require('iedriver')
 require('cucumber')
+const fs = require('fs')
 
 const PLATFORMS = {
   CHROME_PHONE_DEV: 'chrome-phone-dev',
@@ -93,60 +94,36 @@ class Driver {
     switch (platform) {
       case PLATFORMS.CHROME_PHONE_DEV:
         spec = this.getChromePhoneSpec(width, height)
-        // config.appUrl = config.appUrlDev;
-        // config.appUrlCRM = config.appUrlCRMDevMaster;
         break
       case PLATFORMS.CHROME_PHONE_TEST:
         spec = this.getChromePhoneSpec(width, height)
-        // config.appUrl = config.appUrlTest;
-        // config.appUrlCRM = config.appUrlCRMTest;
         break
       case PLATFORMS.CHROME_DESKTOP_DEV:
         spec = this.getChromeDesktopSpec(width, height)
-        // config.appUrl = config.appUrlDev;
-        // config.appUrlCRM = config.appUrlCRMDevMaster;
         break
       case PLATFORMS.CHROME_DESKTOP_HEADLESS_TEST:
         spec = this.getChromeDesktopHeadlessSpec(width, height)
-        // config.appUrl = config.appUrlDev;
-        // config.appUrlCRM = config.appUrlCRMDevMaster;
         break
       case PLATFORMS.CHROME_DESKTOP_TEST:
         spec = this.getChromeDesktopSpec(width, height)
-        // config.appUrl = config.appUrlTest;
-        // config.appUrlCRM = config.appUrlCRMTest;
         break
       case PLATFORMS.CHROME_TABLET_DEV:
         spec = this.getChromeTabletSpec(width, height)
-        // config.appUrl = config.appUrlDev;
-        // config.appUrlCRM = config.appUrlCRMDevMaster;
         break
       case PLATFORMS.CHROME_TABLET_TEST:
         spec = this.getChromeTabletSpec(width, height)
-        // config.appUrl = config.appUrlTest;
-        // config.appUrlCRM = config.appUrlCRMTest;
         break
       case PLATFORMS.FIREFOX_DESKTOP_DEV:
         spec = this.getFirefoxDesktopSpec()
-        // config.appUrl = config.appUrlDev;
-        // config.appUrlCRM = config.appUrlCRMDevMaster;
-        // config.appUrl = config.appUrlTest;
-        // config.appUrlCRM = config.appUrlCRMTest;
         break
       case PLATFORMS.FIREFOX_DESKTOP_TEST:
         spec = this.getFirefoxDesktopSpec()
-        // config.appUrl = config.appUrlTest;
-        // config.appUrlCRM = config.appUrlCRMTest;
         break
       case PLATFORMS.IE_DESKTOP_DEV:
         spec = this.getIeDesktopSpec()
-        // config.appUrl = config.appUrlDev;
-        // config.appUrlCRM = config.appUrlCRMDevMaster;
         break
       case PLATFORMS.IE_DESKTOP_TEST:
         spec = this.getIeDesktopSpec()
-        // config.appUrl = config.appUrlTest;
-        // config.appUrlCRM = config.appUrlCRMTest;
         break
     }
     return spec
@@ -187,6 +164,21 @@ class Driver {
     const browser = this.browser
     this.browser = null
     return browser.quit()
+  }
+
+  takeScreenshots1 (filename) {
+    const browser = this.browser
+    const filenameNoSpecialChars = filename.replace(/[^a-zA-Z ]/g, '')
+    const titleDateStamp = filenameNoSpecialChars + Date.now() + '.png'
+    if (!fs.existsSync('AllScreenshots')) {
+      fs.mkdirSync('AllScreenshots')
+    }
+    browser.takeScreenshot().then(function (data) {
+      const base64Data = data.replace(/^data:image\/png;base64,/, '')
+      fs.writeFile('AllScreenshots/' + titleDateStamp, base64Data, 'base64', function (err) {
+        if (err) console.log(err)
+      })
+    })
   }
 }
 
