@@ -48,9 +48,10 @@ registerHandler('AfterFeatures', ([{options}]) => {
   reporter.generate(options)
 })
 
-registerHandler('ScenarioResult', function (scenario) {
+registerHandler('ScenarioResult', async function (scenario) {
   if (scenario.status === 'failed') {
-    driver.takeScreenshots1('Screenshots1')
+    const filename1 = await driver.getCurrentUrlName()
+    driver.takeScreenshots1(filename1)
     return driver.quitBrowser()
   } else {
     return driver.quitBrowser()

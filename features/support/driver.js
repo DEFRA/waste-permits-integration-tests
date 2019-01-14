@@ -166,9 +166,15 @@ class Driver {
     return browser.quit()
   }
 
+  async getCurrentUrlName () {
+    const browser = this.browser
+    const url1 = await browser.getCurrentUrl()
+    return url1
+  }
+
   takeScreenshots1 (filename) {
     const browser = this.browser
-    const filenameNoSpecialChars = filename.replace(/[^a-zA-Z ]/g, '')
+    const filenameNoSpecialChars = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
     const titleDateStamp = filenameNoSpecialChars + Date.now() + '.png'
     if (!fs.existsSync('AllScreenshots')) {
       fs.mkdirSync('AllScreenshots')
