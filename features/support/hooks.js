@@ -5,16 +5,7 @@ const { 'world-parameters': { platform }, appUrl, appUrlCRM } = require('../../c
 let frontEndVersion
 let backEndVersion
 
-var { After, Before, registerHandler } = require('cucumber')
-
-Before(function ({ scenario }) {
-  // scenario.attach(getWorldParameters().platform)
-})
-
-After(function () {
-// Moved this to ScenarioResult below
-// return driver.quitBrowser()
-})
+var { registerHandler } = require('cucumber')
 
 registerHandler('BeforeFeatures', ([feature]) => {
   const options = {

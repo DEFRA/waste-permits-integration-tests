@@ -7,9 +7,10 @@ class ApplicationPage extends CRMPageObject {
   /************************************************************/
 
   async withApplication (applicationNumber, fn) {
-    await this.sleep(4000)
+    await this.sleep(8000)
     return this.withIFrame(this.contentIframe, async () => {
       // await this.waitUntilLoaded({ css: 'body' })
+      await this.sleep(4000)
       await this.waitUntilLoaded(this.findTitle(applicationNumber))
       return fn(applicationNumber)
     })
