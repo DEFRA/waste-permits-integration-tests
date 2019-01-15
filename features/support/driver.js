@@ -166,11 +166,6 @@ class Driver {
     return browser.quit()
   }
 
-  async getCurrentUrlName () {
-    const browser = this.browser
-    return await browser.getCurrentUrl()
-  }
-
   async takeScreenshotsAfterFailure (filename) {
     const browser = this.browser
     const filenameNoSpecialChars = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()

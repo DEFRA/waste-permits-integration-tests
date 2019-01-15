@@ -50,7 +50,7 @@ registerHandler('AfterFeatures', ([{ options }]) => {
 
 registerHandler('ScenarioResult', async function (scenario) {
   if (scenario.status === 'failed') {
-    const filename = await driver.getCurrentUrlName()
+    const filename = await driver.browser.getCurrentUrl()
     driver.takeScreenshotsAfterFailure(filename)
     return driver.quitBrowser()
   } else {
