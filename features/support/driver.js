@@ -168,22 +168,20 @@ class Driver {
 
   async getCurrentUrlName () {
     const browser = this.browser
-    const url1 = await browser.getCurrentUrl()
-    return url1
+    return await browser.getCurrentUrl()
   }
 
-  takeScreenshots1 (filename) {
+  async takeScreenshotsAfterFailure (filename) {
     const browser = this.browser
-    const filenameNoSpecialChars = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    const filenameNoSpecialChars = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()
     const titleDateStamp = filenameNoSpecialChars + Date.now() + '.png'
     if (!fs.existsSync('AllScreenshots')) {
       fs.mkdirSync('AllScreenshots')
     }
-    browser.takeScreenshot().then(function (data) {
-      const base64Data = data.replace(/^data:image\/png;base64,/, '')
-      fs.writeFile('AllScreenshots/' + titleDateStamp, base64Data, 'base64', function (err) {
-        if (err) console.log(err)
-      })
+    const data = await browser.takeScreenshot()
+    const base64Data = data.replace(/^data:image\/png;base64,/, '')
+    fs.writeFile('AllScreenshots/' + titleDateStamp, base64Data, 'base64', function (err) {
+      if (err) console.log(err)
     })
   }
 }

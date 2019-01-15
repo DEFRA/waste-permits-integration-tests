@@ -5,9 +5,7 @@ Feature: CRM end to end Smoke test
   @Smoke_test
   Scenario Outline: As a user I should be able to apply for waste permit <Permit> when the permit holder is a <PermitHolder>
     Given the application has been launched
-    And I take screenshots
     And I start a new application
-    And I take screenshots
     And I select Standard rules as the permit type
     And I select <PermitHolder> as the permit holder
     And I select <PermitCategory> as the permit category
