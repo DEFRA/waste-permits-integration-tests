@@ -13,6 +13,13 @@ class Application {
     ), 10000)
   }
 
+  async launchCRM (appConfiguration) {
+    await this.browser.get(config.appUrlCRM)
+    await this.browser.wait(async () => (
+      await this.browser.wait(appConfiguration.getReadyState()) === 'complete'
+    ), 10000)
+  }
+
   async takeScreenshots (filename) {
     const filenameNoSpecialChars = filename.replace(/[^a-zA-Z ]/g, '')
     const titleDateStamp = filenameNoSpecialChars + Date.now() + '.png'
@@ -21,7 +28,7 @@ class Application {
     }
     this.browser.takeScreenshot().then(function (data) {
       var base64Data = data.replace(/^data:image\/png;base64,/, '')
-      fs.writeFile('MartinScreenshots/' + titleDateStamp, base64Data, 'base64', function (err) {
+      fs.writeFile('AllScreenshots/' + titleDateStamp, base64Data, 'base64', function (err) {
         if (err) console.log(err)
       })
     })

@@ -1,6 +1,10 @@
 .idea
 .env
+.vs
+.vscode
+*.log
 node_modules
 package-lock.json
 temp
 features/reports
+AllScreenshots

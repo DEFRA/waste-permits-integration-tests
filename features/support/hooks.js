@@ -1,19 +1,11 @@
 const mkdirp = require('mkdirp')
 const { driver } = require('./driver')
-const {'world-parameters': {platform}, appUrl, appUrlCRM} = require('../../config')
+const { 'world-parameters': { platform }, appUrl, appUrlCRM } = require('../../config')
 
 let frontEndVersion
 let backEndVersion
 
-var {After, Before, registerHandler} = require('cucumber')
-
-Before(function ({scenario}) {
-  // scenario.attach(getWorldParameters().platform)
-})
-
-After(function () {
-  return driver.quitBrowser()
-})
+var { registerHandler } = require('cucumber')
 
 registerHandler('BeforeFeatures', ([feature]) => {
   const options = {
@@ -42,7 +34,17 @@ registerHandler('BeforeFeatures', ([feature]) => {
   }
 })
 
-registerHandler('AfterFeatures', ([{options}]) => {
+registerHandler('AfterFeatures', ([{ options }]) => {
   const reporter = require('cucumber-html-reporter')
   reporter.generate(options)
+})
+
+registerHandler('ScenarioResult', async function (scenario) {
+  if (scenario.status === 'failed') {
+    const filename = await driver.browser.getCurrentUrl()
+    driver.takeScreenshotsAfterFailure(filename)
+    return driver.quitBrowser()
+  } else {
+    return driver.quitBrowser()
+  }
 })

@@ -2,6 +2,7 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 
 class PermitHolderDetailsPage extends FrontEndPageObject {
   get title () { return 'Who will be the permit holder?' }
+  get charityTitle () { return 'Who will hold the permit for the charity or trust?' }
 
   get firstNameInput () { return {css: '#first-name'} }
   get lastNameInput () { return {css: '#last-name'} }
