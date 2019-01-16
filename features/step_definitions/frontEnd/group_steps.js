@@ -48,6 +48,13 @@ const validWasteRecoveryPlanFiles = [
   { name: file('ODT-file-test.odt') }
 ]
 
+const validGeneratorListFiles = [
+  { name: file('ODS-file-test.ods') },
+  { name: file('CSV-file-test.csv') },
+  { name: file('XLS-file-test.xls') },
+  { name: file('XLSX-file-test.xlsx') }
+]
+
 defineSupportCode(function ({ Given, When }) {
   Given(/^the application has been launched$/, async function () {
     this.tasks = new Tasks(this)
@@ -189,5 +196,23 @@ defineSupportCode(function ({ Given, When }) {
 
   When(/^I will (.*) each address$/, async function (addressEntryMethod) {
     return Promise.resolve(this.data.selectAddress = addressEntryMethod.toLowerCase() === 'select')
+  })
+
+  When(/^I (.*) the download of the generator list template$/, async function (include) {
+    if (include.toLowerCase() === 'skip') return
+
+    return this.tasks.mcpTemplate(this.pages)
+  })
+
+  When(/^I (.*) the upload of the generator list$/, async function (include) {
+    if (include.toLowerCase() === 'skip') return
+
+    return this.tasks.mcpDetails(validGeneratorListFiles, this.pages)
+  })
+
+  When(/^I (.*) the business or activity type$/, async function (include) {
+    if (include.toLowerCase() === 'skip') return
+
+    return this.tasks.mcpBusinessActivity(this.pages)
   })
 })

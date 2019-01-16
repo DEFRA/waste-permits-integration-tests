@@ -234,6 +234,27 @@ class Tasks {
     })
   }
 
+  async mcpTemplate (pages) {
+    const {taskListPage, mcpTemplatePage} = pages.frontEnd
+    return taskListPage.completeTask('mcpTemplate', async () => {
+      return mcpTemplatePage.completePage()
+    })
+  }
+
+  async mcpDetails (files = [], pages) {
+    const {taskListPage, mcpDetailsPage} = pages.frontEnd
+    return taskListPage.completeTask('mcpDetails', async () => {
+      return mcpDetailsPage.completePage(files)
+    })
+  }
+
+  async mcpBusinessActivity (pages) {
+    const {taskListPage, mcpBusinessActivityPage} = pages.frontEnd
+    return taskListPage.completeTask('mcpBusinessActivity', async () => {
+      return mcpBusinessActivityPage.completePage()
+    })
+  }
+
   async wasteRecoveryPlan (state = '', files = [], pages) {
     const {taskListPage, wasteRecoverySelectPage, wasteRecoveryPlanPage} = pages.frontEnd
     return taskListPage.completeTask('wasteRecoveryPlan', async () => {

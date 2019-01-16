@@ -1,0 +1,20 @@
+Row number,Traceable identifier for the plant or generator,Grid reference,Date operation started - month and year,Total thermal input in MWth,Technology or type,Fuel type,Stack height in metres,Operating hours per year,Annual load percentage,Air Quality Management Area name,Distance in metres to closest sensitive human receptor,Distance in metres to closest natural receptor,Background nitrogen oxides (NOX) in ug/m3
+Guidance,"Serial number or other unique identifier, name plate, manufacturer and or model",Give the reference for the stack or emission point. gridreferencefinder.com can help you find this,No need to give the day,,"Boiler, Engine or Turbine","Gas oil, natural gas, biogas or other gaseous fuel",,This is the time when the combustion plant is operating and discharging emissions into the air. You can exclude start-up and shut-down time.,,If not in an AQMA write 'None',"For example hospitals, schools, care facilities etc","Protected nature site - for example RAMSAR, SSI etc",Contact local authority for latest data
+Example,GEN1234DE0001,ST 58132 72695,Feb 2018,5,Boiler,Natural gas,5,3000,85,Leeds CC,200,1000,31
+1,,,,,,,,,,,,,
+2,,,,,,,,,,,,,
+3,,,,,,,,,,,,,
+4,,,,,,,,,,,,,
+5,,,,,,,,,,,,,
+6,,,,,,,,,,,,,
+7,,,,,,,,,,,,,
+8,,,,,,,,,,,,,
+9,,,,,,,,,,,,,
+10,,,,,,,,,,,,,
+11,,,,,,,,,,,,,
+12,,,,,,,,,,,,,
+13,,,,,,,,,,,,,
+14,,,,,,,,,,,,,
+15,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+You can only enter 15 generators on this template. If you have more contact us by email at MCPDHelp@environment-agency.gov.uk.,,,,,,,,,,,,,

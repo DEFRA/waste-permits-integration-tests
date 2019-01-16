@@ -12,6 +12,15 @@ class TaskListPage extends FrontEndPageObject {
   get confirmSuitableVehicleStorageLink () { return {css: '#confirm-the-drainage-system-for-the-vehicle-storage-area-link'} }
   get confirmSuitableVehicleStorageCompleted () { return {css: '#confirm-drainage-completed'} }
 
+  get mcpTemplateLink () { return {css: '#mcp-template-link'} }
+  get mcpTemplateCompleted () { return {css: '#mcp-template-completed'} }
+
+  get mcpDetailsLink () { return {css: '#mcp-details-link'} }
+  get mcpDetailsCompleted () { return {css: '#mcp-details-completed'} }
+
+  get mcpBusinessActivityLink () { return {css: '#mcp-business-activity-link'} }
+  get mcpBusinessActivityCompleted () { return {css: '#business-activity-completed'} }
+
   get saveApplicationLink () { return {css: '#set-up-save-and-return-link'} }
   get saveApplicationCompleted () { return {css: '#set-up-save-and-return-completed'} }
 
