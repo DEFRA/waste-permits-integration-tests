@@ -215,4 +215,11 @@ defineSupportCode(function ({ Given, When }) {
 
     return this.tasks.mcpBusinessActivity(this.pages)
   })
+
+  When(/^I select (.*) as already having an EPR permit$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.hasEnvironmentalPermit = selection.toLowerCase()
+    return this.pages.frontEnd.mcpEprPage.completePage(this.data.hasEnvironmentalPermit)
+  })
 })
