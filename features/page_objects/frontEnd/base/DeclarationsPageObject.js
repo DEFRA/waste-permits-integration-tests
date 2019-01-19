@@ -7,8 +7,8 @@ class DeclarationsPageObject extends FrontEndPageObject {
 
   /****************************************************************************/
 
-  async completePage (details) {
-    await this.waitForPage()
+  async completePage (details, title = this.title) {
+    await this.waitForPage(title)
     if (details) {
       await this.click(this.declaredRadio)
       await this.input(this.declaredDetailsInput, details)

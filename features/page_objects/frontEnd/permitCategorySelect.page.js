@@ -9,8 +9,8 @@ class PermitCategorySelectPage extends FrontEndPageObject {
   get 'Deposit for recovery' () { return {css: '#chosen-category-deposit-input'} }
   get 'Electrical insulating oil storage' () { return {css: '#chosen-category-electrical-input'} }
   get 'Flood risk activities' () { return {css: '#chosen-category-flood-input'} }
-  get 'MCPD - medium combustion plant' () { return {css: '#chosen-category-mcpd-mcp-category'} }
-  get 'MCPD - specified generators' () { return {css: '#chosen-category-mcpd-sg-category'} }
+  get 'Generators - Specified Generator, Tranche B' () { return {css: '#chosen-category-mcpd-sg-category'} }
+  get 'Medium combustion plant - stationary and in operation after 20/12/2018' () { return {css: '#chosen-category-mcpd-mcp-category'} }
   get 'Metal recycling, scrap metal and WEEE - not cars or vehicles' () { return {css: '#chosen-category-metal-input'} }
   get 'Mining, oil and gas' () { return {css: '#chosen-category-mining-input'} }
   get 'Mobile plant for land-spreading or treatment' () { return {css: '#chosen-category-mobile-input'} }

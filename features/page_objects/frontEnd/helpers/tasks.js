@@ -105,8 +105,8 @@ class Tasks {
       }
       if (permitHolder === publicBody) {
         const {publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
-        await publicBodyConvictionsPage.completePage(permitHolder.convictions)
-        return publicBodyBankruptcyPage.completePage(permitHolder.bankruptcy)
+        await publicBodyConvictionsPage.completePage(permitHolder.convictions, publicBodyConvictionsPage.charityTitle)
+        return publicBodyBankruptcyPage.completePage(permitHolder.bankruptcy, publicBodyBankruptcyPage.charityTitle)
       } else {
         const {bankruptcyPage, convictionsPage} = pages.frontEnd
         await convictionsPage.completePage(permitHolder.convictions)
