@@ -11,7 +11,7 @@ class CharityPermitHolderPage extends FrontEndPageObject {
 
   async completePage () {
     await this.waitForPage()
-    switch (this.data.charityHolder.toLowerCase()) {
+    switch (this.data.actualPermitHolder.toLowerCase()) {
       case 'limited company':
         this.click(this.limitedCompanyRadio)
         break
@@ -22,7 +22,7 @@ class CharityPermitHolderPage extends FrontEndPageObject {
         this.click(this.individualRadio)
         break
       default:
-        throw new Error(`Todo: Support for "${this.data.charityHolder}"`)
+        throw new Error(`Todo: Support for "${this.data.actualPermitHolder}"`)
     }
     return this.click(this.continueButton)
   }

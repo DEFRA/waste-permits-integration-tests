@@ -96,6 +96,7 @@ const data = Object.freeze({
       {
         firstName: 'First',
         lastName: 'Partner',
+        jobTitle: 'First Officer',
         dob: {day: 1, month: 2, year: 1990},
         email: 'first.partner@defra.test.gov.uk',
         telephone: '001 001 001 001',
@@ -109,6 +110,7 @@ const data = Object.freeze({
       {
         firstName: 'Second',
         lastName: 'Partner',
+        jobTitle: 'Second Officer',
         dob: {day: 2, month: 3, year: 1991},
         email: 'second.partner@defra.test.gov.uk',
         telephone: '002 002 002 002',
@@ -122,6 +124,7 @@ const data = Object.freeze({
       {
         firstName: 'Third',
         lastName: 'Partner',
+        jobTitle: 'Third Officer',
         dob: {day: 3, month: 4, year: 1992},
         email: 'third.partner@defra.test.gov.uk',
         telephone: '003 003 003 003',

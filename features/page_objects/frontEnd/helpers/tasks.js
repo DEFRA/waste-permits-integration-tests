@@ -70,161 +70,196 @@ class Tasks {
 
   async charityPermitHolderDetails (data, pages) {
     const { charity, individual, limitedCompany, publicBody } = data
-    const { taskListPage, charityDetailsPage, charityPermitHolderPage } = pages.frontEnd
-    return taskListPage.completeTask('permitHolderDetails', async () => {
-      await charityPermitHolderPage.completePage(this.data.charityHolder)
-      await charityDetailsPage.completePage(charity)
-      let permitHolder
-      switch (this.data.charityHolder.toLowerCase()) {
-        case 'individual': {
-          const {permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage} = pages.frontEnd
-          permitHolder = individual
-          await permitHolderDetailsPage.completePage(individual, permitHolderDetailsPage.charityTitle)
-          await permitHolderContactDetailsPage.completePage(individual)
-          await this.addressDetails(individual, permitHolderAddressSelectPage, permitHolderAddressManualPage)
-          break
-        }
-        case 'limited company': {
-          const {companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage} = pages.frontEnd
-          permitHolder = limitedCompany
-          await companyNumberPage.completePage(limitedCompany.number, companyNumberPage.charityTitle)
-          await companyCheckNamePage.completePage(limitedCompany)
-          await directorsDateOfBirthPage.completePage(limitedCompany.directors)
-          await directorsEmailPage.completePage(limitedCompany.directors[0].email)
-          break
-        }
-        case 'public body': {
-          const {publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyOfficerPage} = pages.frontEnd
-          permitHolder = publicBody
-          await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage, publicBodyAddressSelectPage.charityTitle)
-          await publicBodyOfficerPage.completePage(publicBody)
-          break
-        }
-        default:
-          throw new Error(`Todo: Support for "${this.data.charityHolder}"`)
+    const { charityDetailsPage, charityPermitHolderPage } = pages.frontEnd
+    await charityPermitHolderPage.completePage(this.data.actualPermitHolder)
+    await charityDetailsPage.completePage(charity)
+    let permitHolder
+    switch (this.data.actualPermitHolder.toLowerCase()) {
+      case 'individual': {
+        const {permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage} = pages.frontEnd
+        permitHolder = individual
+        await permitHolderDetailsPage.completePage(individual, permitHolderDetailsPage.charityTitle)
+        await permitHolderContactDetailsPage.completePage(individual)
+        await this.addressDetails(individual, permitHolderAddressSelectPage, permitHolderAddressManualPage)
+        break
       }
-      if (permitHolder === publicBody) {
-        const {publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
-        await publicBodyConvictionsPage.completePage(permitHolder.convictions, publicBodyConvictionsPage.charityTitle)
-        return publicBodyBankruptcyPage.completePage(permitHolder.bankruptcy, publicBodyBankruptcyPage.charityTitle)
-      } else {
-        const {bankruptcyPage, convictionsPage} = pages.frontEnd
-        await convictionsPage.completePage(permitHolder.convictions)
-        return bankruptcyPage.completePage(permitHolder.bankruptcy)
+      case 'limited company': {
+        const {companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage} = pages.frontEnd
+        permitHolder = limitedCompany
+        await companyNumberPage.completePage(limitedCompany.number, companyNumberPage.charityTitle)
+        await companyCheckNamePage.completePage(limitedCompany)
+        await directorsDateOfBirthPage.completePage(limitedCompany.directors)
+        await directorsEmailPage.completePage(limitedCompany.directors[0].email)
+        break
       }
-    })
+      case 'public body': {
+        const {publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyOfficerPage} = pages.frontEnd
+        permitHolder = publicBody
+        await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage, publicBodyAddressSelectPage.charityTitle)
+        await publicBodyOfficerPage.completePage(publicBody)
+        break
+      }
+      default:
+        throw new Error(`Todo: Support for "${this.data.actualPermitHolder}"`)
+    }
+    if (permitHolder === publicBody) {
+      const {publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
+      await publicBodyConvictionsPage.completePage(permitHolder.convictions, publicBodyConvictionsPage.charityTitle)
+      return publicBodyBankruptcyPage.completePage(permitHolder.bankruptcy, publicBodyBankruptcyPage.charityTitle)
+    } else {
+      const {bankruptcyPage, convictionsPage} = pages.frontEnd
+      await convictionsPage.completePage(permitHolder.convictions)
+      return bankruptcyPage.completePage(permitHolder.bankruptcy)
+    }
   }
 
   async individualPermitHolderDetails (individual = {}, pages) {
-    const {taskListPage, permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, convictionsPage, bankruptcyPage} = pages.frontEnd
-    return taskListPage.completeTask('permitHolderDetails', async () => {
-      await permitHolderDetailsPage.completePage(individual)
-      await permitHolderContactDetailsPage.completePage(individual)
-      await this.addressDetails(individual, permitHolderAddressSelectPage, permitHolderAddressManualPage)
-      await convictionsPage.completePage(individual.convictions)
-      return bankruptcyPage.completePage(individual.bankruptcy)
-    })
+    const {permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, convictionsPage, bankruptcyPage} = pages.frontEnd
+    await permitHolderDetailsPage.completePage(individual)
+    await permitHolderContactDetailsPage.completePage(individual)
+    await this.addressDetails(individual, permitHolderAddressSelectPage, permitHolderAddressManualPage)
+    await convictionsPage.completePage(individual.convictions)
+    return bankruptcyPage.completePage(individual.bankruptcy)
   }
 
   async limitedCompanyPermitHolderDetails (limitedCompany = {}, pages) {
-    const {taskListPage, companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage, convictionsPage, bankruptcyPage} = pages.frontEnd
-    return taskListPage.completeTask('permitHolderDetails', async () => {
-      await companyNumberPage.completePage(limitedCompany.number)
-      await companyCheckNamePage.completePage(limitedCompany)
-      await directorsDateOfBirthPage.completePage(limitedCompany.directors)
-      await directorsEmailPage.completePage(limitedCompany.directors[0].email)
-      await convictionsPage.completePage(limitedCompany.convictions)
-      return bankruptcyPage.completePage(limitedCompany.bankruptcy)
-    })
+    const {companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage, convictionsPage, bankruptcyPage} = pages.frontEnd
+    await companyNumberPage.completePage(limitedCompany.number)
+    await companyCheckNamePage.completePage(limitedCompany)
+    await directorsDateOfBirthPage.completePage(limitedCompany.directors)
+    await directorsEmailPage.completePage(limitedCompany.directors[0].email)
+    await convictionsPage.completePage(limitedCompany.convictions)
+    return bankruptcyPage.completePage(limitedCompany.bankruptcy)
   }
 
   async limitedLiabilityPartnershipPermitHolderDetails (limitedLiabilityPartnership = {}, pages) {
-    const {taskListPage, companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage, convictionsPage, bankruptcyPage} = pages.frontEnd
-    return taskListPage.completeTask('permitHolderDetails', async () => {
-      await companyNumberPage.completePage(limitedLiabilityPartnership.number, companyNumberPage.limitedLiabilityPartnershipTitle)
-      await companyCheckNamePage.completePage(limitedLiabilityPartnership, companyCheckNamePage.limitedLiabilityPartnershipTitle)
-      await directorsDateOfBirthPage.completePage(limitedLiabilityPartnership.directors, directorsDateOfBirthPage.limitedLiabilityPartnershipTitle)
-      await directorsEmailPage.completePage(limitedLiabilityPartnership.directors[0].email, directorsEmailPage.limitedLiabilityPartnershipTitle)
-      await convictionsPage.completePage(limitedLiabilityPartnership.convictions)
-      return bankruptcyPage.completePage(limitedLiabilityPartnership.bankruptcy)
-    })
+    const {companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage, convictionsPage, bankruptcyPage} = pages.frontEnd
+    await companyNumberPage.completePage(limitedLiabilityPartnership.number, companyNumberPage.limitedLiabilityPartnershipTitle)
+    await companyCheckNamePage.completePage(limitedLiabilityPartnership, companyCheckNamePage.limitedLiabilityPartnershipTitle)
+    await directorsDateOfBirthPage.completePage(limitedLiabilityPartnership.directors, directorsDateOfBirthPage.limitedLiabilityPartnershipTitle)
+    await directorsEmailPage.completePage(limitedLiabilityPartnership.directors[0].email, directorsEmailPage.limitedLiabilityPartnershipTitle)
+    await convictionsPage.completePage(limitedLiabilityPartnership.convictions)
+    return bankruptcyPage.completePage(limitedLiabilityPartnership.bankruptcy)
   }
 
   async publicBodyPermitHolderDetails (publicBody = {}, pages) {
-    const {taskListPage, publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyTradingNamePage, publicBodyOfficerPage, publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
-    return taskListPage.completeTask('permitHolderDetails', async () => {
-      await publicBodyTradingNamePage.completePage(publicBody)
-      await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage)
-      await publicBodyOfficerPage.completePage(publicBody)
-      await publicBodyConvictionsPage.completePage(publicBody.convictions)
-      await publicBodyBankruptcyPage.completePage(publicBody.bankruptcy)
-    })
+    const {publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyTradingNamePage, publicBodyOfficerPage, publicBodyBankruptcyPage, publicBodyConvictionsPage} = pages.frontEnd
+    await publicBodyTradingNamePage.completePage(publicBody)
+    await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage)
+    await publicBodyOfficerPage.completePage(publicBody)
+    await publicBodyConvictionsPage.completePage(publicBody.convictions)
+    await publicBodyBankruptcyPage.completePage(publicBody.bankruptcy)
   }
 
   async soleTraderPermitHolderDetails (soleTrader = {}, pages) {
-    const {taskListPage, permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, permitHolderTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
-    return taskListPage.completeTask('permitHolderDetails', async () => {
-      await permitHolderDetailsPage.completePage(soleTrader)
-      await permitHolderTradingNamePage.completePage(soleTrader)
-      await permitHolderContactDetailsPage.completePage(soleTrader)
-      await this.addressDetails(soleTrader, permitHolderAddressSelectPage, permitHolderAddressManualPage)
-      await convictionsPage.completePage(soleTrader.convictions)
-      return bankruptcyPage.completePage(soleTrader.bankruptcy)
-    })
+    const {permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, permitHolderTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
+    await permitHolderDetailsPage.completePage(soleTrader)
+    await permitHolderTradingNamePage.completePage(soleTrader)
+    await permitHolderContactDetailsPage.completePage(soleTrader)
+    await this.addressDetails(soleTrader, permitHolderAddressSelectPage, permitHolderAddressManualPage)
+    await convictionsPage.completePage(soleTrader.convictions)
+    return bankruptcyPage.completePage(soleTrader.bankruptcy)
   }
 
   async partnershipPermitHolderDetails (partnership = {}, pages) {
-    const {taskListPage, partnershipListPage, partnershipDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, partnershipTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
-    return taskListPage.completeTask('permitHolderDetails', async () => {
-      await partnershipTradingNamePage.completePage(partnership)
-      const {partners} = partnership
-      for (let index = 0; index < partners.length; index++) {
-        const partner = partners[index]
-        const contactDetailsTitle = index ? partnershipDetailsPage.title : partnershipDetailsPage.firstTitle
-        await partnershipDetailsPage.completePage(partner, contactDetailsTitle)
-        await permitHolderContactDetailsPage.completePage(partner, `What are the contact details for ${partner.firstName} ${partner.lastName}?`)
-        await this.addressDetails(partner, permitHolderAddressSelectPage, permitHolderAddressManualPage, `What is the address for ${partner.firstName} ${partner.lastName}?`)
-        await partnershipListPage.waitForPage()
-        if (!index || index === partners.length - 1) {
-          // Add second and last partner
-          await partnershipListPage.click(partnershipListPage.continueButton)
-        } else {
-          // Add all other partners
-          await partnershipListPage.click(partnershipListPage.addPartnerLink)
-        }
+    const {memberListPage, memberDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, memberTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
+
+    await memberTradingNamePage.completePage(partnership)
+
+    const {partners} = partnership
+    for (let index = 0; index < partners.length; index++) {
+      const partner = partners[index]
+      const contactDetailsTitle = index ? memberDetailsPage.title : memberDetailsPage.firstTitle
+      await memberDetailsPage.completePage(partner, contactDetailsTitle)
+      await permitHolderContactDetailsPage.completePage(partner, `What are the contact details for ${partner.firstName} ${partner.lastName}?`)
+      await this.addressDetails(partner, permitHolderAddressSelectPage, permitHolderAddressManualPage, `What is the address for ${partner.firstName} ${partner.lastName}?`)
+      await memberListPage.waitForPage()
+      if (!index || index === partners.length - 1) {
+        // Add second and last partner
+        await memberListPage.click(memberListPage.continueButton)
+      } else {
+        // Add all other partners
+        await memberListPage.click(memberListPage.addMemberLink)
       }
-      await convictionsPage.completePage(partnership.convictions)
-      return bankruptcyPage.completePage(partnership.bankruptcy)
-    })
+    }
+    await convictionsPage.completePage(partnership.convictions)
+    return bankruptcyPage.completePage(partnership.bankruptcy)
   }
 
-  async permitHolderDetails (permitHolder, data, pages) {
-    const {individual, limitedCompany, limitedLiabilityPartnership, partnership, publicBody, soleTrader} = data
-    switch (permitHolder.toLowerCase()) {
-      case 'charity or trust': {
-        return this.charityPermitHolderDetails(data, pages)
+  async groupPermitHolderDetails (group = {}, pages) {
+    const {memberListPage, memberDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, memberTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
+
+    await memberTradingNamePage.completePage(group, memberTradingNamePage.groupTitle)
+
+    const {partners: postHolders} = group
+    for (let index = 0; index < postHolders.length; index++) {
+      const postHolder = postHolders[index]
+      const contactDetailsTitle = index ? memberDetailsPage.groupTitle : memberDetailsPage.groupFirstTitle
+      await memberDetailsPage.completePage(postHolder, contactDetailsTitle)
+      await permitHolderContactDetailsPage.completePage(postHolder, `What are the contact details for ${postHolder.firstName} ${postHolder.lastName}?`)
+      await this.addressDetails(postHolder, permitHolderAddressSelectPage, permitHolderAddressManualPage, `What is the address for ${postHolder.firstName} ${postHolder.lastName}?`)
+      await memberListPage.waitForPage(memberListPage.groupTitle)
+      if (!index || index === postHolders.length - 1) {
+        // Add second and last partner
+        await memberListPage.click(memberListPage.continueButton)
+      } else {
+        // Add all other partners
+        await memberListPage.click(memberListPage.addMemberLink)
       }
-      case 'individual': {
-        return this.individualPermitHolderDetails(individual, pages)
-      }
+    }
+    await convictionsPage.completePage(group.convictions)
+    return bankruptcyPage.completePage(group.bankruptcy)
+  }
+
+  async otherPermitHolderDetails (limitedCompany, partnership, pages) {
+    const { permitGroupDecisionPage } = pages.frontEnd
+    const permitHolder = this.data.actualPermitHolder.toLowerCase()
+    await permitGroupDecisionPage.completePage(permitHolder)
+    switch (permitHolder) {
       case 'limited company': {
         return this.limitedCompanyPermitHolderDetails(limitedCompany, pages)
       }
-      case 'limited liability partnership': {
-        return this.limitedLiabilityPartnershipPermitHolderDetails(limitedLiabilityPartnership, pages)
-      }
-      case 'partnership': {
-        return this.partnershipPermitHolderDetails(partnership, pages)
-      }
-      case 'public body': {
-        return this.publicBodyPermitHolderDetails(publicBody, pages)
-      }
-      case 'sole trader': {
-        return this.soleTraderPermitHolderDetails(soleTrader, pages)
+      case 'group': {
+        return this.groupPermitHolderDetails(partnership, pages)
       }
       default:
-        throw new Error(`Todo: Support for "${permitHolder}"`)
+        throw new Error(`Todo: Support for "${this.data.actualPermitHolder}"`)
     }
+  }
+
+  async permitHolderDetails (permitHolder, data, pages) {
+    const { taskListPage } = pages.frontEnd
+    const { individual, limitedCompany, limitedLiabilityPartnership, partnership, publicBody, soleTrader } = data
+    return taskListPage.completeTask('permitHolderDetails', async () => {
+      switch (permitHolder.toLowerCase()) {
+        case 'charity or trust': {
+          return this.charityPermitHolderDetails(data, pages)
+        }
+        case 'individual': {
+          return this.individualPermitHolderDetails(individual, pages)
+        }
+        case 'limited company': {
+          return this.limitedCompanyPermitHolderDetails(limitedCompany, pages)
+        }
+        case 'limited liability partnership': {
+          return this.limitedLiabilityPartnershipPermitHolderDetails(limitedLiabilityPartnership, pages)
+        }
+        case 'partnership': {
+          return this.partnershipPermitHolderDetails(partnership, pages)
+        }
+        case 'public body': {
+          return this.publicBodyPermitHolderDetails(publicBody, pages)
+        }
+        case 'sole trader': {
+          return this.soleTraderPermitHolderDetails(soleTrader, pages)
+        }
+        case 'other organisation': {
+          return this.otherPermitHolderDetails(limitedCompany, partnership, pages)
+        }
+        default:
+          throw new Error(`Todo: Support for "${permitHolder}"`)
+      }
+    })
   }
 
   async firePreventionPlan (files = [], pages) {
