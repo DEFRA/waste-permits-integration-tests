@@ -71,8 +71,8 @@ defineSupportCode(function ({ Given, When }) {
   })
 
   When(/^I select (.*) as the permit holder$/, async function (permitHolderType) {
-    const [ permitHolder, charityHolder ] = permitHolderType.split(':').map((type) => type.trim())
-    Object.assign(this.data, { permitHolder, charityHolder })
+    const [ permitHolder, actualPermitHolder ] = permitHolderType.split(':').map((type) => type.trim())
+    Object.assign(this.data, { permitHolder, actualPermitHolder })
     return this.pages.frontEnd.permitHolderSelectPage.completePage(permitHolder)
   })
 
