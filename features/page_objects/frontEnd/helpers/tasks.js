@@ -187,7 +187,7 @@ class Tasks {
   }
 
   async groupPermitHolderDetails (group = {}, pages) {
-    const {memberListPage, memberDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, memberTradingNamePage, convictionsPage, bankruptcyPage} = pages.frontEnd
+    const {memberListPage, memberDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, memberTradingNamePage, postholderConvictionsPage, bankruptcyPage} = pages.frontEnd
 
     await memberTradingNamePage.completePage(group, memberTradingNamePage.groupTitle)
 
@@ -207,7 +207,7 @@ class Tasks {
         await memberListPage.click(memberListPage.addMemberLink)
       }
     }
-    await convictionsPage.completePage(group.convictions)
+    await postholderConvictionsPage.completePage(group.convictions)
     return bankruptcyPage.completePage(group.bankruptcy)
   }
 
