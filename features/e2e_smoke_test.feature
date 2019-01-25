@@ -30,9 +30,9 @@ Feature: Standard rules end to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by <PaymentType>
-    And the CRM application has been launched
-    And I login as a "P&SC" user
-    Then I open the application
+#    And the CRM application has been launched
+#    And I login as a "P&SC" user
+#    Then I open the application
     Examples:
       | PermitHolder                        | PermitCategory                                                         | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType | GeneratorList | BusinessActivity | EprPermit |
       | Charity or trust: Public body       | Mining, oil and gas                                                    | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        | skip          | skip             | skip      |
