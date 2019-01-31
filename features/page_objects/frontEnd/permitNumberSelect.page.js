@@ -4,8 +4,7 @@ class PermitNumberSelectPage extends FrontEndPageObject {
   get title () { return 'Select a permit' }
 
   permit (permitNumber) {
-    const id = `chosen-permit-${permitNumber.replace(/\s+/g, '-').toLowerCase()}-input`
-    return {css: `#${id}`}
+    return {css: `input[data-code="${permitNumber}"]`}
   }
 
   async completePage (permitNumber) {
