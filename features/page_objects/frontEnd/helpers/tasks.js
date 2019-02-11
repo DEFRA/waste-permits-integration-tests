@@ -372,17 +372,18 @@ class Tasks {
     return addressManualPage.completePage(address, title)
   }
 
-  async makePayment (cardDetails = {}, paymentType, pages) {
-    const {applicationReceivedPage, bacsPaymentPage, paymentTypePage, cardPaymentPage, confirmPaymentPage} = pages.frontEnd
+  async makePayment (paymentDetails = {}, paymentType, pages) {
+    const {applicationReceivedPage, bacsPaymentPage, bacsProofPage, paymentTypePage, cardPaymentPage, confirmPaymentPage} = pages.frontEnd
     await paymentTypePage.completePage(paymentType)
     switch (paymentType.toLowerCase()) {
       case 'card': {
-        await cardPaymentPage.completePage(cardDetails)
+        await cardPaymentPage.completePage(paymentDetails.validCard)
         await confirmPaymentPage.completePage()
         break
       }
       case 'bacs': {
         await bacsPaymentPage.completePage()
+        await bacsProofPage.completePage(paymentDetails.validBacs)
         break
       }
       default:
