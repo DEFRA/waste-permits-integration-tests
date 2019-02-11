@@ -162,16 +162,24 @@ const data = Object.freeze({
     miningWasteWeight: '1000,000',
     miningWastePlan: 'Water based'
   },
-  validCardDetails: {
-    cardNumber: '4242424242424242',
-    expiryMonth: '01',
-    expiryYear: '35',
-    name: 'MRS TEST TEST TEST',
-    cvc: '123',
-    addrLineOne: '01',
-    city: 'Bristol',
-    postcode: 'bs5 1ah',
-    email: 'amruta.bendre.ea.ga@gmail.com'
+
+  paymentDetails: {
+    validCard: {
+      cardNumber: '4242424242424242',
+      expiryMonth: '01',
+      expiryYear: '35',
+      name: 'MRS TEST TEST TEST',
+      cvc: '123',
+      addrLineOne: '01',
+      city: 'Bristol',
+      postcode: 'bs5 1ah',
+      email: 'amruta.bendre.ea.ga@gmail.com'
+    },
+    validBacs: {
+      date: {day: 2, month: 3, year: 1991},
+      amount: 1000.00,
+      reference: 'My Payment Ref'
+    }
   },
 
   confidentialityNeeds: 'Test confidentiality needs'
