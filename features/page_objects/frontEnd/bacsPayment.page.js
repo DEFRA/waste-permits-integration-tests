@@ -1,7 +1,7 @@
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
 class BacsPaymentPage extends FrontEndPageObject {
-  get title () { return 'You have chosen to pay by bank transfer using Bacs' }
+  get title () { return 'Confirm you will pay by bank transfer using Bacs' }
 
   async completePage () {
     await this.waitForPage()
