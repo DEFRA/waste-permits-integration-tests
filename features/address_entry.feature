@@ -48,4 +48,4 @@ Feature: Address entry Smoke test
     And I confirm my confidentiality needs
     And I submit my application
     And I check my answers
-    And I choose to pay by BACS
+  #  And I choose to pay by BACS
