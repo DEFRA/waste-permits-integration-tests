@@ -30,6 +30,7 @@ Feature: Standard rules end to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by <PaymentType>
+    Then the application is created successfully in CRM
 #    And the CRM application has been launched
 #    And I login as a "P&SC" user
 #    Then I open the application
