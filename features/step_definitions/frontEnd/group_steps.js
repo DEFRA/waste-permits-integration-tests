@@ -1,7 +1,7 @@
 const { defineSupportCode } = require('cucumber')
 const path = require('path')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
-const {email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails} = require('../../support/testData')
+const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails } = require('../../support/testData')
 
 function file (filename) {
   return path.join(__dirname, `../../uploadTestFiles/${filename}`)
@@ -63,6 +63,14 @@ defineSupportCode(function ({ Given, When }) {
 
   When(/^I start a new application$/, async function () {
     return this.pages.frontEnd.startOrOpenSavedPage.completePage()
+  })
+
+  When(/^I select all plans to access$/, async function () {
+    return this.pages.frontEnd.whatPlansDoWeNeedToAssesPage.completePage()
+  })
+
+  When(/^I confirm activities and assessments$/, async function () {
+    return this.pages.frontEnd.confirmActivitiesAndAssessmentsPage.completePageValidation()
   })
 
   When(/^I select (.*) as the permit type$/, async function (permitType) {
@@ -128,7 +136,7 @@ defineSupportCode(function ({ Given, When }) {
   })
 
   When(/^I enter my permit holder details$/, async function () {
-    return this.tasks.permitHolderDetails(this.data.permitHolder, {charity, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody}, this.pages)
+    return this.tasks.permitHolderDetails(this.data.permitHolder, { charity, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody }, this.pages)
   })
 
   When(/^I (.*) the waste recovery plan$/, async function (state) {

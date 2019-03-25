@@ -3,8 +3,8 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class PermitGroupDecisionPage extends FrontEndPageObject {
   get title () { return 'Decide who will be the permit holders for the organisation or group' }
 
-  get applyAsCompanyLink () { return {css: '#apply-as-company-link'} }
-  get applyAsPostHoldersLink () { return {css: '#apply-as-post-holders-link'} }
+  get applyAsCompanyLink () { return { css: '#apply-as-company-link' } }
+  get applyAsPostHoldersLink () { return { css: '#apply-as-post-holders-link' } }
 
   async completePage (permitHolder) {
     await this.waitForPage()

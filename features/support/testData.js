@@ -1,4 +1,4 @@
-const {cloneDeep} = require('lodash')
+const { cloneDeep } = require('lodash')
 
 const data = Object.freeze({
   email: 'save.application@defra.test.gov.uk',
@@ -19,7 +19,7 @@ const data = Object.freeze({
   individual: {
     firstName: 'Money',
     lastName: 'Penny',
-    dob: {day: 2, month: 8, year: 1999},
+    dob: { day: 2, month: 8, year: 1999 },
     email: 'individual@defra.test.gov.uk',
     telephone: '002 007 002 007',
     buildingNameOrNumber: 'Horizon House',
@@ -33,7 +33,7 @@ const data = Object.freeze({
   soleTrader: {
     firstName: 'Soul',
     lastName: 'Man',
-    dob: {day: 2, month: 8, year: 1999},
+    dob: { day: 2, month: 8, year: 1999 },
     tradingName: 'Soul Trader',
     email: 'sole.trader@defra.test.gov.uk',
     telephone: '002107202307',
@@ -51,7 +51,7 @@ const data = Object.freeze({
     tradingName: 'Trading Name',
     directors: [
       {
-        dob: {day: 10, month: 12, year: 1976},
+        dob: { day: 10, month: 12, year: 1976 },
         email: 'director0@defra.test.gov.uk'
       }
     ],
@@ -69,7 +69,7 @@ const data = Object.freeze({
     tradingName: 'Trading Name',
     directors: [
       {
-        dob: {day: 10, month: 12, year: 1976},
+        dob: { day: 10, month: 12, year: 1976 },
         email: 'designated.member@defra.test.gov.uk'
       }
     ],
@@ -97,7 +97,7 @@ const data = Object.freeze({
         firstName: 'First',
         lastName: 'Partner',
         jobTitle: 'First Officer',
-        dob: {day: 1, month: 2, year: 1990},
+        dob: { day: 1, month: 2, year: 1990 },
         email: 'first.partner@defra.test.gov.uk',
         telephone: '001 001 001 001',
         buildingNameOrNumber: 'Horizon House',
@@ -111,7 +111,7 @@ const data = Object.freeze({
         firstName: 'Second',
         lastName: 'Partner',
         jobTitle: 'Second Officer',
-        dob: {day: 2, month: 3, year: 1991},
+        dob: { day: 2, month: 3, year: 1991 },
         email: 'second.partner@defra.test.gov.uk',
         telephone: '002 002 002 002',
         buildingNameOrNumber: 'Horizon House',
@@ -125,7 +125,7 @@ const data = Object.freeze({
         firstName: 'Third',
         lastName: 'Partner',
         jobTitle: 'Third Officer',
-        dob: {day: 3, month: 4, year: 1992},
+        dob: { day: 3, month: 4, year: 1992 },
         email: 'third.partner@defra.test.gov.uk',
         telephone: '003 003 003 003',
         buildingNameOrNumber: 'Horizon House',
@@ -176,7 +176,7 @@ const data = Object.freeze({
       email: 'amruta.bendre.ea.ga@gmail.com'
     },
     validBacs: {
-      date: {day: 2, month: 3, year: 1991},
+      date: { day: 2, month: 3, year: 1991 },
       amount: 1000.00,
       reference: 'My Payment Ref'
     }

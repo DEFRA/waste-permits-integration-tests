@@ -4,10 +4,10 @@ const config = require('../../../config')
 class PasswordPage extends CRMPageObject {
   get title () { return 'Enter password' }
 
-  get loginHeader () { return {id: 'loginHeader'} }
-  get loginPassword () { return {name: 'passwd'} }
-  get signinButtonP () { return {id: 'idSIButton9'} }
-  get staySigninNoButton () { return {css: '#idBtn_Back'} }
+  get loginHeader () { return { id: 'loginHeader' } }
+  get loginPassword () { return { name: 'passwd' } }
+  get signinButtonP () { return { id: 'idSIButton9' } }
+  get staySigninNoButton () { return { css: '#idBtn_Back' } }
 
   async completePage () {
     // await this.waitForPage()

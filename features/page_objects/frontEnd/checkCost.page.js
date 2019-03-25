@@ -2,8 +2,8 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 
 class CheckCostPage extends FrontEndPageObject {
   get title () { return 'Costs and processing time' }
-  get costText () { return {id: 'cost'} }
-  get timeToWaitAfterApplyingText () { return {id: 'length-of-time-text'} }
+  get costText () { return { id: 'cost' } }
+  get timeToWaitAfterApplyingText () { return { id: 'length-of-time-text' } }
 
   async completePage () {
     await this.waitForPage()

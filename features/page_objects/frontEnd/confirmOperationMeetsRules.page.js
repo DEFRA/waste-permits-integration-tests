@@ -3,8 +3,8 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class ConfirmOperationMeetsRulesPage extends FrontEndPageObject {
   get title () { return 'Confirm your operation meets the rules' }
 
-  get confirmButton () { return {css: '#operation-meets-rules-button'} }
-  get standardRulesLink () { return {css: '#standard-rule-link'} }
+  get confirmButton () { return { css: '#operation-meets-rules-button' } }
+  get standardRulesLink () { return { css: '#standard-rule-link' } }
 
   async completePage () {
     await this.waitForPage()

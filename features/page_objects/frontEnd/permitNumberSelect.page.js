@@ -4,7 +4,7 @@ class PermitNumberSelectPage extends FrontEndPageObject {
   get title () { return 'Select a permit' }
 
   permit (permitNumber) {
-    return {css: `input[data-code="${permitNumber}"]`}
+    return { css: `input[data-code="${permitNumber}"]` }
   }
 
   async completePage (permitNumber) {

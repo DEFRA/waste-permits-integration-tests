@@ -5,7 +5,7 @@ class CompanyNumberPage extends FrontEndPageObject {
   get charityTitle () { return 'What is the company or Charitable Incorporated Organisation registration number?' }
   get limitedLiabilityPartnershipTitle () { return 'What is the company number for the limited liability partnership?' }
 
-  get companyNumberInput () { return {css: '#company-number'} }
+  get companyNumberInput () { return { css: '#company-number' } }
 
   async completePage (companyNumber, title) {
     await this.waitForPage(title)

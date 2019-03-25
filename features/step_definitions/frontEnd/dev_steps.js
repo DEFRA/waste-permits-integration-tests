@@ -1,9 +1,9 @@
-const {defineSupportCode} = require('cucumber')
+const { defineSupportCode } = require('cucumber')
 const config = require('../../../config')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
-const {email, contact, partnership} = require('../../support/testData')
+const { email, contact, partnership } = require('../../support/testData')
 
-defineSupportCode(function ({When}) {
+defineSupportCode(function ({ When }) {
   When(/^As a (.*) I apply for waste permit (.*) \((.*)\)$/, async function (permitHolder, permitNumber, permitCategory) {
     const {
       startOrOpenSavedPage,
@@ -37,7 +37,7 @@ defineSupportCode(function ({When}) {
   })
 
   When(/^I recover my application with the recovery code: (.*)$/, async function (slug) {
-    const {recoveryPage} = this.pages.frontEnd
+    const { recoveryPage } = this.pages.frontEnd
     await this.application.browser.get(`${config.appUrl}/r/${slug}`)
     await recoveryPage.completePage()
   })

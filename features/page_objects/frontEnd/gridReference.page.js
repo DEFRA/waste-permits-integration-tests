@@ -3,11 +3,11 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class GridReferencePage extends FrontEndPageObject {
   get title () { return 'What is the grid reference for the centre of the site?' }
 
-  get gridReferenceInput () { return {css: '#site-grid-reference'} }
+  get gridReferenceInput () { return { css: '#site-grid-reference' } }
 
   /****************************************************************************/
 
-  async completePage ({gridReference}, title) {
+  async completePage ({ gridReference }, title) {
     await this.waitForPage(title)
     await this.input(this.gridReferenceInput, gridReference)
     return this.click(this.continueButton)

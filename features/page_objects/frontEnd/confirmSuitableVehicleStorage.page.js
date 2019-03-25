@@ -3,10 +3,10 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class ConfirmSuitableVehicleStoragePage extends FrontEndPageObject {
   get title () { return 'Where does the vehicle storage area drain to?' }
 
-  get sewerUnderConsentRadio () { return {css: '#sewer'} }
-  get blindSumpRadio () { return {css: '#blind-sump'} }
-  get oilSeparatorRadio () { return {css: '#oil-separator'} }
-  get watercourseRadio () { return {css: '#watercourse'} }
+  get sewerUnderConsentRadio () { return { css: '#sewer' } }
+  get blindSumpRadio () { return { css: '#blind-sump' } }
+  get oilSeparatorRadio () { return { css: '#oil-separator' } }
+  get watercourseRadio () { return { css: '#watercourse' } }
 
   async completePage (vehicleStorage) {
     await this.waitForPage()
