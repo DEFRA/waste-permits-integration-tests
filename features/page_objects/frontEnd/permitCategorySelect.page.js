@@ -3,21 +3,21 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class PermitCategorySelectPage extends FrontEndPageObject {
   get title () { return 'What do you want the permit for?' }
 
-  get 'Anaerobic digestion including storing digestate' () { return {css: '#chosen-category-anaerobic-input'} }
-  get 'Car and vehicle dismantling' () { return {css: '#chosen-category-car-input'} }
-  get 'Composting, sewage or sludge treatment, biogas' () { return {css: '#chosen-category-composting-input'} }
-  get 'Deposit for recovery' () { return {css: '#chosen-category-deposit-input'} }
-  get 'Electrical insulating oil storage' () { return {css: '#chosen-category-electrical-input'} }
-  get 'Flood risk activities' () { return {css: '#chosen-category-flood-input'} }
-  get 'Generators - Specified Generator, Tranche B' () { return {css: '#chosen-category-mcpd-sg-category'} }
-  get 'Medium combustion plant - stationary and in operation after 20/12/2018' () { return {css: '#chosen-category-mcpd-mcp-category'} }
-  get 'Metal recycling, scrap metal and WEEE - not cars or vehicles' () { return {css: '#chosen-category-metal-input'} }
-  get 'Mining, oil and gas' () { return {css: '#chosen-category-mining-input'} }
-  get 'Mobile plant for land-spreading or treatment' () { return {css: '#chosen-category-mobile-input'} }
-  get 'Radioactive substances for non-nuclear sites' () { return {css: '#chosen-category-radioactive-input'} }
-  get 'Storage or treatment of waste - recycling, dredgings, clinical, soil or wood treatment' () { return {css: '#chosen-category-storage-input'} }
-  get 'Waste transfer station or amenity site with or without treatment' () { return {css: '#chosen-category-transfer-input'} }
-  get 'Water discharges' () { return {css: '#chosen-category-water-input'} }
+  get 'Anaerobic digestion including storing digestate' () { return { css: '#chosen-category-anaerobic-input' } }
+  get 'Car and vehicle dismantling' () { return { css: '#chosen-category-car-input' } }
+  get 'Composting, sewage or sludge treatment, biogas' () { return { css: '#chosen-category-composting-input' } }
+  get 'Deposit for recovery' () { return { css: '#chosen-category-deposit-input' } }
+  get 'Electrical insulating oil storage' () { return { css: '#chosen-category-electrical-input' } }
+  get 'Flood risk activities' () { return { css: '#chosen-category-flood-input' } }
+  get 'Generators - Specified Generator, Tranche B' () { return { css: '#chosen-category-mcpd-sg-category' } }
+  get 'Medium combustion plant - stationary and in operation after 20/12/2018' () { return { css: '#chosen-category-mcpd-mcp-category' } }
+  get 'Metal recycling, scrap metal and WEEE - not cars or vehicles' () { return { css: '#chosen-category-metal-input' } }
+  get 'Mining, oil and gas' () { return { css: '#chosen-category-mining-input' } }
+  get 'Mobile plant for land-spreading or treatment' () { return { css: '#chosen-category-mobile-input' } }
+  get 'Radioactive substances for non-nuclear sites' () { return { css: '#chosen-category-radioactive-input' } }
+  get 'Storage or treatment of waste - recycling, dredgings, clinical, soil or wood treatment' () { return { css: '#chosen-category-storage-input' } }
+  get 'Waste transfer station or amenity site with or without treatment' () { return { css: '#chosen-category-transfer-input' } }
+  get 'Water discharges' () { return { css: '#chosen-category-water-input' } }
 
   async completePage (permitCategory) {
     await this.waitForPage()

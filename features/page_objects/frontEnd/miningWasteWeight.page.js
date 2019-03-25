@@ -3,7 +3,7 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class MiningWasteWeightPage extends FrontEndPageObject {
   get title () { return 'How much extractive waste will you produce?' }
 
-  get MiningWasteWeightInput () { return {css: '#mining-waste-weight'} }
+  get MiningWasteWeightInput () { return { css: '#mining-waste-weight' } }
 
   /****************************************************************************/
 

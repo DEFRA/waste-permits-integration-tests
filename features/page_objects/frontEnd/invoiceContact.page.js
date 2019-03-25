@@ -3,12 +3,12 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class InvoiceContactPage extends FrontEndPageObject {
   get title () { return 'Who should we contact about invoicing or payments?' }
 
-  get firstNameInput () { return {css: '#first-name'} }
-  get lastNameInput () { return {css: '#last-name'} }
-  get telephoneInput () { return {css: '#telephone'} }
-  get emailInput () { return {css: '#email'} }
+  get firstNameInput () { return { css: '#first-name' } }
+  get lastNameInput () { return { css: '#last-name' } }
+  get telephoneInput () { return { css: '#telephone' } }
+  get emailInput () { return { css: '#email' } }
 
-  async completePage ({firstName = '', lastName = '', telephone = '', email = ''}) {
+  async completePage ({ firstName = '', lastName = '', telephone = '', email = '' }) {
     await this.waitForPage()
     await this.input(this.firstNameInput, firstName)
     await this.input(this.lastNameInput, lastName)

@@ -5,7 +5,7 @@ class WasteRecoverySelectPage extends FrontEndPageObject {
 
   choice (choice) {
     const id = `selection-${choice.replace(/\s+/g, '-').toLowerCase()}-input`
-    return {css: `#${id}`}
+    return { css: `#${id}` }
   }
 
   async completePage (choice) {
