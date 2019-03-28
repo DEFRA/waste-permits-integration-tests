@@ -86,6 +86,20 @@ defineSupportCode(function ({ Given, When }) {
     return this.pages.frontEnd.facilitySelectPage.completePage(facility)
   })
 
+  When(/^I select (.*) as the type of MCP$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.mcpType = selection.toLowerCase()
+    return this.pages.frontEnd.mcpTypePage.completePage(this.data.mcpType)
+  })
+
+  When(/^I select (.*) as operating under 500 hours$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.under500Hours = selection.toLowerCase() === 'yes'
+    return this.pages.frontEnd.mcpUnder500HoursPage.completePage(this.data.under500Hours)
+  })
+
   When(/^I select the following activities I want the permit to cover: (.*)$/, async function (activities) {
     this.data.activities = activities.split(',').map((activity) => activity.trim())
     return this.pages.frontEnd.activitiesSelectPage.completePage(this.data.activities)
@@ -221,5 +235,16 @@ defineSupportCode(function ({ Given, When }) {
 
     this.data.hasEnvironmentalPermit = selection.toLowerCase()
     return this.pages.frontEnd.mcpEprPage.completePage(this.data.hasEnvironmentalPermit)
+  })
+
+  When(/^I select (.*) to provide an air dispersion modelling report$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.requiresAirDispersionReport = selection.toLowerCase()
+    return this.pages.frontEnd.airDispersionReportPage.completePage(this.data.requiresAirDispersionReport)
+  })
+
+  When(/^I confirm my activities and assessments$/, async function () {
+    return this.pages.frontEnd.confirmActivitiesAndAssessmentsPage.completePage()
   })
 })
