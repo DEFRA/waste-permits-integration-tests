@@ -32,4 +32,4 @@ Feature: CRM end to end Smoke test
     Then I open the application
     Examples:
       | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
-      | Limited company               | Mobile plant for land-spreading or treatment                 | SR2010 No 4  | is not required           | skip             | skip              | skip               | skip     | skip          | WAMITAB               | BACS        |
+#      | Limited company               | Mobile plant for land-spreading or treatment                 | SR2010 No 4  | is not required           | skip             | skip              | skip               | skip     | skip          | WAMITAB               | BACS        |
