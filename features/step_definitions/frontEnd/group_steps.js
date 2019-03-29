@@ -255,4 +255,32 @@ defineSupportCode(function ({ Given, When }) {
   When(/^I confirm my activities and assessments$/, async function () {
     return this.pages.frontEnd.confirmActivitiesAndAssessmentsPage.completePage()
   })
+
+  When(/^I select (.*) rated thermal input between 20MW and 50MW$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.thermalInput20to50MW = selection.toLowerCase()
+    return this.pages.frontEnd.thermalInputPage.completePage(this.data.thermalInput20to50MW === 'yes')
+  })
+
+  When(/^I select (.*) rated thermal input over 20MW$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.thermalInputOver20MW = selection.toLowerCase()
+    return this.pages.frontEnd.burningWasteBiomassPage.completePage(this.data.thermalInputOver20MW === 'yes')
+  })
+
+  When(/^I select (.*) as requiring a habitat assessment$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.requiresHabitatAssessment = selection.toLowerCase()
+    return this.pages.frontEnd.habitatAssessmentPage.completePage(this.data.requiresHabitatAssessment)
+  })
+
+  When(/^I select (.*) when plant is new or refurbished$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.isNewOrRefurbished = selection.toLowerCase()
+    return this.pages.frontEnd.energyEfficiencyReportPage.completePage(this.data.isNewOrRefurbished)
+  })
 })
