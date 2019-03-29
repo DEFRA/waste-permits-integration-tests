@@ -1,7 +1,15 @@
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
 class TaskListPage extends FrontEndPageObject {
-  get title () { return 'Apply for a standard rules environmental permit' }
+  get title () {
+    if (this.data.permitType === 'Bespoke') {
+      return 'Apply for a bespoke environmental permit'
+    } else {
+      return 'Apply for a standard rules environmental permit'
+    }
+  }
+
+  get bespokeTitle () { return 'Apply for a bespoke environmental permit' }
 
   get checkCostAndProcessingTimeLink () { return { css: '#check-permit-cost-and-time-link' } }
   get checkCostAndProcessingTimeCompleted () { return { css: '#cost-and-time-completed' } }
