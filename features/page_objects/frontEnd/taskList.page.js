@@ -47,11 +47,26 @@ class TaskListPage extends FrontEndPageObject {
   get siteNameAndLocationLink () { return { css: '#give-site-name-and-location-link' } }
   get siteNameAndLocationCompleted () { return { css: '#site-name-completed' } }
 
+  get nonTechnicalSummaryLink () { return { css: '#non-technical-summary-link' } }
+  get nonTechnicalSummaryCompleted () { return { css: '#non-technical-summary-completed' } }
+
   get technicalCompetenceLink () { return { css: '#upload-technical-management-qualifications-link' } }
   get technicalCompetenceCompleted () { return { css: '#upload-completed' } }
 
   get sitePlanLink () { return { css: '#upload-the-site-plan-link' } }
   get sitePlanCompleted () { return { css: '#site-plan-completed' } }
+
+  get airDispersionModellingReportLink () { return { css: '#upload-air-dispersion-modelling-report-link' } }
+  get airDispersionModellingReportCompleted () { return { css: '#upload-air-dispersion-modelling-report-completed' } }
+
+  get screeningToolLink () { return { css: '#upload-screening-tool-link' } }
+  get screeningToolCompleted () { return { css: '#screening-tool-completed' } }
+
+  get uploadEnergyEfficiencyReportLink () { return { css: '#upload-energy-efficiency-report-link' } }
+  get uploadEnergyEfficiencyReportCompleted () { return { css: '#upload-energy-efficiency-report-completed' } }
+
+  get uploadBestAvailableTechniquesAssessmentLink () { return { css: '#upload-best-available-techniques-assessment-link' } }
+  get uploadBestAvailableTechniquesAssessmentCompleted () { return { css: '#upload-best-available-techniques-assessment-completed' } }
 
   get invoicingDetailsLink () { return { css: '#invoicing-details-link' } }
   get invoicingDetailsCompleted () { return { css: '#invoicing-details-completed' } }

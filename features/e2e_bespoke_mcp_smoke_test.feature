@@ -20,6 +20,13 @@ Feature: Bespoke MCP end to end Smoke test
     And I enter my permit holder details for <PermitHolder>
     And I enter my contact details
     And I enter my site name and location
+    And I include the download of the generator list template
+    And I include the upload of the generator list
+    And I include the business or activity type
+    And I upload the non-technical summary
+    And I upload the completed screening tool
+    And I upload the energy efficiency report
+    And I upload the best available techniques assessment
     And I enter my invoicing details
     And I confirm my confidentiality needs
 #    And I submit my application
@@ -31,5 +38,5 @@ Feature: Bespoke MCP end to end Smoke test
       | Individual                    | Stationary SG          | no                | skip          | yes                 | skip             | no                 | skip               | yes             |
       | Sole trader                   | Stationary MCP also SG | no                | yes           | skip                | skip             | skip               | skip               | skip            |
       | Limited liability partnership | Mobile SG              | skip              | skip          | skip                | skip             | skip               | skip               | skip            |
-      | Individual                    | Mobile SG also MCP     | skip              | skip          | yes                 | no               | yes                | yes                | skip            |
-      | Public body                   | Mobile SG also MCP     | skip              | skip          | no                  | yes              | no                 | no                 | skip            |
+      | Individual                    | Mobile SG also MCP     | skip              | skip          | skip                | no               | yes                | yes                | skip            |
+      | Public body                   | Mobile SG also MCP     | skip              | skip          | skip                | yes              | no                 | no                 | skip            |
