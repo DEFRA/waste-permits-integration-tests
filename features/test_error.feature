@@ -6,6 +6,8 @@ Feature: Error test trial
         Given the application has been launched
         And I start a new application
         And I select Standard rules as the permit type
+        And I select Car and vehicle dismantling as the permit category
+        And I select SR2015 No 13 as the permit number
         And I select none as the permit holder
         And I should see an error "Select who will be the permit holder"
 
@@ -15,6 +17,8 @@ Feature: Error test trial
         Given the application has been launched
         And I start a new application
         #And I select Standard rules as the permit type
+        And I select Car and vehicle dismantling as the permit category
+        And I select SR2015 No 13 as the permit number
         And I select none as the permit holder
         And I should see an error "Select who will be the permit holder"    
 
@@ -25,7 +29,6 @@ Feature: Error test trial
         Given the application has been launched
         And I start a new application
         And I select Standard rules as the permit type
-        And I select Limited company as the permit holder
         And I select Car and vehicle dismantling as the permit category
         And I select SR2015 No 13 as the permit number
         And I enter a contact with <Field> set to "<Value>"
@@ -43,7 +46,6 @@ Feature: Error test trial
         Given the application has been launched
         And I start a new application
         #And I select Standard rules as the permit type
-        And I select Limited company as the permit holder
         And I select Car and vehicle dismantling as the permit category
         And I select SR2015 No 13 as the permit number
         And I enter a contact with <Field> set to "<Value>"

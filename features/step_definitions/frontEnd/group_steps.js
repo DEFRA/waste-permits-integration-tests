@@ -153,6 +153,12 @@ defineSupportCode(function ({ Given, When }) {
     return this.tasks.permitHolderDetails(this.data.permitHolder, { charity, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody }, this.pages)
   })
 
+  When(/^I enter my permit holder details for (.*)$/, async function (permitHolderType) {
+    const [ permitHolder, actualPermitHolder ] = permitHolderType.split(':').map((type) => type.trim())
+    Object.assign(this.data, { permitHolder, actualPermitHolder })
+    return this.tasks.permitHolderDetails(this.data.permitHolder, { charity, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody }, this.pages)
+  })
+
   When(/^I (.*) the waste recovery plan$/, async function (state) {
     if (state.toLowerCase() === 'skip') return
 

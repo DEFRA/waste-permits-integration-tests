@@ -1,7 +1,7 @@
 Feature: Bespoke MCP end to end Smoke test
 
   @Smoke_dev
-  @Smoke_test @Ben
+  @Smoke_test
   Scenario Outline: As a user I should be able to apply for a bespoke MCP permit when the permit holder is a <PermitHolder>
     Given the application has been launched
     And I start a new application
@@ -18,8 +18,8 @@ Feature: Bespoke MCP end to end Smoke test
     And I select <HabitAssessment> as requiring a habitat assessment
     And I confirm my activities and assessments
     And I save my application
-    And I enter my contact details
     And I enter my permit holder details
+    And I enter my contact details
     And I enter my site name and location
     And I enter my invoicing details
     And I confirm my confidentiality needs
