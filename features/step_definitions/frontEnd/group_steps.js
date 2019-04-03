@@ -55,6 +55,35 @@ const validGeneratorListFiles = [
   { name: file('XLSX-file-test.xlsx') }
 ]
 
+const validNonTechnicalSummaryFiles = [
+  { name: file('PDF-file-test.pdf') },
+  { name: file('DOC-file-test.doc') },
+  { name: file('DOCX-file-test.docx') },
+  { name: file('ODT-file-test.odt') }
+]
+
+const validScreeningToolFiles = [
+  { name: file('XLS-file-test.xls') },
+  { name: file('XLSX-file-test.xlsx') },
+  { name: file('ODS-file-test.ods') },
+  { name: file('PDF-file-test.pdf') }
+]
+
+const validEnergyEfficiencyReportFiles = [
+  { name: file('PDF-file-test.pdf') },
+  { name: file('DOC-file-test.doc') },
+  { name: file('DOCX-file-test.docx') },
+  { name: file('ODT-file-test.odt') }
+]
+
+const validBestAvailableTechniquesAssessmentFiles = [
+  { name: file('PDF-file-test.pdf') },
+  { name: file('DOC-file-test.doc') },
+  { name: file('DOCX-file-test.docx') },
+  { name: file('ODT-file-test.odt') },
+  { name: file('JPG-file-test.jpg') }
+]
+
 defineSupportCode(function ({ Given, When }) {
   Given(/^the application has been launched$/, async function () {
     this.tasks = new Tasks(this)
@@ -159,6 +188,30 @@ defineSupportCode(function ({ Given, When }) {
     if (confirm.toLowerCase() === 'skip') return
 
     return this.tasks.firePreventionPlan(validFirePreventionPlanFiles, this.pages)
+  })
+
+  When(/^I (.*) the non-technical summary$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.nonTechnicalSummary(validNonTechnicalSummaryFiles, this.pages)
+  })
+
+  When(/^I (.*) the completed screening tool$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.screeningTool(validScreeningToolFiles, this.pages)
+  })
+
+  When(/^I (.*) the energy efficiency report$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.uploadEnergyEfficiencyReport(validEnergyEfficiencyReportFiles, this.pages)
+  })
+
+  When(/^I (.*) the best available techniques assessment$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.uploadBestAvailableTechniquesAssessment(validBestAvailableTechniquesAssessmentFiles, this.pages)
   })
 
   When(/^I prove our technical competence as (.*)$/, async function (competence) {

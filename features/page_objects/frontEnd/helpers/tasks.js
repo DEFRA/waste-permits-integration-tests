@@ -257,6 +257,9 @@ class Tasks {
         case 'other organisation': {
           return this.otherPermitHolderDetails(limitedCompany, partnership, pages)
         }
+        case 'none': {
+          return
+        }
         default:
           throw new Error(`Todo: Support for "${permitHolder}"`)
       }
@@ -299,6 +302,20 @@ class Tasks {
     })
   }
 
+  async nonTechnicalSummary (files = [], pages) {
+    const { taskListPage, nonTechnicalSummaryPage } = pages.frontEnd
+    return taskListPage.completeTask('nonTechnicalSummary', async () => {
+      await nonTechnicalSummaryPage.completePage(files)
+    })
+  }
+
+  async screeningTool (files = [], pages) {
+    const { taskListPage, screeningToolPage } = pages.frontEnd
+    return taskListPage.completeTask('screeningTool', async () => {
+      await screeningToolPage.completePage(files)
+    })
+  }
+
   async confirmMiningWaste (miningWaste = {}, pages) {
     const { taskListPage, confirmMiningWastePage, miningWasteWeightPage } = pages.frontEnd
     return taskListPage.completeTask('miningWaste', async () => {
@@ -320,6 +337,20 @@ class Tasks {
     const { taskListPage, sitePlanPage } = pages.frontEnd
     return taskListPage.completeTask('sitePlan', async () => {
       return sitePlanPage.completePage(files)
+    })
+  }
+
+  async uploadEnergyEfficiencyReport (files = [], pages) {
+    const { taskListPage, uploadEnergyEfficiencyReportPage } = pages.frontEnd
+    return taskListPage.completeTask('uploadEnergyEfficiencyReport', async () => {
+      return uploadEnergyEfficiencyReportPage.completePage(files)
+    })
+  }
+
+  async uploadBestAvailableTechniquesAssessment (files = [], pages) {
+    const { taskListPage, uploadBestAvailableTechniquesAssessmentPage } = pages.frontEnd
+    return taskListPage.completeTask('uploadBestAvailableTechniquesAssessment', async () => {
+      return uploadBestAvailableTechniquesAssessmentPage.completePage(files)
     })
   }
 
