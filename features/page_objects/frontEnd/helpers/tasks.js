@@ -231,9 +231,7 @@ class Tasks {
     const { taskListPage, permitHolderSelectPage } = pages.frontEnd
     const { individual, limitedCompany, limitedLiabilityPartnership, partnership, publicBody, soleTrader } = data
     return taskListPage.completeTask('permitHolderDetails', async () => {
-      if (this.data.permitType !== 'Bespoke') {
-        await permitHolderSelectPage.completePage(permitHolder)
-      }
+      await permitHolderSelectPage.completePage(permitHolder)
       switch (permitHolder.toLowerCase()) {
         case 'charity or trust': {
           return this.charityPermitHolderDetails(data, pages)

@@ -6,7 +6,6 @@ Feature: Bespoke MCP end to end Smoke test
     Given the application has been launched
     And I start a new application
     And I select Bespoke as the permit type
-    And I select <PermitHolder> as the permit holder
     And I select Medium combustion plant or specified generator as the type of facility
     And I select <MCPType> as the type of MCP
     And I select <ExistingEPRPermit> as already having an EPR permit
@@ -18,7 +17,7 @@ Feature: Bespoke MCP end to end Smoke test
     And I select <HabitAssessment> as requiring a habitat assessment
     And I confirm my activities and assessments
     And I save my application
-    And I enter my permit holder details
+    And I enter my permit holder details for <PermitHolder>
     And I enter my contact details
     And I enter my site name and location
     And I enter my invoicing details
