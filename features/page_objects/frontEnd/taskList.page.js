@@ -56,8 +56,8 @@ class TaskListPage extends FrontEndPageObject {
   get sitePlanLink () { return { css: '#upload-the-site-plan-link' } }
   get sitePlanCompleted () { return { css: '#site-plan-completed' } }
 
-  get airDispersionModellingReportLink () { return { css: '#upload-air-dispersion-modelling-report-link' } }
-  get airDispersionModellingReportCompleted () { return { css: '#upload-air-dispersion-modelling-report-completed' } }
+  get uploadAirDispersionModellingReportLink () { return { css: '#upload-air-dispersion-modelling-report-link' } }
+  get uploadAirDispersionModellingReportCompleted () { return { css: '#upload-air-dispersion-modelling-report-completed' } }
 
   get screeningToolLink () { return { css: '#upload-screening-tool-link' } }
   get screeningToolCompleted () { return { css: '#screening-tool-completed' } }
