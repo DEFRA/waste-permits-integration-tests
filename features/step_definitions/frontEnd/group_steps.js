@@ -3,86 +3,19 @@ const path = require('path')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
 const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails } = require('../../support/testData')
 
-function file (filename) {
-  return path.join(__dirname, `../../uploadTestFiles/${filename}`)
+function file (type) {
+  return { name: path.join(__dirname, `../../uploadTestFiles/${type}-file-test.${type.toLowerCase()}`) }
 }
 
-const validFirePreventionPlanFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODS-file-test.ods') },
-  { name: file('ODT-file-test.odt') },
-  { name: file('JPG-file-test.jpg') }
-]
-
-const validSitePlanFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODS-file-test.ods') },
-  { name: file('ODT-file-test.odt') },
-  { name: file('JPG-file-test.jpg') }
-]
-
-const validTechnicalQualificationFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODS-file-test.ods') },
-  { name: file('ODT-file-test.odt') },
-  { name: file('JPG-file-test.jpg') }
-]
-
-const validTechnicalManagerFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODT-file-test.odt') }
-]
-
-const validWasteRecoveryPlanFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODT-file-test.odt') }
-]
-
-const validGeneratorListFiles = [
-  { name: file('ODS-file-test.ods') },
-  { name: file('CSV-file-test.csv') },
-  { name: file('XLS-file-test.xls') },
-  { name: file('XLSX-file-test.xlsx') }
-]
-
-const validNonTechnicalSummaryFiles = [
-  { name: file('PDF-file-test.pdf') },
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('ODT-file-test.odt') }
-]
-
-const validScreeningToolFiles = [
-  { name: file('XLS-file-test.xls') },
-  { name: file('XLSX-file-test.xlsx') },
-  { name: file('ODS-file-test.ods') },
-  { name: file('PDF-file-test.pdf') }
-]
-
-const validEnergyEfficiencyReportFiles = [
-  { name: file('PDF-file-test.pdf') },
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('ODT-file-test.odt') }
-]
-
-const validBestAvailableTechniquesAssessmentFiles = [
-  { name: file('PDF-file-test.pdf') },
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('ODT-file-test.odt') },
-  { name: file('JPG-file-test.jpg') }
-]
+const CSV = file('CSV')
+const DOC = file('DOC')
+const DOCX = file('DOCX')
+const PDF = file('PDF')
+const ODS = file('ODS')
+const ODT = file('ODT')
+const JPG = file('JPG')
+const XLS = file('XLS')
+const XLSX = file('XLSX')
 
 defineSupportCode(function ({ Given, When }) {
   Given(/^the application has been launched$/, async function () {
@@ -181,43 +114,49 @@ defineSupportCode(function ({ Given, When }) {
   When(/^I (.*) the waste recovery plan$/, async function (state) {
     if (state.toLowerCase() === 'skip') return
 
-    return this.tasks.wasteRecoveryPlan(state, validWasteRecoveryPlanFiles, this.pages)
+    return this.tasks.wasteRecoveryPlan(state, [DOC, DOCX, PDF, ODT], this.pages)
   })
 
   When(/^I (.*) the fire plan$/, async function (confirm) {
     if (confirm.toLowerCase() === 'skip') return
 
-    return this.tasks.firePreventionPlan(validFirePreventionPlanFiles, this.pages)
+    return this.tasks.firePreventionPlan([DOC, DOCX, PDF, ODS, ODT, JPG], this.pages)
   })
 
   When(/^I (.*) the non-technical summary$/, async function (confirm) {
     if (confirm.toLowerCase() === 'skip') return
 
-    return this.tasks.nonTechnicalSummary(validNonTechnicalSummaryFiles, this.pages)
+    return this.tasks.nonTechnicalSummary([PDF, DOC, DOCX, ODT], this.pages)
   })
 
   When(/^I (.*) the completed screening tool$/, async function (confirm) {
     if (confirm.toLowerCase() === 'skip') return
 
-    return this.tasks.screeningTool(validScreeningToolFiles, this.pages)
+    return this.tasks.screeningTool([XLS, XLSX, ODS, PDF], this.pages)
+  })
+
+  When(/^I (.*) the air dispersion modelling report$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.uploadAirDispersionModellingReport([XLS, XLSX, ODS, PDF], this.pages)
   })
 
   When(/^I (.*) the energy efficiency report$/, async function (confirm) {
     if (confirm.toLowerCase() === 'skip') return
 
-    return this.tasks.uploadEnergyEfficiencyReport(validEnergyEfficiencyReportFiles, this.pages)
+    return this.tasks.uploadEnergyEfficiencyReport([PDF, DOC, DOCX, ODT], this.pages)
   })
 
   When(/^I (.*) the best available techniques assessment$/, async function (confirm) {
     if (confirm.toLowerCase() === 'skip') return
 
-    return this.tasks.uploadBestAvailableTechniquesAssessment(validBestAvailableTechniquesAssessmentFiles, this.pages)
+    return this.tasks.uploadBestAvailableTechniquesAssessment([PDF, DOC, DOCX, ODT, JPG], this.pages)
   })
 
   When(/^I prove our technical competence as (.*)$/, async function (competence) {
     if (competence.toLowerCase() === 'skip') return
 
-    return this.tasks.proveTechnicalCompetence(competence, validTechnicalQualificationFiles, validTechnicalManagerFiles, this.pages)
+    return this.tasks.proveTechnicalCompetence(competence, [DOC, DOCX, PDF, ODS, ODT, JPG], [DOC, DOCX, PDF, ODT], this.pages)
   })
 
   When(/^I (.*) my site name and location$/, async function (confirm) {
@@ -229,7 +168,7 @@ defineSupportCode(function ({ Given, When }) {
   When(/^I (.*) the site plan$/, async function (confirm) {
     if (confirm.toLowerCase() === 'skip') return
 
-    return this.tasks.sitePlan(validSitePlanFiles, this.pages)
+    return this.tasks.sitePlan([DOC, DOCX, PDF, ODS, ODT, JPG], this.pages)
   })
 
   When(/^I enter my invoicing details$/, async function () {
@@ -278,7 +217,7 @@ defineSupportCode(function ({ Given, When }) {
   When(/^I (.*) the upload of the generator list$/, async function (include) {
     if (include.toLowerCase() === 'skip') return
 
-    return this.tasks.mcpDetails(validGeneratorListFiles, this.pages)
+    return this.tasks.mcpDetails([ODS, CSV, XLS, XLSX], this.pages)
   })
 
   When(/^I (.*) the business or activity type$/, async function (include) {

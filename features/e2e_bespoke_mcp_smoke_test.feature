@@ -24,6 +24,7 @@ Feature: Bespoke MCP end to end Smoke test
     And I include the upload of the generator list
     And I include the business or activity type
     And I upload the non-technical summary
+    And I upload the air dispersion modelling report
     And I upload the completed screening tool
     And I upload the energy efficiency report
     And I upload the best available techniques assessment

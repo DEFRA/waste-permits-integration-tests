@@ -354,6 +354,13 @@ class Tasks {
     })
   }
 
+  async uploadAirDispersionModellingReport (files = [], pages) {
+    const { taskListPage, uploadAirDispersionModellingReportPage } = pages.frontEnd
+    return taskListPage.completeTask('uploadAirDispersionModellingReport', async () => {
+      await uploadAirDispersionModellingReportPage.completePage(files)
+    })
+  }
+
   async proveTechnicalCompetence (competence = '', files = [], managersFiles = [], pages) {
     const { taskListPage, technicalCompetenceSelectPage, wamitabEvidencePage, gettingQualificationEvidencePage, deemedEvidencePage, esaeuEvidencePage, technicallyCompetentManagersPage } = pages.frontEnd
     return taskListPage.completeTask('technicalCompetence', async () => {
