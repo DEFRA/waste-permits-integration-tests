@@ -78,12 +78,6 @@ defineSupportCode(function ({ Given, When }) {
     return this.pages.frontEnd.bespokeOrStandardRulesPage.completePage(permitType)
   })
 
-  When(/^I select (.*) as the permit holder$/, async function (permitHolderType) {
-    const [ permitHolder, actualPermitHolder ] = permitHolderType.split(':').map((type) => type.trim())
-    Object.assign(this.data, { permitHolder, actualPermitHolder })
-    return this.pages.frontEnd.permitHolderSelectPage.completePage(permitHolder)
-  })
-
   When(/^I select (.*) as the permit category$/, async function (permitCategory) {
     this.data.permitCategory = permitCategory
     return this.pages.frontEnd.permitCategorySelectPage.completePage(permitCategory)
@@ -149,7 +143,9 @@ defineSupportCode(function ({ Given, When }) {
     return this.tasks.contactDetails(contact, this.pages)
   })
 
-  When(/^I enter my permit holder details$/, async function () {
+  When(/^I enter my permit holder details for (.*)$/, async function (permitHolderType) {
+    const [ permitHolder, actualPermitHolder ] = permitHolderType.split(':').map((type) => type.trim())
+    Object.assign(this.data, { permitHolder, actualPermitHolder })
     return this.tasks.permitHolderDetails(this.data.permitHolder, { charity, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody }, this.pages)
   })
 

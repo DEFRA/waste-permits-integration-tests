@@ -6,7 +6,6 @@ Feature: Standard rules end to end Smoke test
     Given the application has been launched
     And I start a new application
     And I select Standard rules as the permit type
-    And I select <PermitHolder> as the permit holder
     And I select <PermitCategory> as the permit category
     And I select <Permit> as the permit number
     And I select <EprPermit> as already having an EPR permit
@@ -15,8 +14,8 @@ Feature: Standard rules end to end Smoke test
     And I confirm my vehicle storage area <SuitableVehicleStorage>
     And I <GeneratorList> the download of the generator list template
     And I save my application
+    And I enter my permit holder details for <PermitHolder>
     And I enter my contact details
-    And I enter my permit holder details
     And I <GeneratorList> the upload of the generator list
     And I <BusinessActivity> the business or activity type
     And I <EnterSiteName> my site name and location
@@ -57,15 +56,14 @@ Feature: Standard rules end to end Smoke test
     Given the application has been launched
     And I start a new application
     #And I select Standard rules as the permit type
-    And I select <PermitHolder> as the permit holder
     And I select <PermitCategory> as the permit category
     And I select <Permit> as the permit number
     And I check costs
     And I confirm I meet the rules
     And I confirm my vehicle storage area <SuitableVehicleStorage>
     And I save my application
+    And I enter my permit holder details for <PermitHolder>
     And I enter my contact details
-    And I enter my permit holder details
     And I <EnterSiteName> my site name and location
     And I <EnterMiningWaste> confirmation of mining waste weight
     And I <WasteRecoveryPlan> the waste recovery plan
