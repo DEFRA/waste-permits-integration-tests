@@ -86,10 +86,13 @@ class TaskListPage extends FrontEndPageObject {
     await this.isAbsent(this[`${name}Completed`])
     await this.click(this[`${name}Link`])
 
-    await task()
+    const taskComplete = Boolean(await task())
 
-    await this.waitForPage()
-    return this.hasText(this[`${name}Completed`], 'COMPLETED')
+    if (taskComplete) {
+      // Only return to the task list when the task is complete
+      await this.waitForPage()
+      return this.hasText(this[`${name}Completed`], 'COMPLETED')
+    }
   }
 
   async selectTask (link) {
