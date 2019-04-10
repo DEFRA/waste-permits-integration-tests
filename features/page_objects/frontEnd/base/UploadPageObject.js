@@ -1,10 +1,10 @@
 const FrontEndPageObject = require('./FrontEndPageObject').FrontEndPageObject
 
 class UploadPageObject extends FrontEndPageObject {
-  get uploadFileInput () { return {css: '#file'} }
-  get uploadFileCheckbox () { return {css: '#is-upload-file'} }
+  get uploadFileInput () { return { css: '#file' } }
+  get uploadFileCheckbox () { return { css: '#is-upload-file' } }
 
-  fileUploaded (index) { return {css: `#file-${index}`} }
+  fileUploaded (index) { return { css: `#file-${index}` } }
 
   async _uploadFile (file, index) {
     if (index > 0) {
@@ -28,4 +28,4 @@ class UploadPageObject extends FrontEndPageObject {
   }
 }
 
-module.exports = {UploadPageObject}
+module.exports = { UploadPageObject }

@@ -2,13 +2,15 @@ const config = require('../../../../config')
 const PageObject = require('./../../base/PageObject').PageObject
 
 class FrontEndPageObject extends PageObject {
-  get continueButton () { return {css: '#submit-button'} }
+  get continueButton () { return { css: '#submit-button' } }
 
-  get pageHeading () { return {css: '#page-heading'} }
+  get pageHeading () { return { css: '#page-heading' } }
 
-  get pageHeadingGovUK () { return {className: 'govuk-heading-l'} }
+  get pageHeadingGovUK () { return { className: 'govuk-heading-l' } }
 
-  get errorMsg () { return {css: '#error-summary-list'} }
+  get errorMsg () { return { css: '#error-summary-list' } }
+
+  get backLink () { return { id: 'back-link' } }
 
   /****************************************************************************/
 
@@ -38,4 +40,4 @@ class FrontEndPageObject extends PageObject {
   }
 }
 
-module.exports = {FrontEndPageObject}
+module.exports = { FrontEndPageObject }

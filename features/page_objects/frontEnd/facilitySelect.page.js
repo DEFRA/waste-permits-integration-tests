@@ -10,6 +10,8 @@ class FacilitySelectPage extends FrontEndPageObject {
 
   get 'Installation' () { return findInput('installation') }
   get 'Waste operation' () { return findInput('waste') }
+  get 'Landfill and deposit for recovery' () { return findInput('landfill') }
+  get 'Medium combustion plant or specified generator' () { return findInput('mcp') }
   get 'Mining waste operation' () { return findInput('mining') }
   get 'Water discharge' () { return findInput('discharge') }
   get 'Groundwater activity' () { return findInput('groundwater') }

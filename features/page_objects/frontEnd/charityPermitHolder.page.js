@@ -3,9 +3,9 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class CharityPermitHolderPage extends FrontEndPageObject {
   get title () { return 'Choose the permit holder for the charity or trust' }
 
-  get limitedCompanyRadio () { return {css: '#registered-company-type'} }
-  get individualRadio () { return {css: '#individual-type'} }
-  get publicBodyRadio () { return {css: '#legal-body-type'} }
+  get limitedCompanyRadio () { return { css: '#registered-company-type' } }
+  get individualRadio () { return { css: '#individual-type' } }
+  get publicBodyRadio () { return { css: '#legal-body-type' } }
 
   /****************************************************************************/
 

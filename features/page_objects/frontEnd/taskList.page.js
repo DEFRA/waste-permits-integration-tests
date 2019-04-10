@@ -1,60 +1,83 @@
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
 class TaskListPage extends FrontEndPageObject {
-  get title () { return 'Apply for a standard rules environmental permit' }
+  get title () {
+    if (this.data.permitType === 'Bespoke') {
+      return 'Apply for a bespoke environmental permit'
+    } else {
+      return 'Apply for a standard rules environmental permit'
+    }
+  }
 
-  get checkCostAndProcessingTimeLink () { return {css: '#check-permit-cost-and-time-link'} }
-  get checkCostAndProcessingTimeCompleted () { return {css: '#cost-and-time-completed'} }
+  get bespokeTitle () { return 'Apply for a bespoke environmental permit' }
 
-  get confirmOperationMeetsRulesLink () { return {css: '#confirm-that-your-operation-meets-the-rules-link'} }
-  get confirmOperationMeetsRulesCompleted () { return {css: '#operation-rules-completed'} }
+  get checkCostAndProcessingTimeLink () { return { css: '#check-permit-cost-and-time-link' } }
+  get checkCostAndProcessingTimeCompleted () { return { css: '#cost-and-time-completed' } }
 
-  get confirmSuitableVehicleStorageLink () { return {css: '#confirm-the-drainage-system-for-the-vehicle-storage-area-link'} }
-  get confirmSuitableVehicleStorageCompleted () { return {css: '#confirm-drainage-completed'} }
+  get confirmOperationMeetsRulesLink () { return { css: '#confirm-that-your-operation-meets-the-rules-link' } }
+  get confirmOperationMeetsRulesCompleted () { return { css: '#operation-rules-completed' } }
 
-  get mcpTemplateLink () { return {css: '#mcp-template-link'} }
-  get mcpTemplateCompleted () { return {css: '#mcp-template-completed'} }
+  get confirmSuitableVehicleStorageLink () { return { css: '#confirm-the-drainage-system-for-the-vehicle-storage-area-link' } }
+  get confirmSuitableVehicleStorageCompleted () { return { css: '#confirm-drainage-completed' } }
 
-  get mcpDetailsLink () { return {css: '#mcp-details-link'} }
-  get mcpDetailsCompleted () { return {css: '#mcp-details-completed'} }
+  get mcpTemplateLink () { return { css: '#mcp-template-link' } }
+  get mcpTemplateCompleted () { return { css: '#mcp-template-completed' } }
 
-  get mcpBusinessActivityLink () { return {css: '#mcp-business-activity-link'} }
-  get mcpBusinessActivityCompleted () { return {css: '#business-activity-completed'} }
+  get mcpDetailsLink () { return { css: '#mcp-details-link' } }
+  get mcpDetailsCompleted () { return { css: '#mcp-details-completed' } }
 
-  get saveApplicationLink () { return {css: '#set-up-save-and-return-link'} }
-  get saveApplicationCompleted () { return {css: '#set-up-save-and-return-completed'} }
+  get mcpBusinessActivityLink () { return { css: '#mcp-business-activity-link' } }
+  get mcpBusinessActivityCompleted () { return { css: '#business-activity-completed' } }
 
-  get contactDetailsLink () { return {css: '#give-contact-details-link'} }
-  get contactDetailsCompleted () { return {css: '#contact-details-completed'} }
+  get saveApplicationLink () { return { css: '#set-up-save-and-return-link' } }
+  get saveApplicationCompleted () { return { css: '#set-up-save-and-return-completed' } }
 
-  get permitHolderDetailsLink () { return {css: '#give-permit-holder-details-link'} }
-  get permitHolderDetailsCompleted () { return {css: '#site-operator-completed'} }
+  get contactDetailsLink () { return { css: '#give-contact-details-link' } }
+  get contactDetailsCompleted () { return { css: '#contact-details-completed' } }
 
-  get firePreventionPlanLink () { return {css: '#upload-the-fire-prevention-plan-link'} }
-  get firePreventionPlanCompleted () { return {css: '#firepp-completed'} }
+  get permitHolderDetailsLink () { return { css: '#give-permit-holder-details-link' } }
+  get permitHolderDetailsCompleted () { return { css: '#site-operator-completed' } }
 
-  get wasteRecoveryPlanLink () { return {css: '#waste-recovery-plan-link'} }
-  get wasteRecoveryPlanCompleted () { return {css: '#waste-recovery-plan-completed'} }
+  get firePreventionPlanLink () { return { css: '#upload-the-fire-prevention-plan-link' } }
+  get firePreventionPlanCompleted () { return { css: '#firepp-completed' } }
 
-  get siteNameAndLocationLink () { return {css: '#give-site-name-and-location-link'} }
-  get siteNameAndLocationCompleted () { return {css: '#site-name-completed'} }
+  get wasteRecoveryPlanLink () { return { css: '#waste-recovery-plan-link' } }
+  get wasteRecoveryPlanCompleted () { return { css: '#waste-recovery-plan-completed' } }
 
-  get technicalCompetenceLink () { return {css: '#upload-technical-management-qualifications-link'} }
-  get technicalCompetenceCompleted () { return {css: '#upload-completed'} }
+  get siteNameAndLocationLink () { return { css: '#give-site-name-and-location-link' } }
+  get siteNameAndLocationCompleted () { return { css: '#site-name-completed' } }
 
-  get sitePlanLink () { return {css: '#upload-the-site-plan-link'} }
-  get sitePlanCompleted () { return {css: '#site-plan-completed'} }
+  get nonTechnicalSummaryLink () { return { css: '#non-technical-summary-link' } }
+  get nonTechnicalSummaryCompleted () { return { css: '#non-technical-summary-completed' } }
 
-  get invoicingDetailsLink () { return {css: '#invoicing-details-link'} }
-  get invoicingDetailsCompleted () { return {css: '#invoicing-details-completed'} }
+  get technicalCompetenceLink () { return { css: '#upload-technical-management-qualifications-link' } }
+  get technicalCompetenceCompleted () { return { css: '#upload-completed' } }
 
-  get confirmConfidentialityNeedsLink () { return {css: '#confirm-confidentiality-needs-link'} }
-  get confirmConfidentialityNeedsCompleted () { return {css: '#confidentiality-completed'} }
+  get sitePlanLink () { return { css: '#upload-the-site-plan-link' } }
+  get sitePlanCompleted () { return { css: '#site-plan-completed' } }
 
-  get miningWasteLink () { return {css: '#confirm-mining-data-link'} }
-  get miningWasteCompleted () { return {css: '#mining-data-completed'} }
+  get uploadAirDispersionModellingReportLink () { return { css: '#upload-air-dispersion-modelling-report-link' } }
+  get uploadAirDispersionModellingReportCompleted () { return { css: '#upload-air-dispersion-modelling-report-completed' } }
 
-  get submitPayLink () { return {css: '#submit-pay-link'} }
+  get screeningToolLink () { return { css: '#upload-screening-tool-link' } }
+  get screeningToolCompleted () { return { css: '#screening-tool-completed' } }
+
+  get uploadEnergyEfficiencyReportLink () { return { css: '#upload-energy-efficiency-report-link' } }
+  get uploadEnergyEfficiencyReportCompleted () { return { css: '#upload-energy-efficiency-report-completed' } }
+
+  get uploadBestAvailableTechniquesAssessmentLink () { return { css: '#upload-best-available-techniques-assessment-link' } }
+  get uploadBestAvailableTechniquesAssessmentCompleted () { return { css: '#upload-best-available-techniques-assessment-completed' } }
+
+  get invoicingDetailsLink () { return { css: '#invoicing-details-link' } }
+  get invoicingDetailsCompleted () { return { css: '#invoicing-details-completed' } }
+
+  get confirmConfidentialityNeedsLink () { return { css: '#confirm-confidentiality-needs-link' } }
+  get confirmConfidentialityNeedsCompleted () { return { css: '#confidentiality-completed' } }
+
+  get miningWasteLink () { return { css: '#confirm-mining-data-link' } }
+  get miningWasteCompleted () { return { css: '#mining-data-completed' } }
+
+  get submitPayLink () { return { css: '#submit-pay-link' } }
 
   /****************************************************************************/
 
@@ -63,10 +86,13 @@ class TaskListPage extends FrontEndPageObject {
     await this.isAbsent(this[`${name}Completed`])
     await this.click(this[`${name}Link`])
 
-    await task()
+    const taskComplete = Boolean(await task())
 
-    await this.waitForPage()
-    return this.hasText(this[`${name}Completed`], 'COMPLETED')
+    if (taskComplete) {
+      // Only return to the task list when the task is complete
+      await this.waitForPage()
+      return this.hasText(this[`${name}Completed`], 'COMPLETED')
+    }
   }
 
   async selectTask (link) {

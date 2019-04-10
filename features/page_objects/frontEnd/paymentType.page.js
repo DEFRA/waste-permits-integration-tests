@@ -3,8 +3,8 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class PaymentTypePage extends FrontEndPageObject {
   get title () { return 'How do you want to pay?' }
 
-  get bacsPaymentRadio () { return {css: '#bacs-payment'} }
-  get cardPaymentRadio () { return {css: '#card-payment'} }
+  get bacsPaymentRadio () { return { css: '#bacs-payment' } }
+  get cardPaymentRadio () { return { css: '#card-payment' } }
 
   async completePage (paymentType) {
     await this.waitForPage()

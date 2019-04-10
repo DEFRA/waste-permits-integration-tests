@@ -7,15 +7,14 @@ Feature: CRM end to end Smoke test
     Given the application has been launched
     And I start a new application
     And I select Standard rules as the permit type
-    And I select <PermitHolder> as the permit holder
     And I select <PermitCategory> as the permit category
     And I select <Permit> as the permit number
     And I check costs
     And I confirm I meet the rules
     And I confirm my vehicle storage area <SuitableVehicleStorage>
     And I save my application
+    And I enter my permit holder details for <PermitHolder>
     And I enter my contact details
-    And I enter my permit holder details
     And I <EnterSiteName> my site name and location
     And I <EnterMiningWaste> confirmation of mining waste weight
     And I <WasteRecoveryPlan> the waste recovery plan
@@ -32,4 +31,4 @@ Feature: CRM end to end Smoke test
     Then I open the application
     Examples:
       | PermitHolder                  | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
-      | Limited company               | Mobile plant for land-spreading or treatment                 | SR2010 No 4  | is not required           | skip             | skip              | skip               | skip     | skip          | WAMITAB               | BACS        |
+#      | Limited company               | Mobile plant for land-spreading or treatment                 | SR2010 No 4  | is not required           | skip             | skip              | skip               | skip     | skip          | WAMITAB               | BACS        |

@@ -7,7 +7,7 @@ defineSupportCode(function ({ Given, When }) {
     return driver.takeScreenshotsAfterFailure()
   })
 
-  Given(/^the CRM application has been launched$/, {timeout: 20000000}, async function () {
+  Given(/^the CRM application has been launched$/, { timeout: 20000000 }, async function () {
     return this.application.launchCRM(this.appConfiguration)
   })
 
@@ -15,7 +15,7 @@ defineSupportCode(function ({ Given, When }) {
     const { loginPage } = this.pages.backEnd
     switch (user.toLowerCase()) {
       case 'p&sc':
-        return loginPage.completePage({username: config.user1PSCCRM, password: config.pass1PSCCRM})
+        return loginPage.completePage({ username: config.user1PSCCRM, password: config.pass1PSCCRM })
       default:
         throw new Error(`Todo: Support for "${user}"`)
     }
@@ -30,6 +30,13 @@ defineSupportCode(function ({ Given, When }) {
     return applicationPage.withApplication(applicationNumber, async () => {
       return Promise.resolve(true)
     })
+  })
+
+  When(/^the application is created successfully in CRM$/, { timeout: 2000000 }, async function () {
+    const { applicationsListPage } = this.pages.backEnd
+    const token = await applicationsListPage.getToken()
+    const { applicationNumber } = this.data
+    await applicationsListPage.retrieveandValidateApplication(applicationNumber, token)
   })
 
   When(/^I set the application as "(.*)"$/, async function (applicationNumber) {

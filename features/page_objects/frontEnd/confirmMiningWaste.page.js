@@ -3,8 +3,8 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class ConfirmMiningWastePage extends FrontEndPageObject {
   get title () { return 'Which mining waste plan will you use?' }
 
-  get 'Water based' () { return {css: '#water-based'} }
-  get 'Water and oil based' () { return {css: '#water-and-oil-based'} }
+  get 'Water based' () { return { css: '#water-based' } }
+  get 'Water and oil based' () { return { css: '#water-and-oil-based' } }
 
   /****************************************************************************/
 

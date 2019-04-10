@@ -5,7 +5,7 @@ class TechnicalCompetenceSelectPage extends FrontEndPageObject {
 
   competence (competence) {
     const id = competence.replace(/\s+/g, '-').toLowerCase()
-    return {css: `#${id}`}
+    return { css: `#${id}` }
   }
 
   async completePage (competence) {

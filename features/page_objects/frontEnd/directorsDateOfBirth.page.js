@@ -6,7 +6,7 @@ class DirectorsDateOfBirthPage extends FrontEndPageObject {
   get limitedLiabilityPartnershipTitle () { return `What is the member's date of birth?` }
   get alternateLimitedLiabilityPartnershipTitle () { return `What are the members' dates of birth?` }
 
-  directorsDayOfBirthInput (index) { return {css: `#director-dob-day-${index}`} }
+  directorsDayOfBirthInput (index) { return { css: `#director-dob-day-${index}` } }
 
   async completePage (directors, title) {
     if (directors.length > 1) {

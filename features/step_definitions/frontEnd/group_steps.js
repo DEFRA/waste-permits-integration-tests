@@ -1,59 +1,21 @@
 const { defineSupportCode } = require('cucumber')
 const path = require('path')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
-const {email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails} = require('../../support/testData')
+const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails } = require('../../support/testData')
 
-function file (filename) {
-  return path.join(__dirname, `../../uploadTestFiles/${filename}`)
+function file (type) {
+  return { name: path.join(__dirname, `../../uploadTestFiles/${type}-file-test.${type.toLowerCase()}`) }
 }
 
-const validFirePreventionPlanFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODS-file-test.ods') },
-  { name: file('ODT-file-test.odt') },
-  { name: file('JPG-file-test.jpg') }
-]
-
-const validSitePlanFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODS-file-test.ods') },
-  { name: file('ODT-file-test.odt') },
-  { name: file('JPG-file-test.jpg') }
-]
-
-const validTechnicalQualificationFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODS-file-test.ods') },
-  { name: file('ODT-file-test.odt') },
-  { name: file('JPG-file-test.jpg') }
-]
-
-const validTechnicalManagerFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODT-file-test.odt') }
-]
-
-const validWasteRecoveryPlanFiles = [
-  { name: file('DOC-file-test.doc') },
-  { name: file('DOCX-file-test.docx') },
-  { name: file('PDF-file-test.pdf') },
-  { name: file('ODT-file-test.odt') }
-]
-
-const validGeneratorListFiles = [
-  { name: file('ODS-file-test.ods') },
-  { name: file('CSV-file-test.csv') },
-  { name: file('XLS-file-test.xls') },
-  { name: file('XLSX-file-test.xlsx') }
-]
+const CSV = file('CSV')
+const DOC = file('DOC')
+const DOCX = file('DOCX')
+const PDF = file('PDF')
+const ODS = file('ODS')
+const ODT = file('ODT')
+const JPG = file('JPG')
+const XLS = file('XLS')
+const XLSX = file('XLSX')
 
 defineSupportCode(function ({ Given, When }) {
   Given(/^the application has been launched$/, async function () {
@@ -65,15 +27,17 @@ defineSupportCode(function ({ Given, When }) {
     return this.pages.frontEnd.startOrOpenSavedPage.completePage()
   })
 
+  When(/^I select all plans to access$/, async function () {
+    return this.pages.frontEnd.whatPlansDoWeNeedToAssesPage.completePage()
+  })
+
+  When(/^I confirm activities and assessments$/, async function () {
+    return this.pages.frontEnd.confirmActivitiesAndAssessmentsPage.completePageValidation()
+  })
+
   When(/^I select (.*) as the permit type$/, async function (permitType) {
     this.data.permitType = permitType
     return this.pages.frontEnd.bespokeOrStandardRulesPage.completePage(permitType)
-  })
-
-  When(/^I select (.*) as the permit holder$/, async function (permitHolderType) {
-    const [ permitHolder, actualPermitHolder ] = permitHolderType.split(':').map((type) => type.trim())
-    Object.assign(this.data, { permitHolder, actualPermitHolder })
-    return this.pages.frontEnd.permitHolderSelectPage.completePage(permitHolder)
   })
 
   When(/^I select (.*) as the permit category$/, async function (permitCategory) {
@@ -84,6 +48,20 @@ defineSupportCode(function ({ Given, When }) {
   When(/^I select (.*) as the type of facility$/, async function (facility) {
     this.data.facility = facility
     return this.pages.frontEnd.facilitySelectPage.completePage(facility)
+  })
+
+  When(/^I select (.*) as the type of MCP$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.mcpType = selection.toLowerCase()
+    return this.pages.frontEnd.mcpTypePage.completePage(this.data.mcpType)
+  })
+
+  When(/^I select (.*) as operating under 500 hours$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.under500Hours = selection.toLowerCase() === 'yes'
+    return this.pages.frontEnd.mcpUnder500HoursPage.completePage(this.data.under500Hours)
   })
 
   When(/^I select the following activities I want the permit to cover: (.*)$/, async function (activities) {
@@ -127,26 +105,58 @@ defineSupportCode(function ({ Given, When }) {
     return this.tasks.contactDetails(contact, this.pages)
   })
 
-  When(/^I enter my permit holder details$/, async function () {
-    return this.tasks.permitHolderDetails(this.data.permitHolder, {charity, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody}, this.pages)
+  When(/^I enter my permit holder details for (.*)$/, async function (permitHolderType) {
+    const [ permitHolder, actualPermitHolder ] = permitHolderType.split(':').map((type) => type.trim())
+    Object.assign(this.data, { permitHolder, actualPermitHolder })
+    return this.tasks.permitHolderDetails(this.data.permitHolder, { charity, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, partnership, publicBody }, this.pages)
   })
 
   When(/^I (.*) the waste recovery plan$/, async function (state) {
     if (state.toLowerCase() === 'skip') return
 
-    return this.tasks.wasteRecoveryPlan(state, validWasteRecoveryPlanFiles, this.pages)
+    return this.tasks.wasteRecoveryPlan(state, [DOC, DOCX, PDF, ODT], this.pages)
   })
 
   When(/^I (.*) the fire plan$/, async function (confirm) {
     if (confirm.toLowerCase() === 'skip') return
 
-    return this.tasks.firePreventionPlan(validFirePreventionPlanFiles, this.pages)
+    return this.tasks.firePreventionPlan([DOC, DOCX, PDF, ODS, ODT, JPG], this.pages)
+  })
+
+  When(/^I (.*) the non-technical summary$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.nonTechnicalSummary([PDF, DOC, DOCX, ODT], this.pages)
+  })
+
+  When(/^I (.*) the completed screening tool$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.screeningTool([XLS, XLSX, ODS, PDF], this.pages)
+  })
+
+  When(/^I (.*) the air dispersion modelling report$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.uploadAirDispersionModellingReport([XLS, XLSX, ODS, PDF], this.pages)
+  })
+
+  When(/^I (.*) the energy efficiency report$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.uploadEnergyEfficiencyReport([PDF, DOC, DOCX, ODT], this.pages)
+  })
+
+  When(/^I (.*) the best available techniques assessment$/, async function (confirm) {
+    if (confirm.toLowerCase() === 'skip') return
+
+    return this.tasks.uploadBestAvailableTechniquesAssessment([PDF, DOC, DOCX, ODT, JPG], this.pages)
   })
 
   When(/^I prove our technical competence as (.*)$/, async function (competence) {
     if (competence.toLowerCase() === 'skip') return
 
-    return this.tasks.proveTechnicalCompetence(competence, validTechnicalQualificationFiles, validTechnicalManagerFiles, this.pages)
+    return this.tasks.proveTechnicalCompetence(competence, [DOC, DOCX, PDF, ODS, ODT, JPG], [DOC, DOCX, PDF, ODT], this.pages)
   })
 
   When(/^I (.*) my site name and location$/, async function (confirm) {
@@ -158,7 +168,7 @@ defineSupportCode(function ({ Given, When }) {
   When(/^I (.*) the site plan$/, async function (confirm) {
     if (confirm.toLowerCase() === 'skip') return
 
-    return this.tasks.sitePlan(validSitePlanFiles, this.pages)
+    return this.tasks.sitePlan([DOC, DOCX, PDF, ODS, ODT, JPG], this.pages)
   })
 
   When(/^I enter my invoicing details$/, async function () {
@@ -207,7 +217,7 @@ defineSupportCode(function ({ Given, When }) {
   When(/^I (.*) the upload of the generator list$/, async function (include) {
     if (include.toLowerCase() === 'skip') return
 
-    return this.tasks.mcpDetails(validGeneratorListFiles, this.pages)
+    return this.tasks.mcpDetails([ODS, CSV, XLS, XLSX], this.pages)
   })
 
   When(/^I (.*) the business or activity type$/, async function (include) {
@@ -221,5 +231,44 @@ defineSupportCode(function ({ Given, When }) {
 
     this.data.hasEnvironmentalPermit = selection.toLowerCase()
     return this.pages.frontEnd.mcpEprPage.completePage(this.data.hasEnvironmentalPermit)
+  })
+
+  When(/^I select (.*) to provide an air dispersion modelling report$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.requiresAirDispersionReport = selection.toLowerCase()
+    return this.pages.frontEnd.airDispersionReportPage.completePage(this.data.requiresAirDispersionReport)
+  })
+
+  When(/^I confirm my activities and assessments$/, async function () {
+    return this.pages.frontEnd.confirmActivitiesAndAssessmentsPage.completePage()
+  })
+
+  When(/^I select (.*) rated thermal input between 20MW and 50MW$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.thermalInput20to50MW = selection.toLowerCase()
+    return this.pages.frontEnd.thermalInputPage.completePage(this.data.thermalInput20to50MW === 'yes')
+  })
+
+  When(/^I select (.*) rated thermal input over 20MW$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.thermalInputOver20MW = selection.toLowerCase()
+    return this.pages.frontEnd.burningWasteBiomassPage.completePage(this.data.thermalInputOver20MW === 'yes')
+  })
+
+  When(/^I select (.*) as requiring a habitat assessment$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.requiresHabitatAssessment = selection.toLowerCase()
+    return this.pages.frontEnd.habitatAssessmentPage.completePage(this.data.requiresHabitatAssessment)
+  })
+
+  When(/^I select (.*) when plant is new or refurbished$/, async function (selection) {
+    if (selection.toLowerCase() === 'skip') return
+
+    this.data.isNewOrRefurbished = selection.toLowerCase()
+    return this.pages.frontEnd.energyEfficiencyReportPage.completePage(this.data.isNewOrRefurbished)
   })
 })

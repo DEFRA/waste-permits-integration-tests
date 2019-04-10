@@ -2,7 +2,7 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 
 class ConfirmPaymentPage extends FrontEndPageObject {
   get title () { return 'Confirm your payment' }
-  get confirmPaymentButton () { return {id: 'confirm'} }
+  get confirmPaymentButton () { return { id: 'confirm' } }
 
   async completePage (title) {
     await this.waitForGovUKPage(title)

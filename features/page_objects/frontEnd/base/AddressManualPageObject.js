@@ -1,13 +1,13 @@
 const FrontEndPageObject = require('./FrontEndPageObject').FrontEndPageObject
 
 class AddressManualPageObject extends FrontEndPageObject {
-  get buildingNameOrNumberInput () { return {css: '#building-name-or-number'} }
-  get addressLine1Input () { return {css: '#address-line-1'} }
-  get addressLine2Input () { return {css: '#address-line-2'} }
-  get townOrCityInput () { return {css: '#town-or-city'} }
-  get postcodeInput () { return {css: '#postcode'} }
+  get buildingNameOrNumberInput () { return { css: '#building-name-or-number' } }
+  get addressLine1Input () { return { css: '#address-line-1' } }
+  get addressLine2Input () { return { css: '#address-line-2' } }
+  get townOrCityInput () { return { css: '#town-or-city' } }
+  get postcodeInput () { return { css: '#postcode' } }
 
-  async completePage ({buildingNameOrNumber, addressLine1, addressLine2, townOrCity, postcode}, title) {
+  async completePage ({ buildingNameOrNumber, addressLine1, addressLine2, townOrCity, postcode }, title) {
     await this.waitForPage(title)
 
     await this.input(this.buildingNameOrNumberInput, buildingNameOrNumber)
@@ -20,4 +20,4 @@ class AddressManualPageObject extends FrontEndPageObject {
   }
 }
 
-module.exports = {AddressManualPageObject}
+module.exports = { AddressManualPageObject }

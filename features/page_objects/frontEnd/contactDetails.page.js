@@ -3,14 +3,14 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class ContactDetailsPage extends FrontEndPageObject {
   get title () { return 'Who should we contact about this application?' }
 
-  get firstNameInput () { return {css: '#first-name'} }
-  get lastNameInput () { return {css: '#last-name'} }
-  get isAgentCheckbox () { return {css: '#is-contact-an-agent'} }
-  get agentCompanyInput () { return {css: '#agent-company'} }
-  get telephoneInput () { return {css: '#telephone'} }
-  get emailInput () { return {css: '#email'} }
+  get firstNameInput () { return { css: '#first-name' } }
+  get lastNameInput () { return { css: '#last-name' } }
+  get isAgentCheckbox () { return { css: '#is-contact-an-agent' } }
+  get agentCompanyInput () { return { css: '#agent-company' } }
+  get telephoneInput () { return { css: '#telephone' } }
+  get emailInput () { return { css: '#email' } }
 
-  async completePage ({firstName = '', lastName = '', agentCompany = '', telephone = '', email = ''}) {
+  async completePage ({ firstName = '', lastName = '', agentCompany = '', telephone = '', email = '' }) {
     await this.waitForPage()
     await this.input(this.firstNameInput, firstName)
     await this.input(this.lastNameInput, lastName)
