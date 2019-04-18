@@ -1,7 +1,10 @@
 {
   "name": "waste-permits-integration-tests",
   "version": "1.14.0",
-  "description": "",
+  "engines": {
+    "node": "10.x"
+  },
+  "description": "This package runs integrations tests for the DEFRA Waste Permits Service https://github.com/DEFRA/waste-permits",
   "author": "Department for Environment, Food & Rural Affairs",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
@@ -16,14 +19,12 @@
     "type": "git",
     "url": "git+https://github.com/DEFRA/waste-permits-integration-tests.git"
   },
-  "engines": {
-    "node": "8.x"
-  },
   "bugs": {
     "url": "https://github.com/ajaxscape/waste-permits-integration/issues"
   },
   "homepage": "https://github.com/ajaxscape/waste-permits-integration#readme",
   "dependencies": {
+    "ajv": "^5.5.2",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "command-line-args": "^5.0.2",
