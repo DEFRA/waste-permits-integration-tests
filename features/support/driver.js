@@ -168,8 +168,8 @@ class Driver {
 
   async takeScreenshotsAfterFailure (filename) {
     const browser = this.browser
-    const filenameNoSpecialChars = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()
-    const titleDateStamp = filenameNoSpecialChars + Date.now() + '.png'
+    const filenameNoSpecialChars = filename.substring(0, 250).replace(/[^a-z0-9]/gi, '_').toLowerCase()
+    const titleDateStamp = '_>>>_' + filenameNoSpecialChars + Date.now() + '.png'
     if (!fs.existsSync('AllScreenshots')) {
       fs.mkdirSync('AllScreenshots')
     }
