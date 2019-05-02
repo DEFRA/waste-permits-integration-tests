@@ -12,7 +12,7 @@ class McpTypePage extends FrontEndPageObject {
   get 'stationary sg' () { return findInput('stationary-sg') }
   get 'stationary mcp also sg' () { return findInput('stationary-mcp-sg') }
   get 'mobile sg' () { return findInput('mobile-sg') }
-  get 'mobile sg also mcp' () { return findInput('mobile-sg-mcp') }
+  get 'mobile mcp' () { return findInput('mobile-mcp') }
 
   async completePage (mcpType) {
     await this.waitForPage()
