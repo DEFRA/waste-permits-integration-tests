@@ -1,7 +1,7 @@
 Feature: Tests to check Standard rules which are applicable online and SR's which are applicable for download form
 
   @Smoke_dev
-  @Smoke_test @Ben
+  @Smoke_test
   Scenario Outline: As a user, I should be able to fill the forms online for the online permit <Permit>
     Given the application has been launched
     And I start a new application

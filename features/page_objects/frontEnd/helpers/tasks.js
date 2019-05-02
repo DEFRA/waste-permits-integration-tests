@@ -403,6 +403,20 @@ class Tasks {
     })
   }
 
+  async aqmaDetails (aqmaDetailsRequired, aqmaDetails, pages) {
+    const { taskListPage, aqmaDetailsPage } = pages.frontEnd
+    return taskListPage.completeTask('aqmaDetails', async () => {
+      return aqmaDetailsPage.completePage(aqmaDetailsRequired, aqmaDetails)
+    })
+  }
+
+  async businessActivity (naceCode, pages) {
+    const { taskListPage, businessActivityPage } = pages.frontEnd
+    return taskListPage.completeTask('businessActivity', async () => {
+      return businessActivityPage.completePage(naceCode)
+    })
+  }
+
   async addressDetails (address, addressSelectPage, addressManualPage, title) {
     if (this.data.selectAddress) {
       return addressSelectPage.completePage(address, title)

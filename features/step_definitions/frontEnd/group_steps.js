@@ -1,7 +1,7 @@
 const { defineSupportCode } = require('cucumber')
 const path = require('path')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
-const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails } = require('../../support/testData')
+const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails, aqmaDetails } = require('../../support/testData')
 
 function file (type) {
   return { name: path.join(__dirname, `../../uploadTestFiles/${type}-file-test.${type.toLowerCase()}`) }
@@ -23,6 +23,11 @@ defineSupportCode(function ({ Given, When }) {
     return this.application.launch(this.appConfiguration)
   })
 
+  Given(/^the application has been launched at (.*)$/, async function (path) {
+    this.tasks = new Tasks(this)
+    return this.application.launch(this.appConfiguration, path)
+  })
+
   When(/^I start a new application$/, async function () {
     return this.pages.frontEnd.startOrOpenSavedPage.completePage()
   })
@@ -36,6 +41,8 @@ defineSupportCode(function ({ Given, When }) {
   })
 
   When(/^I select (.*) as the permit type$/, async function (permitType) {
+    if (permitType.toLowerCase() === 'skip') return
+
     this.data.permitType = permitType
     return this.pages.frontEnd.bespokeOrStandardRulesPage.completePage(permitType)
   })
@@ -46,6 +53,8 @@ defineSupportCode(function ({ Given, When }) {
   })
 
   When(/^I select (.*) as the type of facility$/, async function (facility) {
+    if (facility.toLowerCase() === 'skip') return
+
     this.data.facility = facility
     return this.pages.frontEnd.facilitySelectPage.completePage(facility)
   })
@@ -244,18 +253,12 @@ defineSupportCode(function ({ Given, When }) {
     return this.pages.frontEnd.confirmActivitiesAndAssessmentsPage.completePage()
   })
 
-  When(/^I select (.*) rated thermal input between 20MW and 50MW$/, async function (selection) {
-    if (selection.toLowerCase() === 'skip') return
+  When(/^I select (.*) to rated thermal input between 20MW and 50MW and (.*) for where the generator gets it's energy from$/, async function (thermalInput20to50MW, generatorEnergyType) {
+    if (thermalInput20to50MW.toLowerCase() === 'skip') return
 
-    this.data.thermalInput20to50MW = selection.toLowerCase()
-    return this.pages.frontEnd.thermalInputPage.completePage(this.data.thermalInput20to50MW === 'yes')
-  })
-
-  When(/^I select (.*) rated thermal input over 20MW$/, async function (selection) {
-    if (selection.toLowerCase() === 'skip') return
-
-    this.data.thermalInputOver20MW = selection.toLowerCase()
-    return this.pages.frontEnd.burningWasteBiomassPage.completePage(this.data.thermalInputOver20MW === 'yes')
+    this.data.thermalInput20to50MW = thermalInput20to50MW.toLowerCase()
+    this.data.generatorEnergyType = generatorEnergyType.toLowerCase()
+    return this.pages.frontEnd.thermalInputPage.completePage(this.data.thermalInput20to50MW === 'yes', this.data.generatorEnergyType)
   })
 
   When(/^I select (.*) as requiring a habitat assessment$/, async function (selection) {
@@ -265,10 +268,31 @@ defineSupportCode(function ({ Given, When }) {
     return this.pages.frontEnd.habitatAssessmentPage.completePage(this.data.requiresHabitatAssessment)
   })
 
-  When(/^I select (.*) when plant is new or refurbished$/, async function (selection) {
+  When(/^I select (.*) to provide an energy efficiency report$/, async function (selection) {
     if (selection.toLowerCase() === 'skip') return
 
-    this.data.isNewOrRefurbished = selection.toLowerCase()
-    return this.pages.frontEnd.energyEfficiencyReportPage.completePage(this.data.isNewOrRefurbished)
+    this.data.requiresEnergyEfficiencyReport = selection.toLowerCase()
+    return this.pages.frontEnd.energyEfficiencyReportPage.completePage(this.data.requiresEnergyEfficiencyReport)
+  })
+
+  When(/^I select (.*) to burning waste biomass and (.*) to exceeds 1MW thermal$/, async function (burningWasteBioMass, exceeds1MW) {
+    if (burningWasteBioMass.toLowerCase() === 'skip') return
+
+    this.data.burningWasteBioMass = burningWasteBioMass.toLowerCase()
+    this.data.exceeds1MW = exceeds1MW.toLowerCase()
+    return this.pages.frontEnd.burningWasteBioMassPage.completePage(this.data.burningWasteBioMass, this.data.exceeds1MW)
+  })
+
+  When(/^I (.*) the air quality management area details$/, async function (include) {
+    if (include.toLowerCase() === 'skip') return
+
+    return this.tasks.aqmaDetails(true, aqmaDetails, this.pages)
+  })
+
+  When(/^I choose (.*) for the main business activity that the plant or generator is used for$/, async function (naceCode) {
+    if (naceCode.toLowerCase() === 'skip') return
+
+    this.data.naceCode = naceCode.toLowerCase()
+    return this.tasks.businessActivity(naceCode, this.pages)
   })
 })

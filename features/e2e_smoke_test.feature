@@ -50,6 +50,36 @@ Feature: Standard rules end to end Smoke test
       | Other organisation: Limited company | Electrical insulating oil storage                                      | SR2012 No 15 | is not required           | skip             | skip              | skip               | upload   | enter         | ESA EU                | BACS        | skip          | skip             | skip      |
 
 
+  @Smoke_dev
+  @Smoke_test
+  Scenario Outline: If the <PermitHolder> applicant comes directly from the MCP guidance they should be able to skip the category selection - <Path>>
+    Given the application has been launched at <Path>
+    And I start a new application
+    And I select <Permit> as the permit number
+    And I select <EprPermit> as already having an EPR permit
+    And I check costs
+    And I confirm I meet the rules
+    And I <GeneratorList> the download of the generator list template
+    And I save my application
+    And I enter my permit holder details for <PermitHolder>
+    And I enter my contact details
+    And I <GeneratorList> the upload of the generator list
+    And I <BusinessActivity> the business or activity type
+    And I <EnterSiteName> my site name and location
+    And I enter my invoicing details
+    And I confirm my confidentiality needs
+    And I submit my application
+    And I check my answers
+    And I choose to pay by <PaymentType>
+    Then the application is created successfully in CRM
+    Examples:
+      | PermitHolder    | Path                                  | Permit      | EnterSiteName | PaymentType | GeneratorList | BusinessActivity | EprPermit |
+      | Limited company | /start/start-or-open-saved/mcp        | SR2018 No 7 | enter         | CARD        | include       | include          | no        |
+      | Sole trader     | /start/start-or-open-saved/mcp        | SR2018 No 7 | enter         | BACS        | include       | include          | no        |
+      | Public body     | /start/start-or-open-saved/generators | SR2018 No 8 | enter         | CARD        | include       | skip             | no        |
+      | Individual      | /start/start-or-open-saved/generators | SR2018 No 8 | enter         | BACS        | include       | skip             | no        |
+
+
   @Smoke_preprod
   @Smoke_prod
   Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>

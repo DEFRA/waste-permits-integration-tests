@@ -163,6 +163,12 @@ const data = Object.freeze({
     miningWastePlan: 'Water based'
   },
 
+  aqmaDetails: {
+    name: 'My AQMA',
+    localAuthority: 'Bristol City Council',
+    nitrogenDioxideLevel: '5'
+  },
+
   paymentDetails: {
     validCard: {
       cardNumber: '4242424242424242',
