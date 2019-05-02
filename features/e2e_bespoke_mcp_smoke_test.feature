@@ -39,5 +39,5 @@ Feature: Bespoke MCP end to end Smoke test
       | Individual                    | Stationary SG          | no                | skip          | yes                 | skip             | no                 | skip               | yes             |
       | Sole trader                   | Stationary MCP also SG | no                | yes           | skip                | skip             | skip               | skip               | skip            |
       | Limited liability partnership | Mobile SG              | skip              | skip          | skip                | skip             | skip               | skip               | skip            |
-      | Individual                    | Mobile SG also MCP     | skip              | skip          | skip                | no               | yes                | yes                | skip            |
-      | Public body                   | Mobile SG also MCP     | skip              | skip          | skip                | yes              | no                 | no                 | skip            |
+      | Individual                    | Mobile MCP             | skip              | skip          | skip                | no               | yes                | yes                | skip            |
+      | Public body                   | Mobile MCP             | skip              | skip          | skip                | yes              | no                 | no                 | skip            |
