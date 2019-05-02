@@ -1,8 +1,8 @@
 Feature: Tests to check Standard rules which are applicable online and SR's which are applicable for download form
 
   @Smoke_dev
-  @Smoke_test
-  Scenario Outline: As a user, I should be able to fill the forms online for the permits which are available for apply online
+  @Smoke_test @Ben
+  Scenario Outline: As a user, I should be able to fill the forms online for the online permit <Permit>
     Given the application has been launched
     And I start a new application
     And I select Standard rules as the permit type
@@ -64,7 +64,7 @@ Feature: Tests to check Standard rules which are applicable online and SR's whic
   @wip
   @Smoke_dev
   @Smoke_test
-  Scenario Outline: As a user, I should be able to download the forms for the permits where i cannot apply online
+  Scenario Outline: As a user, I should be able to download the forms for the offline permit: <Permit>
     Given the application has been launched
     And I start a new application
     And I select Standard rules as the permit type
@@ -85,7 +85,7 @@ Feature: Tests to check Standard rules which are applicable online and SR's whic
   @wip
   @Smoke_dev
   @Smoke_test
-  Scenario Outline: As a user, I should be able to download the forms for the permits where i cannot apply online
+  Scenario Outline: As a user, I should be able to download the forms for the offline permit category: <PermitCategory>
     Given the application has been launched
     And I start a new application
     And I select Standard rules as the permit type
@@ -99,7 +99,7 @@ Feature: Tests to check Standard rules which are applicable online and SR's whic
 
   @Smoke_preprod
   @Smoke_prod
-  Scenario Outline: As a user, I should be able to fill the forms online for the permits which are available for apply online
+  Scenario Outline: As a user, I should be able to fill the forms online for the online permit <Permit>
     Given the application has been launched
     And I start a new application
         #And I select Standard rules as the permit type
@@ -161,7 +161,7 @@ Feature: Tests to check Standard rules which are applicable online and SR's whic
   @wip
   @Smoke_prod
   @Smoke_preprod
-  Scenario Outline: As a user, I should be able to download the forms for the permits where i cannot apply online
+  Scenario Outline: As a user, I should be able to download the forms for the offline permit: <Permit>
     Given the application has been launched
     And I start a new application
         #And I select Standard rules as the permit type
@@ -182,7 +182,7 @@ Feature: Tests to check Standard rules which are applicable online and SR's whic
   @wip
   @Smoke_preprod
   @Smoke_prod
-  Scenario Outline: As a user, I should be able to download the forms for the permits where i cannot apply online
+  Scenario Outline: As a user, I should be able to download the forms for the offline permit category: <PermitCategory>
     Given the application has been launched
     And I start a new application
         #And I select Standard rules as the permit type
