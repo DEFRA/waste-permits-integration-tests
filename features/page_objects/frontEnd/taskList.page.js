@@ -77,6 +77,12 @@ class TaskListPage extends FrontEndPageObject {
   get miningWasteLink () { return { css: '#confirm-mining-data-link' } }
   get miningWasteCompleted () { return { css: '#mining-data-completed' } }
 
+  get aqmaDetailsLink () { return { css: '#air-quality-management-link' } }
+  get aqmaDetailsCompleted () { return { css: '#air-quality-management-completed' } }
+
+  get businessActivityLink () { return { css: '#mcp-business-activity-link' } }
+  get businessActivityCompleted () { return { css: '#business-activity-completed' } }
+
   get submitPayLink () { return { css: '#submit-pay-link' } }
 
   /****************************************************************************/

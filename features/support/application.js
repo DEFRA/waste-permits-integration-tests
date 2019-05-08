@@ -6,8 +6,8 @@ class Application {
     this.browser = browser
   }
 
-  async launch (appConfiguration) {
-    await this.browser.get(config.appUrl)
+  async launch (appConfiguration, path = '') {
+    await this.browser.get(`${config.appUrl}${path}`)
     await this.browser.wait(async () => (
       await this.browser.wait(appConfiguration.getReadyState()) === 'complete'
     ), 10000)
