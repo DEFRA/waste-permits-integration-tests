@@ -9,6 +9,9 @@
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "test:firefox-desktop-test-smoke-dev": "node node_modules/cucumber/bin/cucumber.js ./features -p firefox-desktop-test-smoke-dev -f json:features/reports/cucumber_report_desktop.json",
+    "test:firefox-desktop-test-smoke-dev-mcpsr": "node node_modules/cucumber/bin/cucumber.js ./features -p firefox-desktop-test-smoke-dev-mcpsr -f json:features/reports/cucumber_report_desktop.json",
+    "test:firefox-desktop-test-smoke-dev-mcpgensr": "node node_modules/cucumber/bin/cucumber.js ./features -p firefox-desktop-test-smoke-dev-mcpgensr -f json:features/reports/cucumber_report_desktop.json",
+    "test:firefox-desktop-test-smoke-dev-mcpbespoke": "node node_modules/cucumber/bin/cucumber.js ./features -p firefox-desktop-test-smoke-dev-mcpbespoke -f json:features/reports/cucumber_report_desktop.json",
     "test:firefox-desktop-test-smoke-test": "node node_modules/cucumber/bin/cucumber.js ./features -p firefox-desktop-test-smoke-test -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-smoke-dev": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke-dev -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-smoke-test": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke-test -f json:features/reports/cucumber_report_desktop.json",
