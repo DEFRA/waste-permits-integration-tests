@@ -28,6 +28,11 @@ defineSupportCode(function ({ Given, When }) {
     return this.application.launch(this.appConfiguration, path)
   })
 
+  When(/^I start a new (.*) application$/, async function (permitType) {
+    this.data.permitType = permitType
+    return this.pages.frontEnd.startOrOpenSavedPage.completePage()
+  })
+
   When(/^I start a new application$/, async function () {
     return this.pages.frontEnd.startOrOpenSavedPage.completePage()
   })
