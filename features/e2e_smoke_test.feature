@@ -76,8 +76,8 @@ Feature: Standard rules end to end Smoke test
       | PermitHolder    | ApplicationType | Permit      | EnterSiteName | PaymentType | GeneratorList | BusinessActivity | EprPermit |
       | Limited company | mcp             | SR2018 No 7 | enter         | CARD        | include       | include          | no        |
       | Sole trader     | mcp             | SR2018 No 7 | enter         | BACS        | include       | include          | no        |
-      | Public body     | generators      | SR2018 No 8 | enter         | CARD        | include       | skip             | no        |
-      | Individual      | generators      | SR2018 No 8 | enter         | BACS        | include       | skip             | no        |
+      | Public body     | generators      | SR2018 No 8 | skip          | CARD        | include       | skip             | no        |
+      | Individual      | generators      | SR2018 No 8 | skip          | BACS        | include       | skip             | no        |
 
 
   @Smoke_preprod
