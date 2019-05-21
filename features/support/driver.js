@@ -20,6 +20,20 @@ const PLATFORMS = {
   FIREFOX_DESKTOP_TEST: 'firefox-desktop-test'
 }
 
+function formatDate (date = new Date()) {
+  let dayOfMonth = date.getDate()
+  let month = date.getMonth() + 1
+  let year = date.getFullYear()
+  let hour = date.getHours()
+  let minutes = date.getMinutes()
+
+  // formatting
+  month = month < 10 ? '0' + month : month
+  dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth
+
+  return `${year}_${month}_${dayOfMonth}_>_${hour}_${minutes}`
+}
+
 class Driver {
   constructor () {
     this.browser = undefined
@@ -168,8 +182,11 @@ class Driver {
 
   async takeScreenshotsAfterFailure (filename) {
     const browser = this.browser
-    const filenameNoSpecialChars = filename.substring(0, 250).replace(/[^a-z0-9]/gi, '_').toLowerCase()
-    const titleDateStamp = '_>>>_' + filenameNoSpecialChars + Date.now() + '.png'
+    if (filename.includes('?')) {
+      filename = filename.substring(0, filename.indexOf('?'))
+    }
+    const filenameNoSpecialChars = filename.replace(/[^a-z0-9]/gi, '_').toLowerCase()
+    const titleDateStamp = `_>>>_${formatDate()}_>>>_${filenameNoSpecialChars}.png`
     if (!fs.existsSync('AllScreenshots')) {
       fs.mkdirSync('AllScreenshots')
     }
