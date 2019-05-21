@@ -20,6 +20,10 @@ class FrontEndPageObject extends PageObject {
       this.log(`wait for page "${title}"`)
       hasText = await this.hasText(this.pageHeading, title)
     } catch (e) {
+      hasText = await this.hasText(this.pageHeading, 'Something went wrong')
+      if (hasText) {
+        throw e
+      }
       if (timeout > 0) {
         await this.sleep(1000)
         hasText = await this.waitForPage(title, timeout - 1000)

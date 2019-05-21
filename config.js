@@ -14,6 +14,7 @@ const {
   RESOURCE = 'resource',
   NODE_ENV = 'production',
   PLATFORM = 'firefox-desktop-test',
+  REPORT_FORMATTER = 'node_modules/cucumber-pretty',
   WIDTH = '1070',
   HEIGHT = '1180',
   TIMEOUT = '240000'
@@ -30,8 +31,8 @@ const optionDefinitions = [
   { name: 'clientSecret', type: String, defaultValue: CLIENT_SECRET },
   { name: 'sendUrl', type: String, defaultValue: SEND_URL },
   { name: 'resource', type: String, defaultValue: RESOURCE },
-  { name: 'format', type: String },
-  { name: 'format-options', type: JSON.parse, lazyMultiple: true },
+  { name: 'format', alias: 'f', type: String, lazyMultiple: true, defaultValue: REPORT_FORMATTER },
+  { name: 'format-options', type: JSON.parse, lazyMultiple: true, defaultValue: { colorsEnabled: true } },
   { name: 'loadChromeNmpExtension', type: Boolean, defaultOption: false },
   { name: 'require', type: String },
   { name: 'timeout', alias: 't', type: Number, defaultValue: parseInt(`${TIMEOUT}`) },
