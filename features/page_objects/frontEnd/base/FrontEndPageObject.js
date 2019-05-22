@@ -40,7 +40,7 @@ class FrontEndPageObject extends PageObject {
 
   async waitForGovUKPage (title = this.title, timeout = config.timeout) {
     // this.log('HEADING' + this.pageHeadingGovUK.getText())
-    return this.hasText(this.pageHeadingGovUK, title)
+    return this.hasText(this.pageHeadingGovUK, title, timeout)
   }
 
   async checkError (message, timeout = config.timeout) {
