@@ -19,13 +19,18 @@ class FrontEndPageObject extends PageObject {
     try {
       this.log(`wait for page "${title}"`)
       hasText = await this.hasText(this.pageHeading, title)
-    } catch (e) {
-      const actualPageHeading = await this.getText(this.pageHeading, timeout)
-      if (actualPageHeading !== 'Something went wrong' && timeout > 0) {
+    } catch (error) {
+      if (!(error instanceof error.StaleElementReferenceError)) {
+        const actualPageHeading = await this.getText(this.pageHeading, timeout)
+        if (actualPageHeading === 'Something went wrong') {
+          throw new Error(actualPageHeading)
+        }
+      }
+      if (timeout > 0) {
         await this.sleep(1000)
         hasText = await this.waitForPage(title, timeout - 1000)
       } else {
-        throw e
+        throw error
       }
     }
     return Promise.resolve(hasText)
@@ -33,7 +38,7 @@ class FrontEndPageObject extends PageObject {
 
   async waitForGovUKPage (title = this.title, timeout = config.timeout) {
     // this.log('HEADING' + this.pageHeadingGovUK.getText())
-    return this.hasText(this.pageHeadingGovUK, title)
+    return this.hasText(this.pageHeadingGovUK, title, timeout)
   }
 
   async checkError (message, timeout = config.timeout) {
