@@ -181,7 +181,7 @@ When(/^I (.*) my site name and location$/, async function (confirm) {
 When(/^I (.*) the site plan$/, async function (confirm) {
   if (confirm.toLowerCase() === 'skip') return
 
-  return this.tasks.sitePlan([DOC, DOCX, PDF, ODS, ODT, JPG], this.pages)
+  return this.tasks.sitePlan([PDF, DOC, DOCX, XLS, XLSX, JPG, ODT, ODS], this.pages)
 })
 
 When(/^I enter my invoicing details$/, async function () {
