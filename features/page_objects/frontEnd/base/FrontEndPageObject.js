@@ -8,7 +8,7 @@ class FrontEndPageObject extends PageObject {
 
   get pageHeading () { return { css: '#page-heading' } }
 
-  get pageHeadingGovUK () { return { className: 'govuk-heading-l' } }
+  get pageHeadingGovUK () { return { css: 'h1' } }
 
   get errorMsg () { return { css: '#error-summary-list' } }
 

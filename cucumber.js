@@ -1,4 +1,5 @@
 const { kebabCase } = require('lodash')
+const colors = require('colors/safe')
 
 const formats = {
   phone: { width: 520, height: 920 },
@@ -37,7 +38,7 @@ const params = [
 
 const parameters = {}
 
-console.log('Generating profiles >>>')
+console.log(colors.magenta('Generating profiles >>>'))
 params.forEach(({ browser, format, type, tags }) => {
   const platform = `${browser}-${format}-${type}`
   const profileName = format === tags ? platform : `${platform}-${kebabCase(tags)}`
@@ -49,7 +50,7 @@ params.forEach(({ browser, format, type, tags }) => {
     .join(' ')
 
   const profile = `--tags ${tags} --world-parameters '${JSON.stringify(worldParameters)}'`
-  console.log(`${profileName}: ${profile}`)
+  console.log(colors.cyan(`${profileName}: ${profile}`))
   parameters[profileName] = profile
 })
 console.log()
