@@ -13,6 +13,7 @@ const params = [
   { browser: 'chrome', format: 'desktop', type: 'dev', tags: 'desktop' },
   { browser: 'chrome', format: 'desktop', type: 'test', tags: 'desktop' },
   { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Ben' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Stuart' },
   { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Martin' },
   { browser: 'chrome', format: 'phone', type: 'test', tags: 'Martin' },
   { browser: 'chrome', format: 'tablet', type: 'test', tags: 'Martin' },

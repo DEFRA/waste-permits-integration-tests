@@ -1,0 +1,313 @@
+** BREEZE AERMOD
+** Trinity Consultants
+** VERSION  8.1
+
+CO STARTING
+CO TITLEONE  NO TITLE SPECIFIED
+CO MODELOPT  DFAULT  CONC  NODRYDPLT  NOWETDPLT
+CO RUNORNOT  RUN
+CO AVERTIME  1  24  PERIOD
+CO POLLUTID  NOX
+CO FINISHED
+
+SO STARTING
+SO ELEVUNIT  METERS
+SO LOCATION  SOURCE1   POINT     0  0  0
+SO SRCPARAM  SOURCE1   1  3  723.15  30  0.357
+SO BUILDHGT  SOURCE1        3.00      3.00      3.00      3.00      3.00      3.00 
+SO BUILDHGT  SOURCE1        3.00      3.00      3.00      3.00      3.00      3.00 
+SO BUILDHGT  SOURCE1        3.00      3.00      3.00      3.00      3.00      3.00 
+SO BUILDHGT  SOURCE1        3.00      3.00      3.00      3.00      3.00      3.00 
+SO BUILDHGT  SOURCE1        3.00      3.00      3.00      3.00      3.00      3.00 
+SO BUILDHGT  SOURCE1        3.00      3.00      3.00      3.00      3.00      3.00 
+SO BUILDWID  SOURCE1        5.56      7.95     10.10     11.94     13.42     14.49 
+SO BUILDWID  SOURCE1       15.12     15.29     15.00     15.29     15.12     14.49 
+SO BUILDWID  SOURCE1       13.42     11.94     10.10      7.95      5.56      3.00 
+SO BUILDWID  SOURCE1        5.56      7.95     10.10     11.94     13.42     14.49 
+SO BUILDWID  SOURCE1       15.12     15.29     15.00     15.29     15.12     14.49 
+SO BUILDWID  SOURCE1       13.42     11.94     10.10      7.95      5.56      3.00 
+SO BUILDLEN  SOURCE1       15.29     15.12     14.49     13.42     11.94     10.10 
+SO BUILDLEN  SOURCE1        7.95      5.56      3.00      5.56      7.95     10.10 
+SO BUILDLEN  SOURCE1       11.94     13.42     14.49     15.12     15.29     15.00 
+SO BUILDLEN  SOURCE1       15.29     15.12     14.49     13.42     11.94     10.10 
+SO BUILDLEN  SOURCE1        7.95      5.56      3.00      5.56      7.95     10.10 
+SO BUILDLEN  SOURCE1       11.94     13.42     14.49     15.12     15.29     15.00 
+SO XBADJ     SOURCE1       -7.65     -7.56     -7.25     -6.71     -5.97     -5.05 
+SO XBADJ     SOURCE1       -3.97     -2.78     -1.50     -2.78     -3.97     -5.05 
+SO XBADJ     SOURCE1       -5.97     -6.71     -7.25     -7.56     -7.65     -7.50 
+SO XBADJ     SOURCE1       -7.65     -7.56     -7.25     -6.71     -5.97     -5.05 
+SO XBADJ     SOURCE1       -3.97     -2.78     -1.50     -2.78     -3.97     -5.05 
+SO XBADJ     SOURCE1       -5.97     -6.71     -7.25     -7.56     -7.65     -7.50 
+SO YBADJ     SOURCE1        0.00      0.00      0.00      0.00      0.00      0.00 
+SO YBADJ     SOURCE1        0.00      0.00      0.00      0.00      0.00      0.00 
+SO YBADJ     SOURCE1        0.00      0.00      0.00      0.00      0.00      0.00 
+SO YBADJ     SOURCE1        0.00      0.00      0.00      0.00      0.00      0.00 
+SO YBADJ     SOURCE1        0.00      0.00      0.00      0.00      0.00      0.00 
+SO YBADJ     SOURCE1        0.00      0.00      0.00      0.00      0.00      0.00 
+SO HOUREMIS  E:\CASEWO~1\EXAMPL~1\HRLFIL~1.HRL   SOURCE1
+** HOUREMIS  "E:\Case work\Example model\HRL file.hrl"
+SO SRCGROUP  ALL
+SO FINISHED
+
+RE STARTING
+RE ELEVUNIT  METERS
+RE GRIDCART WI5OJ000 STA
+RE GRIDCART WI5OJ000 XYINC  -1000  41  50  -1000  41  50
+RE GRIDCART WI5OJ000 ELEV  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  3  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  3  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  4  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  4  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  5  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  5  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  6  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  6  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  7  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  7  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  8  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  8  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  9  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  9  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  10  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  10  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  11  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  11  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  12  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  12  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  13  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  13  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  14  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  14  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  15  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  15  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  16  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  16  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  17  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  17  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  18  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  18  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  19  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  19  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  20  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  20  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  21  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  21  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  22  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  22  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  23  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  23  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  24  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  24  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  25  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  25  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  26  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  26  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  27  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  27  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  28  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  28  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  29  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  29  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  30  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  30  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  31  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  31  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  32  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  32  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  33  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  33  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  34  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  34  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  35  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  35  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  36  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  36  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  37  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  37  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  38  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  38  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  39  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  39  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  40  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  40  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  41  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 ELEV  41  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  3  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  3  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  4  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  4  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  5  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  5  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  6  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  6  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  7  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  7  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  8  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  8  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  9  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  9  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  10  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  10  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  11  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  11  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  12  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  12  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  13  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  13  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  14  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  14  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  15  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  15  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  16  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  16  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  17  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  17  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  18  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  18  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  19  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  19  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  20  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  20  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  21  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  21  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  22  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  22  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  23  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  23  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  24  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  24  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  25  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  25  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  26  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  26  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  27  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  27  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  28  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  28  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  29  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  29  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  30  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  30  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  31  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  31  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  32  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  32  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  33  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  33  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  34  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  34  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  35  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  35  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  36  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  36  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  37  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  37  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  38  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  38  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  39  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  39  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  40  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  40  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  41  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 HILL  41  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+RE GRIDCART WI5OJ000 END
+RE DISCCART  0  50  0  0
+RE DISCCART  8.68241  49.24039  0  0
+RE DISCCART  17.10101  46.98463  0  0
+RE DISCCART  25  43.30127  0  0
+RE DISCCART  32.13938  38.30222  0  0
+RE DISCCART  38.30222  32.13938  0  0
+RE DISCCART  43.30127  25  0  0
+RE DISCCART  46.98463  17.10101  0  0
+RE DISCCART  49.24039  8.68241  0  0
+RE DISCCART  50  0  0  0
+RE DISCCART  49.24039  -8.68241  0  0
+RE DISCCART  46.98463  -17.10101  0  0
+RE DISCCART  43.30127  -25  0  0
+RE DISCCART  38.30222  -32.13938  0  0
+RE DISCCART  32.13938  -38.30222  0  0
+RE DISCCART  25  -43.30127  0  0
+RE DISCCART  17.10101  -46.98463  0  0
+RE DISCCART  8.68241  -49.24039  0  0
+RE DISCCART  0  -50  0  0
+RE DISCCART  -8.68241  -49.24039  0  0
+RE DISCCART  -17.10101  -46.98463  0  0
+RE DISCCART  -25  -43.30127  0  0
+RE DISCCART  -32.13938  -38.30222  0  0
+RE DISCCART  -38.30222  -32.13938  0  0
+RE DISCCART  -43.30127  -25  0  0
+RE DISCCART  -46.98463  -17.10101  0  0
+RE DISCCART  -49.24039  -8.68241  0  0
+RE DISCCART  -50  0  0  0
+RE DISCCART  -49.24039  8.68241  0  0
+RE DISCCART  -46.98463  17.10101  0  0
+RE DISCCART  -43.30127  25  0  0
+RE DISCCART  -38.30222  32.13938  0  0
+RE DISCCART  -32.13938  38.30222  0  0
+RE DISCCART  -25  43.30127  0  0
+RE DISCCART  -17.10101  46.98463  0  0
+RE DISCCART  -8.68241  49.24039  0  0
+RE FINISHED
+
+ME STARTING
+ME SURFFILE  "E:\Case work\Example model\SFC met file.SFC"
+** SURFFILE  "E:\Case work\Example model\SFC met file.SFC"
+ME PROFFILE  "E:\Case work\Example model\PFL met file.PFL"
+** PROFFILE  "E:\Case work\Example model\PFL met file.PFL"
+ME SURFDATA  2423 2007
+ME UAIRDATA  2423 2007
+ME SITEDATA  99999 2007
+ME PROFBASE  0  METERS
+ME FINISHED
+
+OU STARTING
+OU RECTABLE  1  FIRST
+OU RECTABLE  24  FIRST
+OU FILEFORM  FIX
+OU PLOTFILE  1  ALL  FIRST  ALL`1`FIRST.plt  10000
+OU PLOTFILE  24  ALL  FIRST  ALL`24`FIRST.plt  10001
+OU PLOTFILE  PERIOD  ALL  ALL`PERIOD.plt  10002
+OU POSTFILE  1  ALL  UNFORM  ALL`1.bin  10003
+OU FINISHED
+
+** *****************************************************************************
+** It is recommended that the user not edit any data below this line
+** *****************************************************************************
+
+** BUILDING BLD  0  0  0  3  4
+** BUILDING IDN  S1SC3000
+** BUILDING REC  -1.5  -7.5  3  15  0
+
+** AMPTYPE  
+** AMPDATUM  -1
+** AMPZONE  -1
+** AMPHEMISPHERE  
+
+** PROJECTIONWKT  UNKNOWN
+** PROJECTION  UTM
+** DATUM  WGE
+** UNITS  METER
+** ZONE  2
+** HEMISPHERE  N
+** ORIGINLON  0
+** ORIGINLAT  0
+** PARALLEL1  0
+** PARALLEL2  0
+** AZIMUTH  0
+** SCALEFACT  0
+** FALSEEAST  0
+** FALSENORTH  0
+
+** PRCNTFIL  1  0  100  99.79
+** POSTFMT  UNFORM
+** TEMPLATE Regulatory,0
+** AERMODEXE  AERMOD_EPA_18081_64.EXE
+** AERMAPEXE  AERMAP_EPA_11103.EXE
+
