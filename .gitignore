@@ -8,3 +8,4 @@ package-lock.json
 temp
 features/reports
 AllScreenshots
+.DS_Store

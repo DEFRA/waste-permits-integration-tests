@@ -16,6 +16,23 @@ const ODT = file('ODT')
 const JPG = file('JPG')
 const XLS = file('XLS')
 const XLSX = file('XLSX')
+const AAI = file('AAI')
+const ADI = file('ADI')
+const AMI = file('AMI')
+const APL = file('APL')
+const BPI = file('BPI')
+const DEM = file('DEM')
+const DIN = file('DIN')
+const EMI = file('EMI')
+const FAC = file('FAC')
+const HRL = file('HRL')
+const MET = file('MET')
+const PFL = file('PFL')
+const ROU = file('ROU')
+const RUF = file('RUF')
+const SFC = file('SFC')
+const TER = file('TER')
+const VAR = file('VAR')
 
 Given(/^the application has been launched$/, async function () {
   this.tasks = new Tasks(this)
@@ -151,7 +168,7 @@ When(/^I (.*) the completed screening tool$/, async function (confirm) {
 When(/^I (.*) the air dispersion modelling report$/, async function (confirm) {
   if (confirm.toLowerCase() === 'skip') return
 
-  return this.tasks.uploadAirDispersionModellingReport([XLS, XLSX, ODS, PDF], this.pages)
+  return this.tasks.uploadAirDispersionModellingReport([XLS, XLSX, ODS, PDF, AAI, ADI, AMI, APL, BPI, CSV, DEM, DIN, EMI, FAC, HRL, MET, PFL, ROU, RUF, SFC, TER, VAR], this.pages)
 })
 
 When(/^I (.*) the energy efficiency report$/, async function (confirm) {
