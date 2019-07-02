@@ -1,7 +1,7 @@
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
 class GridReferencePage extends FrontEndPageObject {
-  get title () { return 'What is the grid reference for the centre of the site?' }
+  get title () { return 'What is the grid reference for the site\'s main emissions point?' }
 
   get gridReferenceInput () { return { css: '#site-grid-reference' } }
 
