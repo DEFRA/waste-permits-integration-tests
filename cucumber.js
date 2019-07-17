@@ -1,30 +1,59 @@
-const parameters = {
-  'chrome-phone-test': `--tags @phone --world-parameters '${JSON.stringify({ platform: 'chrome-phone-test', width: 520, height: 920 })}'`,
-  'chrome-phone-dev': `--tags @phone --world-parameters '${JSON.stringify({ platform: 'chrome-phone-dev', width: 520, height: 920 })}'`,
-  'chrome-desktop-dev': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-dev', width: 1800, height: 1180 })}'`,
-  'chrome-desktop-test': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-test', width: 1070, height: 1180 })}'`,
-  'chrome-desktop-test-ben': `--tags @Ben --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-test', width: 1070, height: 1180 })}'`,
-  'chrome-desktop-test-martin': `--tags @Martin --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-test', width: 1020, height: 1180 })}'`,
-  'chrome-phone-test-martin': `--tags @Martin --world-parameters '${JSON.stringify({ platform: 'chrome-phone-test', width: 520, height: 920 })}'`,
-  'chrome-tablet-test-martin': `--tags @Martin --world-parameters '${JSON.stringify({ platform: 'chrome-tablet-test', width: 520, height: 920 })}'`,
-  'chrome-desktop-test-smoke-dev': `--tags @Smoke_dev --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-test', width: 1020, height: 1180 })}'`,
-  'chrome-desktop-test-smoke-test': `--tags @Smoke_test --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-test', width: 1020, height: 1180 })}'`,
-  'chrome-desktop-test-smoke-preprod': `--tags @Smoke_preprod --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-test', width: 1020, height: 1180 })}'`,
-  'chrome-desktop-test-smoke-prod': `--tags @Smoke_prod --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-test', width: 1020, height: 1180 })}'`,
-  'chrome-phone-test-smoke': `--tags @Smoke --world-parameters '${JSON.stringify({ platform: 'chrome-phone-test', width: 520, height: 920 })}'`,
-  'chrome-tablet-test-smoke': `--tags @Smoke --world-parameters '${JSON.stringify({ platform: 'chrome-tablet-test', width: 520, height: 920 })}'`,
-  'chrome-desktop-test-userresearch': `--tags @UserResearch --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-test', width: 1020, height: 1180 })}'`,
-  'chrome-desktop-headless-test': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'chrome-desktop-headless-test', width: 1800, height: 1180 })}'`,
-  'chrome-tablet-dev': `--tags @tablet --world-parameters '${JSON.stringify({ platform: 'chrome-tablet-dev', width: 1050, height: 850 })}'`,
-  'chrome-tablet-test': `--tags @tablet --world-parameters '${JSON.stringify({ platform: 'chrome-tablet-test', width: 1050, height: 850 })}'`,
-  'firefox-desktop-dev': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-dev', width: 1800, height: 1180 })}'`,
-  'firefox-desktop-test': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
-  'firefox-desktop-test-smoke-dev': `--tags @Smoke_dev --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
-  'firefox-desktop-test-smoke-test': `--tags @Smoke_test --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
-  'firefox-desktop-test-smoke-preprod': `--tags @Smoke_preprod --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
-  'firefox-desktop-test-smoke-prod': `--tags @Smoke_prod --world-parameters '${JSON.stringify({ platform: 'firefox-desktop-test', width: 1800, height: 1180 })}'`,
-  'ie-desktop-dev': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'ie-desktop-dev', width: 1800, height: 1180 })}'`,
-  'ie-desktop-test': `--tags @desktop --world-parameters '${JSON.stringify({ platform: 'ie-desktop-test', width: 1800, height: 1180 })}'`
+const { kebabCase } = require('lodash')
+const colors = require('colors/safe')
+
+const formats = {
+  phone: { width: 520, height: 920 },
+  tablet: { width: 1070, height: 1180 },
+  desktop: { width: 1800, height: 1180 }
 }
+
+const params = [
+  { browser: 'chrome', format: 'phone', type: 'test', tags: 'phone' },
+  { browser: 'chrome', format: 'phone', type: 'dev', tags: 'phone' },
+  { browser: 'chrome', format: 'desktop', type: 'dev', tags: 'desktop' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'desktop' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Ben' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Stuart' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Martin' },
+  { browser: 'chrome', format: 'phone', type: 'test', tags: 'Martin' },
+  { browser: 'chrome', format: 'tablet', type: 'test', tags: 'Martin' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Smoke_dev' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Smoke_test' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Smoke_preprod' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'Smoke_prod' },
+  { browser: 'chrome', format: 'phone', type: 'test', tags: 'Smoke' },
+  { browser: 'chrome', format: 'tablet', type: 'test', tags: 'Smoke' },
+  { browser: 'chrome', format: 'desktop', type: 'test', tags: 'UserResearch' },
+  { browser: 'chrome', format: 'desktop', type: 'headless-test', tags: 'desktop' },
+  { browser: 'chrome', format: 'tablet', type: 'dev', tags: 'tablet' },
+  { browser: 'chrome', format: 'tablet', type: 'test', tags: 'tablet' },
+  { browser: 'firefox', format: 'desktop', type: 'dev', tags: 'desktop' },
+  { browser: 'firefox', format: 'desktop', type: 'test', tags: 'desktop' },
+  { browser: 'firefox', format: 'desktop', type: 'test', tags: 'Smoke_dev' },
+  { browser: 'firefox', format: 'desktop', type: 'test', tags: 'Smoke_test' },
+  { browser: 'firefox', format: 'desktop', type: 'test', tags: 'Smoke_preprod' },
+  { browser: 'firefox', format: 'desktop', type: 'test', tags: 'Smoke_prod' },
+  { browser: 'ie', format: 'desktop', type: 'dev', tags: 'desktop' },
+  { browser: 'ie', format: 'desktop', type: 'test', tags: 'desktop' }
+]
+
+const parameters = {}
+
+console.log(colors.magenta('Generating profiles >>>'))
+params.forEach(({ browser, format, type, tags }) => {
+  const platform = `${browser}-${format}-${type}`
+  const profileName = format === tags ? platform : `${platform}-${kebabCase(tags)}`
+  const { width, height } = formats[format]
+  const worldParameters = { platform, width, height }
+
+  tags = tags.split(',')
+    .map((tag) => `@${tag.trim()}`)
+    .join(' ')
+
+  const profile = `--tags ${tags} --world-parameters '${JSON.stringify(worldParameters)}'`
+  console.log(colors.cyan(`${profileName}: ${profile}`))
+  parameters[profileName] = profile
+})
+console.log()
 
 module.exports = parameters

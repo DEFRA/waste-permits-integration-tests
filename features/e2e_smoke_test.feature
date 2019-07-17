@@ -52,9 +52,9 @@ Feature: Standard rules end to end Smoke test
 
   @Smoke_dev
   @Smoke_test
-  Scenario Outline: If the <PermitHolder> applicant comes directly from the MCP guidance they should be able to skip the category selection - <Path>>
-    Given the application has been launched at <Path>
-    And I start a new application
+  Scenario Outline: If the <PermitHolder> applicant comes directly from the MCP guidance they should be able to skip the category selection - <ApplicationType>>
+    Given the application has been launched at /<ApplicationType>
+    And I start a new Standard rules application
     And I select <Permit> as the permit number
     And I select <EprPermit> as already having an EPR permit
     And I check costs
@@ -73,11 +73,11 @@ Feature: Standard rules end to end Smoke test
     And I choose to pay by <PaymentType>
     Then the application is created successfully in CRM
     Examples:
-      | PermitHolder    | Path                                  | Permit      | EnterSiteName | PaymentType | GeneratorList | BusinessActivity | EprPermit |
-      | Limited company | /start/start-or-open-saved/mcp        | SR2018 No 7 | enter         | CARD        | include       | include          | no        |
-      | Sole trader     | /start/start-or-open-saved/mcp        | SR2018 No 7 | enter         | BACS        | include       | include          | no        |
-      | Public body     | /start/start-or-open-saved/generators | SR2018 No 8 | enter         | CARD        | include       | skip             | no        |
-      | Individual      | /start/start-or-open-saved/generators | SR2018 No 8 | enter         | BACS        | include       | skip             | no        |
+      | PermitHolder    | ApplicationType | Permit      | EnterSiteName | PaymentType | GeneratorList | BusinessActivity | EprPermit |
+      | Limited company | mcp             | SR2018 No 7 | enter         | CARD        | include       | include          | no        |
+      | Sole trader     | mcp             | SR2018 No 7 | enter         | BACS        | include       | include          | no        |
+      | Public body     | generators      | SR2018 No 8 | skip          | CARD        | include       | skip             | no        |
+      | Individual      | generators      | SR2018 No 8 | skip          | BACS        | include       | skip             | no        |
 
 
   @Smoke_preprod
