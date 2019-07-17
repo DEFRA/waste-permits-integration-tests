@@ -214,9 +214,9 @@ When(/^I submit my application$/, async function () {
   return taskListPage.click(taskListPage.submitPayLink)
 })
 
-When(/^I check my answers$/, async function () {
-  return this.pages.frontEnd.checkBeforeSendingPage.completePage()
-})
+  When(/^I check my answers$/, async function () {
+    return this.pages.frontEnd.checkBeforeSendingPage.completePage(contact)
+  })
 
 When(/^I choose to pay by (.*)$/, async function (paymentType) {
   if (paymentType.toLowerCase() === 'skip') return
