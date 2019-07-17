@@ -194,7 +194,7 @@ defineSupportCode(function ({ Given, When }) {
   })
 
   When(/^I check my answers$/, async function () {
-    return this.pages.frontEnd.checkBeforeSendingPage.completePage()
+    return this.pages.frontEnd.checkBeforeSendingPage.completePage(contact)
   })
 
   When(/^I choose to pay by (.*)$/, async function (paymentType) {
