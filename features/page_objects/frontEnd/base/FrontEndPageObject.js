@@ -16,23 +16,23 @@ class FrontEndPageObject extends PageObject {
 
   async waitForPage (title = this.title, timeout = config.timeout) {
     let hasText
-    //try {
+     try {
       this.log(`wait for page "${title}"`)
       hasText = await this.hasText(this.pageHeading, title)
-    // } catch (error) {
-    //   if (!(error instanceof StaleElementReferenceError)) {
-    //     const actualPageHeading = await this.getText(this.pageHeading, timeout)
-    //     if (actualPageHeading === 'Something went wrong') {
-    //       throw new Error(actualPageHeading)
-    //     }
-    //   }
-    //   if (timeout > 0) {
-    //     await this.sleep(1000)
-    //     hasText = await this.waitForPage(title, timeout - 1000)
-    //   } else {
-    //     throw error
-    //   }
-    // }
+    } catch (error) {
+      if (!(error instanceof StaleElementReferenceError)) {
+        const actualPageHeading = await this.getText(this.pageHeading, timeout)
+        if (actualPageHeading === 'Something went wrong') {
+          throw new Error(actualPageHeading)
+        }
+      }
+      if (timeout > 0) {
+        await this.sleep(10000)
+        hasText = await this.waitForPage(title, timeout - 1000)
+      } else {
+        throw error
+      }
+    }
     return Promise.resolve(hasText)
   }
 
