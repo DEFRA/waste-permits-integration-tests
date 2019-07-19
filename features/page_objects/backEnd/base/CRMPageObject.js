@@ -21,4 +21,4 @@ class CRMPageObject extends PageObject {
   // }
 }
 
-module.exports = {CRMPageObject}
+module.exports = { CRMPageObject }

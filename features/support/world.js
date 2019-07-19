@@ -1,13 +1,13 @@
-const {setWorldConstructor, setDefaultTimeout} = require('cucumber')
+const { setWorldConstructor, setDefaultTimeout } = require('cucumber')
 
 const driver = require('./driver').driver
 const Pages = require('../page_objects/pages')
 const Application = require('./application')
 const AppConfiguration = require('./app-configuration')
-const {'world-parameters': parameters, timeout} = require('../../config')
+const { 'world-parameters': parameters, timeout } = require('../../config')
 
 class CustomWorld {
-  constructor ({attach}) {
+  constructor ({ attach }) {
     this.attach = attach
     this.parameters = parameters
     console.log('PARAM' + JSON.stringify(parameters))

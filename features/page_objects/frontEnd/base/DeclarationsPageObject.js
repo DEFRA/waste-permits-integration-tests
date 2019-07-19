@@ -1,9 +1,9 @@
 const FrontEndPageObject = require('./FrontEndPageObject').FrontEndPageObject
 
 class DeclarationsPageObject extends FrontEndPageObject {
-  get declaredRadio () { return {css: '#declared'} }
-  get declaredDetailsInput () { return {css: '#declaration-details'} }
-  get noneDeclaredRadio () { return {css: '#none-declared'} }
+  get declaredRadio () { return { css: '#declared' } }
+  get declaredDetailsInput () { return { css: '#declaration-details' } }
+  get noneDeclaredRadio () { return { css: '#none-declared' } }
 
   /****************************************************************************/
 
@@ -19,4 +19,4 @@ class DeclarationsPageObject extends FrontEndPageObject {
   }
 }
 
-module.exports = {DeclarationsPageObject}
+module.exports = { DeclarationsPageObject }

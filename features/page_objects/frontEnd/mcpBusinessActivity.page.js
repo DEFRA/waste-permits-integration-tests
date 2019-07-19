@@ -3,7 +3,7 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class McpBusinessActivityPage extends FrontEndPageObject {
   get title () { return 'What is the NACE code for the main business activity that the plant or generator is used for?' }
 
-  get electricityRadio () { return {css: '#type-codes-option-35-11'} }
+  get electricityRadio () { return { css: '#type-codes-option-35-11' } }
 
   async completePage () {
     await this.waitForPage()

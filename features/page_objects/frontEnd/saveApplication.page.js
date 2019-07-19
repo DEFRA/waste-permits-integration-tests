@@ -3,7 +3,7 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class SaveApplicationPage extends FrontEndPageObject {
   get title () { return 'Save your application' }
 
-  get emailInput () { return {css: '#save-and-return-email'} }
+  get emailInput () { return { css: '#save-and-return-email' } }
 
   async completePage (email) {
     await this.waitForPage()
