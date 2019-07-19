@@ -4,11 +4,11 @@ const data = Object.freeze({
   email: 'save.application@defra.test.gov.uk',
 
   contact: {
-    firstName: 'James',
-    lastName: 'Bond',
-    agentCompany: 'Agent Company',
+    firstName: 'TestJames',
+    lastName: 'TestBond',
+    agentCompany: 'TestAgent Company',
     telephone: '007 007 007 007',
-    email: 'james.bond@defra.test.gov.uk'
+    email: 'Testjames.bond@defra.test.gov.uk'
   },
 
   charity: {
@@ -17,10 +17,10 @@ const data = Object.freeze({
   },
 
   individual: {
-    firstName: 'Money',
-    lastName: 'Penny',
+    firstName: 'TestMoney',
+    lastName: 'TestPenny',
     dob: { day: 2, month: 8, year: 1999 },
-    email: 'individual@defra.test.gov.uk',
+    email: 'testindividual@defra.test.gov.uk',
     telephone: '002 007 002 007',
     buildingNameOrNumber: 'Horizon House',
     addressLine1: 'Deanery Rd',
@@ -31,11 +31,11 @@ const data = Object.freeze({
   },
 
   soleTrader: {
-    firstName: 'Soul',
-    lastName: 'Man',
+    firstName: 'TestSoul',
+    lastName: 'TestMan',
     dob: { day: 2, month: 8, year: 1999 },
-    tradingName: 'Soul Trader',
-    email: 'sole.trader@defra.test.gov.uk',
+    tradingName: 'TestSoul Trader',
+    email: 'testsole.trader@defra.test.gov.uk',
     telephone: '002107202307',
     buildingNameOrNumber: 'Horizon House',
     addressLine1: 'Deanery Rd',
@@ -48,11 +48,11 @@ const data = Object.freeze({
   limitedCompany: {
     number: '06388542',
     name: 'HSBC LIMITED',
-    tradingName: 'Trading Name',
+    tradingName: 'TestTrading Name',
     directors: [
       {
         dob: { day: 10, month: 12, year: 1976 },
-        email: 'director0@defra.test.gov.uk'
+        email: 'testdirector0@defra.test.gov.uk'
       }
     ],
     convictions: 'This is a test conviction for a limited company',
@@ -61,7 +61,7 @@ const data = Object.freeze({
 
   limitedLiabilityPartnership: {
     number: 'OC353216',
-    buildingNameOrNumber: 'Site House',
+    buildingNameOrNumber: 'TestSite House',
     addressLine1: 'Site Rd',
     townOrCity: 'Bristol',
     postcode: 'BS1 5AH',
@@ -70,7 +70,7 @@ const data = Object.freeze({
     directors: [
       {
         dob: { day: 10, month: 12, year: 1976 },
-        email: 'designated.member@defra.test.gov.uk'
+        email: 'testdesignated.member@defra.test.gov.uk'
       }
     ],
     convictions: 'This is a test conviction for a limited liability partnership',
@@ -78,11 +78,11 @@ const data = Object.freeze({
   },
 
   publicBody: {
-    firstName: 'Joe',
-    lastName: 'Public',
-    email: 'joe.public@defra.test.gov.uk',
-    jobTitle: 'Chairman',
-    tradingName: 'Public body Name',
+    firstName: 'TestJoe',
+    lastName: 'TestPublic',
+    email: 'testjoe.public@defra.test.gov.uk',
+    jobTitle: 'TestChairman',
+    tradingName: 'TestPublic body Name',
     buildingNameOrNumber: 'Council Chambers',
     addressLine1: 'Authority Rd',
     townOrCity: 'Bristol',
@@ -91,14 +91,14 @@ const data = Object.freeze({
   },
 
   partnership: {
-    tradingName: 'Trading Name',
+    tradingName: 'TestTrading Name',
     partners: [
       {
-        firstName: 'First',
-        lastName: 'Partner',
-        jobTitle: 'First Officer',
+        firstName: 'TestFirst',
+        lastName: 'TestPartner',
+        jobTitle: 'TestFirst Officer',
         dob: { day: 1, month: 2, year: 1990 },
-        email: 'first.partner@defra.test.gov.uk',
+        email: 'testfirst.partner@defra.test.gov.uk',
         telephone: '001 001 001 001',
         buildingNameOrNumber: 'Horizon House',
         addressLine1: 'Deanery Rd',
@@ -108,11 +108,11 @@ const data = Object.freeze({
         bankruptcy: 'This is a test bankruptcy for the first partner'
       },
       {
-        firstName: 'Second',
-        lastName: 'Partner',
-        jobTitle: 'Second Officer',
+        firstName: 'TestSecond',
+        lastName: 'TestPartner',
+        jobTitle: 'TestSecond Officer',
         dob: { day: 2, month: 3, year: 1991 },
-        email: 'second.partner@defra.test.gov.uk',
+        email: 'testsecond.partner@defra.test.gov.uk',
         telephone: '002 002 002 002',
         buildingNameOrNumber: 'Horizon House',
         addressLine1: 'Deanery Rd',
@@ -122,11 +122,11 @@ const data = Object.freeze({
         bankruptcy: 'This is a test bankruptcy for the second partner'
       },
       {
-        firstName: 'Third',
-        lastName: 'Partner',
-        jobTitle: 'Third Officer',
+        firstName: 'TestThird',
+        lastName: 'TestPartner',
+        jobTitle: 'TestThird Officer',
         dob: { day: 3, month: 4, year: 1992 },
-        email: 'third.partner@defra.test.gov.uk',
+        email: 'testthird.partner@defra.test.gov.uk',
         telephone: '003 003 003 003',
         buildingNameOrNumber: 'Horizon House',
         addressLine1: 'Deanery Rd',
@@ -139,7 +139,7 @@ const data = Object.freeze({
   },
 
   site: {
-    name: 'Our Test Site',
+    name: 'Test Our Test Site',
     gridReference: 'ST 58132 72695',
     buildingNameOrNumber: 'Site House',
     addressLine1: 'Site Rd',
@@ -148,14 +148,14 @@ const data = Object.freeze({
   },
 
   invoice: {
-    buildingNameOrNumber: 'Invoice House',
-    addressLine1: 'Invoice Rd',
+    buildingNameOrNumber: 'Test Invoice House',
+    addressLine1: 'Test Invoice Rd',
     townOrCity: 'Bristol',
     postcode: 'BS1 5AH',
     firstName: 'Hugo',
     lastName: 'Drax',
     telephone: '001 002 003 004',
-    email: 'hugo.drax@defra.test.gov.uk'
+    email: 'testhugo.drax@defra.test.gov.uk'
   },
 
   miningWaste: {
@@ -164,7 +164,7 @@ const data = Object.freeze({
   },
 
   aqmaDetails: {
-    name: 'My AQMA',
+    name: 'Test My AQMA',
     localAuthority: 'Bristol City Council',
     nitrogenDioxideLevel: '5'
   },
@@ -179,12 +179,12 @@ const data = Object.freeze({
       addrLineOne: '01',
       city: 'Bristol',
       postcode: 'bs5 1ah',
-      email: 'amruta.bendre.ea.ga@gmail.com'
+      email: 'amruta.bendre@defra.net'
     },
     validBacs: {
       date: { day: 2, month: 3, year: 1991 },
       amount: 1000.00,
-      reference: 'My Payment Ref'
+      reference: 'TestMy Payment Ref'
     }
   },
 
