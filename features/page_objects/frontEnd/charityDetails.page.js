@@ -3,8 +3,8 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class CharityDetailsPage extends FrontEndPageObject {
   get title () { return 'What is the charity’s name and number?' }
 
-  get charityName () { return {css: '#charity-name'} }
-  get charityNumber () { return {css: '#charity-number'} }
+  get charityName () { return { css: '#charity-name' } }
+  get charityNumber () { return { css: '#charity-number' } }
 
   /****************************************************************************/
 

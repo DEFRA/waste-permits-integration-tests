@@ -6,8 +6,8 @@ class Application {
     this.browser = browser
   }
 
-  async launch (appConfiguration) {
-    await this.browser.get(config.appUrl)
+  async launch (appConfiguration, path = '') {
+    await this.browser.get(`${config.appUrl}${path}`)
     await this.browser.wait(async () => (
       await this.browser.wait(appConfiguration.getReadyState()) === 'complete'
     ), 10000)
@@ -21,8 +21,8 @@ class Application {
   }
 
   async takeScreenshots (filename) {
-    const filenameNoSpecialChars = filename.replace(/[^a-zA-Z ]/g, '')
-    const titleDateStamp = filenameNoSpecialChars + Date.now() + '.png'
+    const filenameNoSpecialChars = filename.substring(0, 250).replace(/[^a-z0-9]/gi, '_').toLowerCase()
+    const titleDateStamp = '_>>>_' + filenameNoSpecialChars + Date.now() + '.png'
     if (!fs.existsSync('MartinScreenshots')) {
       fs.mkdirSync('MartinScreenshots')
     }

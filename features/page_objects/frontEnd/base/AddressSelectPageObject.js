@@ -1,11 +1,11 @@
 const FrontEndPageObject = require('./FrontEndPageObject').FrontEndPageObject
 
 class AddressSelectPageObject extends FrontEndPageObject {
-  get postcodeInput () { return {css: '#postcode'} }
-  get manualAddressLink () { return {css: '#manual-address-link'} }
+  get postcodeInput () { return { css: '#postcode' } }
+  get manualAddressLink () { return { css: '#manual-address-link' } }
 
-  get selectAddress () { return {css: '#select-address'} }
-  get firstAddress () { return {css: '#select-address option:nth-of-type(2)'} }
+  get selectAddress () { return { css: '#select-address' } }
+  get firstAddress () { return { css: '#select-address option:nth-of-type(2)' } }
 
   async completePage (address, title) {
     await this.waitForPage(title)
@@ -22,4 +22,4 @@ class AddressSelectPageObject extends FrontEndPageObject {
   }
 }
 
-module.exports = {AddressSelectPageObject}
+module.exports = { AddressSelectPageObject }

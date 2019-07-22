@@ -1,16 +1,16 @@
 const Logger = require('./helpers/logger')
 const path = require('path')
 const logger = new Logger(path.resolve(`${__dirname}/../../../temp/links.txt`))
-const {env} = require('../../../config')
+const { env } = require('../../../config')
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
 class CheckYourEmailPage extends FrontEndPageObject {
   get title () { return 'Check your email' }
 
-  get gotItRadio () { return {css: '#got-email'} }
-  get notGotItRadio () { return {css: '#not-got-email'} }
+  get gotItRadio () { return { css: '#got-email' } }
+  get notGotItRadio () { return { css: '#not-got-email' } }
 
-  get recoveryLink () { return {css: '#recovery-link'} }
+  get recoveryLink () { return { css: '#recovery-link' } }
 
   /****************************************************************************/
 

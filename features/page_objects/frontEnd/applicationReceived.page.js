@@ -3,7 +3,7 @@ const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObje
 class ApplicationReceivedPage extends FrontEndPageObject {
   get title () { return 'Application received' }
   get paymentTitle () { return 'Application and card payment received' }
-  get applicationNumber () { return {css: '#application-name'} }
+  get applicationNumber () { return { css: '#application-name' } }
 
   async completePage (paymentType) {
     switch (paymentType.toLowerCase()) {

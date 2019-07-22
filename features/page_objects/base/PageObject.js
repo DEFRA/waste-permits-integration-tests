@@ -129,4 +129,4 @@ class PageObject {
   }
 }
 
-module.exports = {PageObject}
+module.exports = { PageObject }

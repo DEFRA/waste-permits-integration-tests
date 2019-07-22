@@ -1,46 +1,52 @@
 {
   "name": "waste-permits-integration-tests",
-  "version": "1.12.0",
-  "description": "",
+  "version": "1.19.0",
+  "engines": {
+    "node": "10.x"
+  },
+  "description": "This package runs integrations tests for the DEFRA Waste Permits Service https://github.com/DEFRA/waste-permits",
   "author": "Department for Environment, Food & Rural Affairs",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "test:firefox-desktop-test-smoke-dev": "node node_modules/cucumber/bin/cucumber.js ./features -p firefox-desktop-test-smoke-dev -f json:features/reports/cucumber_report_desktop.json",
-    "test:firefox-desktop-test-smoke-test": "node node_modules/cucumber/bin/cucumber.js ./features -p firefox-desktop-test-smoke-test -f json:features/reports/cucumber_report_desktop.json",
-    "test:chrome-desktop-test-smoke-dev": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke-dev -f json:features/reports/cucumber_report_desktop.json",
-    "test:chrome-desktop-test-smoke-test": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke-test -f json:features/reports/cucumber_report_desktop.json",
-    "test:chrome-desktop-test-smoke-preprod": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke-preprod -f json:features/reports/cucumber_report_desktop.json",
-    "test:chrome-desktop-test-smoke-prod": "node node_modules/cucumber/bin/cucumber.js ./features -p chrome-desktop-test-smoke-prod -f json:features/reports/cucumber_report_desktop.json"
+    "test:firefox-desktop-test-smoke-dev": "node node_modules/cucumber/bin/cucumber-js ./features -p firefox-desktop-test-smoke-dev -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
+    "test:firefox-desktop-test-smoke-test": "node node_modules/cucumber/bin/cucumber-js ./features -p firefox-desktop-test-smoke-test -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
+    "test:chrome-desktop-test-ben": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-ben -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
+    "test:chrome-desktop-test-stuart": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-stuart -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
+    "test:chrome-desktop-test-smoke-dev": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-smoke-dev -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
+    "test:chrome-desktop-test-smoke-test": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-smoke-test -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
+    "test:chrome-desktop-test-smoke-preprod": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-smoke-preprod -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
+    "test:chrome-desktop-test-smoke-prod": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-smoke-prod -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DEFRA/waste-permits-integration-tests.git"
-  },
-  "engines": {
-    "node": "8.x"
   },
   "bugs": {
     "url": "https://github.com/ajaxscape/waste-permits-integration/issues"
   },
   "homepage": "https://github.com/ajaxscape/waste-permits-integration#readme",
   "dependencies": {
-    "chai": "^4.1.2",
+    "ajv": "^6.10.0",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "command-line-args": "^5.0.2",
-    "cucumber": "^2.3.1",
-    "cucumber-html-reporter": "^4.0.3",
-    "dotenv": "^6.1.0",
-    "fs-extra": "^7.0.0",
-    "geckodriver": "^1.3.0",
-    "iedriver": "^3.9.2",
-    "lodash": "^4.17.10",
+    "colors": "^1.3.3",
+    "command-line-args": "^5.1.1",
+    "cucumber": "^5.1.0",
+    "cucumber-html-reporter": "^5.0.0",
+    "cucumber-pretty": "^1.5.2",
+    "dotenv": "^8.0.0",
+    "fs-extra": "^8.1.0",
+    "geckodriver": "^1.16.2",
+    "iedriver": "^3.14.1",
+    "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "require-all": "^3.0.0",
-    "selenium-webdriver": "^3.0.1"
+    "selenium-webdriver": "^3.6.0"
   },
   "devDependencies": {
-    "chromedriver": "^2.40.0",
-    "standard": "^11.0.1"
+    "adal-node": "^0.1.28",
+    "chromedriver": "^75.0.1",
+    "standard": "^12.0.1"
   },
   "standard": {
     "ignore": [
