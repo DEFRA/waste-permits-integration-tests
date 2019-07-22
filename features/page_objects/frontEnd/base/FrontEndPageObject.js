@@ -10,8 +10,6 @@ class FrontEndPageObject extends PageObject {
 
   get errorMsg () { return { css: '#error-summary-list' } }
 
-  get backLink () { return { id: 'back-link' } }
-
   /****************************************************************************/
 
   async waitForPage (title = this.title, timeout = config.timeout) {
@@ -34,6 +32,10 @@ class FrontEndPageObject extends PageObject {
       }
     }
     return Promise.resolve(hasText)
+  }
+
+  async selectBackLink () {
+    return this.click(this.backLink)
   }
 
   async checkError (message, timeout = config.timeout) {
