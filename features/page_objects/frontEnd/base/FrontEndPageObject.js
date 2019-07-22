@@ -10,13 +10,11 @@ class FrontEndPageObject extends PageObject {
 
   get errorMsg () { return { css: '#error-summary-list' } }
 
-  get backLink () { return { id: 'back-link' } }
-
   /****************************************************************************/
 
   async waitForPage (title = this.title, timeout = config.timeout) {
     let hasText
-    try {
+     try {
       this.log(`wait for page "${title}"`)
       hasText = await this.hasText(this.pageHeading, title)
     } catch (error) {
@@ -27,13 +25,17 @@ class FrontEndPageObject extends PageObject {
         }
       }
       if (timeout > 0) {
-        await this.sleep(1000)
+        await this.sleep(10000)
         hasText = await this.waitForPage(title, timeout - 1000)
       } else {
         throw error
       }
     }
     return Promise.resolve(hasText)
+  }
+
+  async selectBackLink () {
+    return this.click(this.backLink)
   }
 
   async checkError (message, timeout = config.timeout) {

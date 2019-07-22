@@ -27,7 +27,7 @@ class PageObject {
   }
 
   async waitForPage (title, timeout = config.timeout) {
-    throw new Error('Todo: Not implemented')
+    throw new Error('Title expected: ' +title)
   }
 
   async sleep (timer) {

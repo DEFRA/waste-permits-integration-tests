@@ -9,6 +9,8 @@ class TaskListPage extends FrontEndPageObject {
     }
   }
 
+  get backLink () { return { css: '#back-link' } }
+
   get bespokeTitle () { return 'Apply for a bespoke environmental permit' }
 
   get checkCostAndProcessingTimeLink () { return { css: '#check-permit-cost-and-time-link' } }
@@ -104,6 +106,10 @@ class TaskListPage extends FrontEndPageObject {
   async selectTask (link) {
     await this.waitForPage()
     await this.click(link)
+  }
+
+  async clickBackLink () {
+    return await this.click(this.backLink)
   }
 }
 
