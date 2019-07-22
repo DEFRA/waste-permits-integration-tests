@@ -44,6 +44,11 @@ Given(/^the application has been launched at (.*)$/, async function (path) {
   return this.application.launch(this.appConfiguration, path)
 })
 
+Given(/^I go back to the previous page$/, async function () {
+  const { taskListPage } = this.pages.frontEnd
+  return taskListPage.clickBackLink()
+})
+
 When(/^I start a new (.*) application$/, async function (permitType) {
   this.data.permitType = permitType
   return this.pages.frontEnd.startOrOpenSavedPage.completePage()
@@ -214,9 +219,9 @@ When(/^I submit my application$/, async function () {
   return taskListPage.click(taskListPage.submitPayLink)
 })
 
-When(/^I check my answers$/, async function () {
-  return this.pages.frontEnd.checkBeforeSendingPage.completePage()
-})
+  When(/^I check my answers$/, async function () {
+    return this.pages.frontEnd.checkBeforeSendingPage.completePage(contact)
+  })
 
 When(/^I choose to pay by (.*)$/, async function (paymentType) {
   if (paymentType.toLowerCase() === 'skip') return
