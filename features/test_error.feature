@@ -36,12 +36,12 @@ Feature: Error test trial
         Examples:
             | Field     | Value     | Message          |
             | firstName |           | "Enter a first name" |
-            | firstName | 457474577 | "First name can only include letters, hyphens and apostrophes - delete any other characters" |
-            | firstName | 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 | "First name can only include letters, hyphens and apostrophes - delete any other characters//Enter a shorter first name with no more than 50 characters" |
+            | firstName | 457474577 | "First name can only include letters, hyphens, apostrophes and up to 2 spaces - delete any other characters" |
+            | firstName | 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 | "First name can only include letters, hyphens, apostrophes and up to 2 spaces - delete any other characters//Enter a shorter first name with no more than 50 characters" |
 
 
-    @Smoke_preprod
-    @Smoke_prod
+    @Smoke_preprod_dont_need
+    @Smoke_prod_dont_need
     Scenario Outline: As a user I should get error for invalid contact details
         Given the application has been launched
         And I start a new application
@@ -53,5 +53,5 @@ Feature: Error test trial
         Examples:
             | Field     | Value     | Message          |
             | firstName |           | "Enter a first name" |
-            | firstName | 457474577 | "First name can only include letters, hyphens and apostrophes - delete any other characters" |
-            | firstName | 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 | "First name can only include letters, hyphens and apostrophes - delete any other characters//Enter a shorter first name with no more than 50 characters" |
+            | firstName | 457474577 | "First name can only include letters, hyphens, apostrophes and up to 2 spaces - delete any other characters" |
+            | firstName | 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 | "First name can only include letters, hyphens, apostrophes and up to 2 spaces - delete any other characters//Enter a shorter first name with no more than 50 characters" |

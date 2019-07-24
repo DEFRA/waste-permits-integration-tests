@@ -16,18 +16,18 @@ class OfflineApplyPage extends FrontEndPageObject {
 
     switch (expTitle.toLowerCase()) {
       case 'apply for flood risk activities permits':
-        await this.haslink(this.floodLink, link)
+        return await this.haslink(this.floodLink, link)
         break
       case 'apply for water discharges permits':
-        await this.haslink(this.waterLink, link)
+        return await this.haslink(this.waterLink, link)
         break
       case 'apply for radioactive substances for non-nuclear sites permits':
-        await this.haslink(this.radioActiveLink, link)
+        return await this.haslink(this.radioActiveLink, link)
         break
       default:
-        await this.haslink(this.standardRulesLink, link)
+        return await this.haslink(this.standardRulesLink, link)
     }
-    return this.click(this.changeYourSelectionLink)
+    //return this.click(this.changeYourSelectionLink)
   }
 }
 

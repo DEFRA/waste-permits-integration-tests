@@ -44,9 +44,9 @@ Given(/^the application has been launched at (.*)$/, async function (path) {
   return this.application.launch(this.appConfiguration, path)
 })
 
-Given(/^I go back to the previous page$/, async function () {
+Given(/^I go back to the (.*) page$/, async function (page) {
   const { taskListPage } = this.pages.frontEnd
-  return taskListPage.clickBackLink()
+  return taskListPage.clickBackLink(page)
 })
 
 When(/^I start a new (.*) application$/, async function (permitType) {
@@ -107,6 +107,12 @@ When(/^I select the following activities I want the permit to cover: (.*)$/, asy
 When(/^I select (.*) as the permit number$/, async function (permitNumber) {
   this.data.permitNumber = permitNumber
   return this.pages.frontEnd.permitNumberSelectPage.completePage(permitNumber)
+})
+
+
+When(/^I select a different permit from the task list page$/, async function () {
+  const { taskListPage } = this.pages.frontEnd
+  return taskListPage.selectDifferentPermit()
 })
 
 When(/^I check costs$/, async function () {

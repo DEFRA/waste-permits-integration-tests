@@ -10,6 +10,7 @@ class TaskListPage extends FrontEndPageObject {
   }
 
   get backLink () { return { css: '#back-link' } }
+  get selectDifferentPermitLink () { return { css: '#select-a-different-permit' } }
 
   get bespokeTitle () { return 'Apply for a bespoke environmental permit' }
 
@@ -108,8 +109,17 @@ class TaskListPage extends FrontEndPageObject {
     await this.click(link)
   }
 
-  async clickBackLink () {
-    return await this.click(this.backLink)
+  async selectDifferentPermit () {
+    const selectdiffPermit = await this.selectDifferentPermitLink
+    await this.hasText(selectdiffPermit, 'Select a different permit')
+    return this.click(selectdiffPermit)
+  }
+
+  async clickBackLink (title) {
+    const backlink = await this.backLink
+    await this.hasText(backlink, 'Back')
+    await this.click(backlink) 
+    return await this.waitForPage(title)
   }
 }
 
