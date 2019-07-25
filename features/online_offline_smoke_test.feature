@@ -183,7 +183,7 @@ Feature: Tests to check Standard rules which are applicable online and SR's whic
     And I select Standard rules as the permit type
     And I select Electrical insulating oil storage as the permit category
     And I select SR2012 No 15 as the permit number
-    And I check 2,641on Cost and processing time page
+    And I check 2,641 on Cost and processing time page
     And I confirm I meet the rules https://www.gov.uk/government/publications/sr2012-no15-storage-of-electrical-insulating-oils
     #go back
     And I select a different permit from the task list page
