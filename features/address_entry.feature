@@ -27,7 +27,6 @@ Feature: Address entry Smoke test
 #    Then I open the application
 
   @Smoke_preprod
-  @Smoke_prod
   Scenario: As a user I should be able to select addresses when applying for a standard rules waste permit
     Given the application has been launched
     And I start a new application
