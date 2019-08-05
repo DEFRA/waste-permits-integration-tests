@@ -12,7 +12,6 @@ Feature: Error test trial
         And I should see an error "Select who will be the permit holder"
 
     @Smoke_preprod
-    @Smoke_prod
     Scenario: As a user I should get error for invalid entries
         Given the application has been launched
         And I start a new application
