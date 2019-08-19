@@ -139,7 +139,7 @@ Feature: Bespoke MCP end to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by BACS
-    Then the application is created successfully in CRM
+    # Then the application is created successfully in CRM
     Examples:
       | PermitHolder                  | PermitType | Facility                                       | ApplicationType | MCPType                | ExistingEPRPermit | Under500Hours | AirDispersionReport | EnergyEfficiencyReport | ThermalInput20to50 | EnergyType | BurningWasteBiomass | ExceedsOneMWThermal | HabitAssessment | AirDispersionReportUpload | ScreeningToolUpload | EnergyEfficiencyReportUpload | BestAvailableTechniquesAssessmentUpload | BusinessTypeUpload | SiteNameAndLocation | AQMA    | NaceCode |
       | Public body                   | skip       | skip                                           | mcp-bespoke     | Stationary MCP         | no                | yes           | skip                | skip                   | skip               | skip       | skip                | skip                | skip            | skip                      | skip                | skip                         | skip                                    | upload             | enter               | include | skip     |

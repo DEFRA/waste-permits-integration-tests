@@ -26,6 +26,13 @@ class Tasks {
     })
   }
 
+  async checkCostAndProcessingTimeValidationsNoComplete (cost, pages) {
+    const { taskListPage, checkCostPage } = pages.frontEnd
+    return taskListPage.doNotCompleteTask('checkCostAndProcessingTime', async () => {
+      return checkCostPage.completePageValidation(cost)
+    })
+  }
+
   async confirmOperationMeetsRules (pages) {
     const { taskListPage, confirmOperationMeetsRulesPage } = pages.frontEnd
     return taskListPage.completeTask('confirmOperationMeetsRules', async () => {
@@ -36,6 +43,13 @@ class Tasks {
   async confirmOperationMeetsRulesValidation (link, pages) {
     const { taskListPage, confirmOperationMeetsRulesPage } = pages.frontEnd
     return taskListPage.completeTask('confirmOperationMeetsRules', async () => {
+      return confirmOperationMeetsRulesPage.completePageValidation(link)
+    })
+  }
+
+  async confirmOperationMeetsRulesValidationNoComplete (link, pages) {
+    const { taskListPage, confirmOperationMeetsRulesPage } = pages.frontEnd
+    return taskListPage.doNotCompleteTask('confirmOperationMeetsRules', async () => {
       return confirmOperationMeetsRulesPage.completePageValidation(link)
     })
   }

@@ -123,12 +123,20 @@ When(/^I check (.*) on Cost and processing time page$/, async function (cost) {
   return this.tasks.checkCostAndProcessingTimeValidations(cost, this.pages)
 })
 
+When(/^I check (.*) on the Cost and processing time page$/, async function (cost) {
+  return this.tasks.checkCostAndProcessingTimeValidationsNoComplete(cost, this.pages)
+})
+
 When(/^I confirm I meet the rules$/, async function () {
   return this.tasks.confirmOperationMeetsRules(this.pages)
 })
 
 When(/^I confirm I meet the rules (.*)$/, async function (link) {
   return this.tasks.confirmOperationMeetsRulesValidation(link, this.pages)
+})
+
+When(/^I confirm that I meet the rules (.*)$/, async function (link) {
+  return this.tasks.confirmOperationMeetsRulesValidationNoComplete(link, this.pages)
 })
 
 When(/^I confirm my vehicle storage area (.*)$/, async function (vehicleStorage) {
