@@ -15,7 +15,7 @@ Feature: Error test trial
     Scenario: As a user I should get error for invalid entries
         Given the application has been launched
         And I start a new application
-        #And I select Standard rules as the permit type
+        And I select Standard rules as the permit type
         And I select Car and vehicle dismantling as the permit category
         And I select SR2015 No 13 as the permit number
         And I enter my permit holder details for none
@@ -44,7 +44,7 @@ Feature: Error test trial
     Scenario Outline: As a user I should get error for invalid contact details
         Given the application has been launched
         And I start a new application
-        #And I select Standard rules as the permit type
+        And I select Standard rules as the permit type
         And I select Car and vehicle dismantling as the permit category
         And I select SR2015 No 13 as the permit number
         And I enter a contact with <Field> set to "<Value>"
