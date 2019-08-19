@@ -31,6 +31,7 @@ Feature: Address entry Smoke test
     Given the application has been launched
     And I start a new application
     And I will select each address
+    And I select Standard rules as the permit type
     And I select Composting, sewage or sludge treatment, biogas as the permit category
     And I select SR2012 No 7 as the permit number
     And I check costs
