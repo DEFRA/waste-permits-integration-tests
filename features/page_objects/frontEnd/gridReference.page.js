@@ -10,9 +10,10 @@ class GridReferencePage extends FrontEndPageObject {
   /****************************************************************************/
 
   async completePage ({ gridReference }, title) {
-    if (this.data.permitCategory === 'Medium combustion plant - stationary and in operation after 20/12/2018' || this.data.permitCategory === 'Generators - Specified Generator, Tranche B') {
-      await this.waitForPage(titleMCPSR)
-    }else await this.waitForPage(title)
+    // if (this.data.permitCategory === 'Medium combustion plant - stationary and in operation after 20/12/2018' || this.data.permitCategory === 'Generators - Specified Generator, Tranche B') {
+    //   await this.waitForPage(titleMCPSR)
+    // }else 
+    await this.waitForPage(title)
     await this.input(this.gridReferenceInput, gridReference)
     return this.click(this.continueButton)
   }
