@@ -81,7 +81,7 @@ Feature: Standard rules end to end Smoke test
   Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>
     Given the application has been launched
     And I start a new application
-    #And I select Standard rules as the permit type
+    And I select Standard rules as the permit type
     And I select <PermitCategory> as the permit category
     And I select <Permit> as the permit number
     And I check costs
@@ -104,25 +104,25 @@ Feature: Standard rules end to end Smoke test
     And I choose to pay by <PaymentType>
     Examples:
       | PermitHolder                        | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
-      | Charity or trust: Public body       | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | skip        |
-      | Charity or trust: Limited company   | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip             | skip              | upload             | upload   | enter         | WAMITAB               | skip        |
-      | Charity or trust: Individual        | Composting, sewage or sludge treatment, biogas               | SR2012 No 7  | is not required           | skip             | skip              | skip               | upload   | enter         | Deemed                | skip        |
-      | Public body                         | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | skip        |
-      | Limited company                     | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip             | skip              | upload             | upload   | enter         | WAMITAB               | skip        |
+      | Charity or trust: Public body       | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |
+      | Charity or trust: Limited company   | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip             | skip              | upload             | upload   | enter         | WAMITAB               | BACS        |
+      | Charity or trust: Individual        | Composting, sewage or sludge treatment, biogas               | SR2012 No 7  | is not required           | skip             | skip              | skip               | upload   | enter         | Deemed                | BACS        |
+      | Public body                         | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |
+      | Limited company                     | Car and vehicle dismantling                                  | SR2015 No 13 | has a sewer under consent | skip             | skip              | upload             | upload   | enter         | WAMITAB               | BACS        |
 #      | Limited company                     | Mobile plant for land-spreading or treatment                 | SR2010 No 4  | is not required           | skip             | skip              | skip               | skip     | skip          | WAMITAB               | skip        |
-      | Sole trader                         | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip             | skip              | upload             | upload   | enter         | Getting Qualification | skip        |
-      | Limited liability partnership       | Deposit for recovery                                         | SR2015 No 39 | is not required           | skip             | changed           | skip               | upload   | enter         | Deemed                | skip        |
-      | Individual                          | Composting, sewage or sludge treatment, biogas               | SR2012 No 7  | is not required           | skip             | skip              | skip               | upload   | enter         | Deemed                | skip        |
-      | Partnership                         | Electrical insulating oil storage                            | SR2012 No 15 | is not required           | skip             | skip              | skip               | upload   | enter         | ESA EU                | skip        |
-      | Other organisation: Group           | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip             | skip              | upload             | upload   | enter         | Getting Qualification | skip        |
-      | Other organisation: Limited company | Electrical insulating oil storage                            | SR2012 No 15 | is not required           | skip             | skip              | skip               | upload   | enter         | ESA EU                | skip        |
+      | Sole trader                         | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip             | skip              | upload             | upload   | enter         | Getting Qualification | BACS        |
+      | Limited liability partnership       | Deposit for recovery                                         | SR2015 No 39 | is not required           | skip             | changed           | skip               | upload   | enter         | Deemed                | BACS        |
+      | Individual                          | Composting, sewage or sludge treatment, biogas               | SR2012 No 7  | is not required           | skip             | skip              | skip               | upload   | enter         | Deemed                | BACS        |
+      | Partnership                         | Electrical insulating oil storage                            | SR2012 No 15 | is not required           | skip             | skip              | skip               | upload   | enter         | ESA EU                | BACS        |
+      | Other organisation: Group           | Metal recycling, scrap metal and WEEE - not cars or vehicles | SR2015 No 14 | is not required           | skip             | skip              | upload             | upload   | enter         | Getting Qualification | BACS        |
+      | Other organisation: Limited company | Electrical insulating oil storage                            | SR2012 No 15 | is not required           | skip             | skip              | skip               | upload   | enter         | ESA EU                | BACS        |
 
 
  @Smoke_prod
   Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>
     Given the application has been launched
     And I start a new application
-    #And I select Standard rules as the permit type
+    And I select Standard rules as the permit type
     And I select <PermitCategory> as the permit category
     And I select <Permit> as the permit number
     And I check costs
@@ -142,7 +142,7 @@ Feature: Standard rules end to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by <PaymentType>
-    Then the application is created successfully in CRM
+    # Then the application is created successfully in CRM
     Examples:
       | PermitHolder                        | PermitCategory                                               | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType |
       | Charity or trust: Public body       | Mining, oil and gas                                          | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        |
