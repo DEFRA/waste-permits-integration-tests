@@ -10,6 +10,8 @@ class FrontEndPageObject extends PageObject {
 
   get errorMsg () { return { css: '#error-summary-list' } }
 
+  get backLink () { return { css: '#back-link' } }
+
   /****************************************************************************/
 
   async waitForPage (title = this.title, timeout = config.timeout) {
@@ -21,7 +23,10 @@ class FrontEndPageObject extends PageObject {
       if (!(error instanceof StaleElementReferenceError)) {
         const actualPageHeading = await this.getText(this.pageHeading, timeout)
         if (actualPageHeading === 'Something went wrong') {
-          throw new Error(actualPageHeading)
+          const backlink = await this.backLink
+          await this.hasText(backlink, 'Back')
+          await this.click(backlink) 
+          return this.waitForPage(title)
         }
       }
       if (timeout > 0) {
