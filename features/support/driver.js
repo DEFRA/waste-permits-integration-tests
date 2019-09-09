@@ -5,6 +5,7 @@ require('geckodriver')
 require('iedriver')
 require('cucumber')
 const fs = require('fs')
+const firefox = require('selenium-webdriver/firefox')
 
 const PLATFORMS = {
   CHROME_PHONE_DEV: 'chrome-phone-dev',
@@ -159,6 +160,14 @@ class Driver {
           break
         case PLATFORMS.FIREFOX_DESKTOP_DEV:
         case PLATFORMS.FIREFOX_DESKTOP_TEST:
+          let options = new firefox.Options().setBinary('/Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox-bin')
+          this.browser = new webdriver
+            .Builder()
+            .withCapabilities(this.getDriverSpec(parameters.platform))
+            .forBrowser('firefox').setFirefoxOptions(options)
+            .build()
+          this.browser.manage().window().setSize(parameters.width, parameters.height)
+          break
         case PLATFORMS.IE_DESKTOP_TEST:
           this.browser = new webdriver.Builder().withCapabilities(this.getDriverSpec(parameters.platform)).build()
           this.browser.manage().window().setSize(parameters.width, parameters.height)
