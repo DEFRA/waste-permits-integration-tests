@@ -160,7 +160,9 @@ class Driver {
           break
         case PLATFORMS.FIREFOX_DESKTOP_DEV:
         case PLATFORMS.FIREFOX_DESKTOP_TEST:
-          let options = new firefox.Options().setBinary('/Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox-bin')
+          let options = new firefox
+            .Options()
+            .setBinary('/Applications/Firefox\ Developer\ Edition.app/Contents/MacOS/firefox-bin')
           this.browser = new webdriver
             .Builder()
             .withCapabilities(this.getDriverSpec(parameters.platform))
