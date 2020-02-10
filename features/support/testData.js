@@ -159,7 +159,7 @@ const data = Object.freeze({
   },
 
   miningWaste: {
-    miningWasteWeight: '1000,000',
+    miningWasteWeight: '1000000',
     miningWastePlan: 'Water based'
   },
 
@@ -187,7 +187,8 @@ const data = Object.freeze({
       reference: 'TestMy Payment Ref'
     }
   },
-
+  validPreAppNumber: 'AAA/WE1111AA/A111',
+  invalidPreAppNumber: 'AAA/WE1111AA/A1112',
   confidentialityNeeds: 'Test confidentiality needs'
 })
 

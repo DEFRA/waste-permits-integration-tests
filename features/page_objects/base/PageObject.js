@@ -55,6 +55,14 @@ class PageObject {
     return Promise.resolve(assert.sameMembers(lines, expectedLines))
   }
 
+  async hasNoLinesOfText (locator, notExpectedLines, timeout = config.timeout) {
+    const element = await this.waitUntilLoaded(locator, timeout)
+    const lines = (await element.getText()).split('\n')
+    const value = lines.indexOf(notExpectedLines);
+    console.log('VALUE ' +value)
+    return Promise.resolve(assert.notEqual(value, -1))
+  }
+
   async hasValue (locator, expectedValue, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
     return assert.eventually.equal(element.getAttribute('value'), expectedValue)

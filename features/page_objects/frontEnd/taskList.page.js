@@ -77,6 +77,9 @@ class TaskListPage extends FrontEndPageObject {
   get confirmConfidentialityNeedsLink () { return { css: '#confirm-confidentiality-needs-link' } }
   get confirmConfidentialityNeedsCompleted () { return { css: '#confidentiality-completed' } }
 
+  get enterPreAppNumberLink () { return { css: '#provide-your-pre-application-reference-link' } }
+  get enterPreAppNumberCompleted () { return { css: '#preapp-completed' } }
+
   get miningWasteLink () { return { css: '#confirm-mining-data-link' } }
   get miningWasteCompleted () { return { css: '#mining-data-completed' } }
 

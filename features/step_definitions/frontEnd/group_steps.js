@@ -1,7 +1,7 @@
 const { Given, When } = require('cucumber')
 const path = require('path')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
-const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails, aqmaDetails } = require('../../support/testData')
+const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails, aqmaDetails, validPreAppNumber } = require('../../support/testData')
 
 function file (type) {
   return { name: path.join(__dirname, `../../uploadTestFiles/${type}-file-test.${type.toLowerCase()}`) }
@@ -54,6 +54,15 @@ When(/^I start a new (.*) application$/, async function (permitType) {
   return this.pages.frontEnd.startOrOpenSavedPage.completePage()
 })
 
+When(/^I enter a valid pre application number$/, async function (){
+  return this.tasks.enterPreAppNumber(validPreAppNumber, this.pages)
+})
+
+
+When(/^I select I have received preapplication advice$/, async function () {
+  return this.pages.frontEnd.preappSelectionPage.completePage()
+})
+
 When(/^I start a new application$/, async function () {
   return this.pages.frontEnd.startOrOpenSavedPage.completePage()
 })
@@ -99,11 +108,30 @@ When(/^I select (.*) as operating under 500 hours$/, async function (selection) 
   return this.pages.frontEnd.mcpUnder500HoursPage.completePage(this.data.under500Hours)
 })
 
-When(/^I select the following activities I want the permit to cover: (.*)$/, async function (activities) {
-  this.data.activities = activities.split(',').map((activity) => activity.trim())
-  return this.pages.frontEnd.activitiesSelectPage.completePage(this.data.activities)
+When(/^I select the (.*) activity I want the permit to cover$/, async function (activity) {
+  this.data.activity = activity
+  return this.pages.frontEnd.activitiesSelectPage.completePage(activity)
 })
 
+
+When(/^I select all waste types$/, async function () {
+  return this.pages.frontEnd.activitiesSelectPage.selectWasteType()
+})
+
+When(/^I should be able to see text:(.*)$/, async function (text) {
+  console.log(text)
+  return this.pages.frontEnd.activitiesSelectPage.findText(text)
+});
+
+When(/^I should not be able to see text:(.*)$/, async function (text) {
+  console.log(text)
+  return this.pages.frontEnd.activitiesSelectPage.dontfindText(text)
+});
+
+When(/^I add (.*) as another activity I want the permit to cover$/, async function (activity) {
+  this.data.activity = activity
+  return this.pages.frontEnd.activitiesSelectPage.addAnotherActivity(activity)
+})
 When(/^I select (.*) as the permit number$/, async function (permitNumber) {
   this.data.permitNumber = permitNumber
   return this.pages.frontEnd.permitNumberSelectPage.completePage(permitNumber)

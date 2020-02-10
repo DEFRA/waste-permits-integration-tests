@@ -10,6 +10,7 @@ class StartOrOpenSavedPage extends FrontEndPageObject {
     await this.waitForPage()
     await this.click(this.startApplicationRadio)
     return this.click(this.continueButton)
+  
   }
 }
 
