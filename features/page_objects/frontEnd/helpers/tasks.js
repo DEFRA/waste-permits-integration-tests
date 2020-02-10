@@ -70,6 +70,14 @@ class Tasks {
     })
   }
 
+  async enterPreAppNumber (validPreApp = '', pages) {
+    const { taskListPage, preappReferenceNumberPage } = pages.frontEnd
+    return taskListPage.completeTask('enterPreAppNumber', async () => {
+
+      return preappReferenceNumberPage.completePage(validPreApp)
+    })
+  }
+
   async contactDetails (contact = {}, pages) {
     const { taskListPage, contactDetailsPage } = pages.frontEnd
     return taskListPage.completeTask('contactDetails', async () => {
@@ -417,7 +425,7 @@ class Tasks {
     })
   }
 
-  async aqmaDetails (aqmaDetailsRequired, aqmaDetails, pages) {
+   async aqmaDetails (aqmaDetailsRequired, aqmaDetails, pages) {
     const { taskListPage, aqmaDetailsPage } = pages.frontEnd
     return taskListPage.completeTask('aqmaDetails', async () => {
       return aqmaDetailsPage.completePage(aqmaDetailsRequired, aqmaDetails)

@@ -1,7 +1,7 @@
 const FrontEndPageObject = require('./base/FrontEndPageObject').FrontEndPageObject
 
 class BespokeOrStandardRulesPage extends FrontEndPageObject {
-  get title () { return 'Confirm the type of permit you want' }
+  get title () { return 'Choose the type of permit you want' }
 
   get 'Bespoke' () { return { css: '#bespoke-permit-type' } }
   get 'Standard rules' () { return { css: '#standard-rules-permit-type' } }

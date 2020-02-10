@@ -10,6 +10,11 @@ class FrontEndPageObject extends PageObject {
 
   get errorMsg () { return { css: '#error-summary-list' } }
 
+  get backLink () { return { css: '#back-link' } }
+
+  get content () { return {css: '#content'}}
+  
+
   /****************************************************************************/
 
   async waitForPage (title = this.title, timeout = config.timeout) {
@@ -21,7 +26,10 @@ class FrontEndPageObject extends PageObject {
       if (!(error instanceof StaleElementReferenceError)) {
         const actualPageHeading = await this.getText(this.pageHeading, timeout)
         if (actualPageHeading === 'Something went wrong') {
-          throw new Error(actualPageHeading)
+          const backlink = await this.backLink
+          await this.hasText(backlink, 'Back')
+          await this.click(backlink) 
+          return this.waitForPage(title)
         }
       }
       if (timeout > 0) {
@@ -41,6 +49,16 @@ class FrontEndPageObject extends PageObject {
   async checkError (message, timeout = config.timeout) {
     return this.hasLinesOfText(this.errorMsg, message.split(`//`), timeout)
   }
+
+  async checkText (text, timeout = config.timeout) {
+    console.log(text)
+    return this.hasLinesOfText(this.content, text.split('//'), timeout)
+  }
+
+async checkNoText ( text, timeout = config.timeout) {
+ return this.hasNoLinesOfText(this.content, text.split('//'), timeout)
+}
+  
 }
 
 module.exports = { FrontEndPageObject }

@@ -26,26 +26,26 @@
   },
   "homepage": "https://github.com/ajaxscape/waste-permits-integration#readme",
   "dependencies": {
-    "ajv": "^6.10.0",
+    "ajv": "^6.11.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "colors": "^1.3.3",
     "command-line-args": "^5.1.1",
     "cucumber": "^5.1.0",
-    "cucumber-html-reporter": "^5.0.0",
+    "cucumber-html-reporter": "^5.1.0",
     "cucumber-pretty": "^1.5.2",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.2.0",
     "fs-extra": "^8.1.0",
-    "geckodriver": "^1.16.2",
+    "geckodriver": "^1.19.1",
     "iedriver": "^3.14.1",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "require-all": "^3.0.0",
-    "selenium-webdriver": "^3.6.0"
+    "selenium-webdriver": "^4.0.0-alpha.5"
   },
   "devDependencies": {
-    "adal-node": "^0.1.28",
-    "chromedriver": "^75.0.1",
+    "adal-node": "^0.2.1",
+    "chromedriver": "^79.0.2",
     "standard": "^12.0.1"
   },
   "standard": {
