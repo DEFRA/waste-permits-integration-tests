@@ -80,7 +80,8 @@ Feature: Standard rules end to end Smoke test
 
    @Smoke_preprod
    @Smoke_prod
-Given the application has been launched
+     Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>
+    Given the application has been launched
     And I start a new application
     And I select I have received preapplication advice
     And I select Standard rules as the permit type
