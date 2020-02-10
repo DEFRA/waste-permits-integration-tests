@@ -161,11 +161,11 @@ class Driver {
         case PLATFORMS.FIREFOX_DESKTOP_TEST:
         case PLATFORMS.IE_DESKTOP_TEST:
           this.browser = new webdriver.Builder().withCapabilities(this.getDriverSpec(parameters.platform)).build()
-          this.browser.manage().window().setSize(parameters.width, parameters.height)
+         // this.browser.manage().window().setSize(parameters.width, parameters.height)
           break
         case PLATFORMS.IE_DESKTOP_DEV:
           this.browser = new webdriver.Builder().withCapabilities(this.getDriverSpec(parameters.platform)).build()
-          this.browser.manage().window().setSize(parameters.width, parameters.height)
+         // this.browser.manage().window().setSize(parameters.width, parameters.height)
           break
         default:
           throw new Error('Unsupported platform')
