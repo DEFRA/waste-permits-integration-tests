@@ -13,7 +13,7 @@ const {
   SEND_URL = 'http://localhost:8000',
   RESOURCE = 'resource',
   NODE_ENV = 'production',
-  PLATFORM = 'firefox-desktop-test',
+  PLATFORM = 'chrome-desktop-test',
   REPORT_FORMATTER = 'node_modules/cucumber-pretty',
   WIDTH = '1070',
   HEIGHT = '1180',
