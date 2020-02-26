@@ -1,67 +1,99 @@
 class Tasks {
-  constructor (world) {
+  constructor(world) {
     this.__world = world
     this.__testdata = world.data
   }
 
-  get data () {
+  get data() {
     return this.__testdata
   }
 
-  get world () {
+  get world() {
     return this.__world
   }
 
-  async checkCostAndProcessingTime (pages) {
+  async checkCostAndProcessingTime(pages) {
     const { taskListPage, checkCostPage } = pages.frontEnd
     return taskListPage.completeTask('checkCostAndProcessingTime', async () => {
       return checkCostPage.completePage()
     })
   }
 
-  async checkCostAndProcessingTimeValidations (cost, pages) {
+  async checkCostAndProcessingTimeValidations(cost, pages) {
     const { taskListPage, checkCostPage } = pages.frontEnd
     return taskListPage.completeTask('checkCostAndProcessingTime', async () => {
       return checkCostPage.completePageValidation(cost)
     })
   }
 
-  async checkCostAndProcessingTimeValidationsNoComplete (cost, pages) {
+  async consultPageValidation(harbour, fisheries, sewer, pages) {
+    const { taskListPage, consultPage } = pages.frontEnd
+
+    return taskListPage.completeTask('consulting', async () => {
+      return consultPage.completePage(harbour, fisheries, sewer)
+    })
+  }
+
+  async provideWasteWeightsValidation(pages) {
+    const { taskListPage, provideWasteWeightsPage } = pages.frontEnd
+
+    return taskListPage.completeTask('provideWasteWeights', async () => {
+      return provideWasteWeightsPage.completePage()
+    })
+  }
+
+  async provideWasteTreatmentValidation(pages) {
+    const { taskListPage, provideWasteWeightsPage } = pages.frontEnd
+
+    return taskListPage.completeTask('provideWasteTreatment', async () => {
+      return provideWasteWeightsPage.completeWasteTreatmentPage()
+    })
+  }
+
+  async provideDandRCodesValidation(pages) {
+    const { taskListPage, provideWasteWeightsPage } = pages.frontEnd
+
+    return taskListPage.completeTask('provideDandRCodes', async () => {
+      return provideWasteWeightsPage.completeDandRCodesPage()
+    })
+  }
+
+  async checkCostAndProcessingTimeValidationsNoComplete(cost, pages) {
     const { taskListPage, checkCostPage } = pages.frontEnd
     return taskListPage.doNotCompleteTask('checkCostAndProcessingTime', async () => {
       return checkCostPage.completePageValidation(cost)
     })
   }
 
-  async confirmOperationMeetsRules (pages) {
+  async confirmOperationMeetsRules(pages) {
     const { taskListPage, confirmOperationMeetsRulesPage } = pages.frontEnd
     return taskListPage.completeTask('confirmOperationMeetsRules', async () => {
       return confirmOperationMeetsRulesPage.completePage()
     })
   }
 
-  async confirmOperationMeetsRulesValidation (link, pages) {
+  async confirmOperationMeetsRulesValidation(link, pages) {
     const { taskListPage, confirmOperationMeetsRulesPage } = pages.frontEnd
     return taskListPage.completeTask('confirmOperationMeetsRules', async () => {
       return confirmOperationMeetsRulesPage.completePageValidation(link)
     })
   }
 
-  async confirmOperationMeetsRulesValidationNoComplete (link, pages) {
+  async confirmOperationMeetsRulesValidationNoComplete(link, pages) {
     const { taskListPage, confirmOperationMeetsRulesPage } = pages.frontEnd
     return taskListPage.doNotCompleteTask('confirmOperationMeetsRules', async () => {
       return confirmOperationMeetsRulesPage.completePageValidation(link)
     })
   }
 
-  async confirmSuitableVehicleStorage (vehicleStorage = '', pages) {
+  async confirmSuitableVehicleStorage(vehicleStorage = '', pages) {
     const { taskListPage, confirmSuitableVehicleStoragePage } = pages.frontEnd
     return taskListPage.completeTask('confirmSuitableVehicleStorage', async () => {
       return confirmSuitableVehicleStoragePage.completePage(vehicleStorage)
     })
   }
 
-  async saveApplication (email = '', pages) {
+  async saveApplication(email = '', pages) {
     const { taskListPage, checkYourEmailPage, makeSureEmailIsRightPage, saveApplicationPage } = pages.frontEnd
     return taskListPage.completeTask('saveApplication', async () => {
       await saveApplicationPage.completePage(email)
@@ -70,7 +102,7 @@ class Tasks {
     })
   }
 
-  async enterPreAppNumber (validPreApp = '', pages) {
+  async enterPreAppNumber(validPreApp = '', pages) {
     const { taskListPage, preappReferenceNumberPage } = pages.frontEnd
     return taskListPage.completeTask('enterPreAppNumber', async () => {
 
@@ -78,19 +110,19 @@ class Tasks {
     })
   }
 
-  async contactDetails (contact = {}, pages) {
+  async contactDetails(contact = {}, pages) {
     const { taskListPage, contactDetailsPage } = pages.frontEnd
     return taskListPage.completeTask('contactDetails', async () => {
       return contactDetailsPage.completePage(contact)
     })
   }
 
-  async enterCardDetails (card = {}, pages) {
+  async enterCardDetails(card = {}, pages) {
     const { cardPaymentPage } = pages.frontEnd
     return cardPaymentPage.completePage(card)
   }
 
-  async charityPermitHolderDetails (data, pages) {
+  async charityPermitHolderDetails(data, pages) {
     const { charity, individual, limitedCompany, publicBody } = data
     const { charityDetailsPage, charityPermitHolderPage } = pages.frontEnd
     await charityPermitHolderPage.completePage(this.data.actualPermitHolder)
@@ -135,7 +167,7 @@ class Tasks {
     }
   }
 
-  async individualPermitHolderDetails (individual = {}, pages) {
+  async individualPermitHolderDetails(individual = {}, pages) {
     const { permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, convictionsPage, bankruptcyPage } = pages.frontEnd
     await permitHolderDetailsPage.completePage(individual)
     await permitHolderContactDetailsPage.completePage(individual)
@@ -144,7 +176,7 @@ class Tasks {
     return bankruptcyPage.completePage(individual.bankruptcy)
   }
 
-  async limitedCompanyPermitHolderDetails (limitedCompany = {}, pages) {
+  async limitedCompanyPermitHolderDetails(limitedCompany = {}, pages) {
     const { companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage, convictionsPage, bankruptcyPage } = pages.frontEnd
     await companyNumberPage.completePage(limitedCompany.number)
     await companyCheckNamePage.completePage(limitedCompany)
@@ -154,7 +186,7 @@ class Tasks {
     return bankruptcyPage.completePage(limitedCompany.bankruptcy)
   }
 
-  async limitedLiabilityPartnershipPermitHolderDetails (limitedLiabilityPartnership = {}, pages) {
+  async limitedLiabilityPartnershipPermitHolderDetails(limitedLiabilityPartnership = {}, pages) {
     const { companyNumberPage, companyCheckNamePage, directorsDateOfBirthPage, directorsEmailPage, convictionsPage, bankruptcyPage } = pages.frontEnd
     await companyNumberPage.completePage(limitedLiabilityPartnership.number, companyNumberPage.limitedLiabilityPartnershipTitle)
     await companyCheckNamePage.completePage(limitedLiabilityPartnership, companyCheckNamePage.limitedLiabilityPartnershipTitle)
@@ -164,7 +196,7 @@ class Tasks {
     return bankruptcyPage.completePage(limitedLiabilityPartnership.bankruptcy)
   }
 
-  async publicBodyPermitHolderDetails (publicBody = {}, pages) {
+  async publicBodyPermitHolderDetails(publicBody = {}, pages) {
     const { publicBodyAddressManualPage, publicBodyAddressSelectPage, publicBodyTradingNamePage, publicBodyOfficerPage, publicBodyBankruptcyPage, publicBodyConvictionsPage } = pages.frontEnd
     await publicBodyTradingNamePage.completePage(publicBody)
     await this.addressDetails(publicBody, publicBodyAddressSelectPage, publicBodyAddressManualPage)
@@ -173,7 +205,7 @@ class Tasks {
     await publicBodyBankruptcyPage.completePage(publicBody.bankruptcy)
   }
 
-  async soleTraderPermitHolderDetails (soleTrader = {}, pages) {
+  async soleTraderPermitHolderDetails(soleTrader = {}, pages) {
     const { permitHolderDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, permitHolderTradingNamePage, convictionsPage, bankruptcyPage } = pages.frontEnd
     await permitHolderDetailsPage.completePage(soleTrader)
     await permitHolderTradingNamePage.completePage(soleTrader)
@@ -183,7 +215,7 @@ class Tasks {
     return bankruptcyPage.completePage(soleTrader.bankruptcy)
   }
 
-  async partnershipPermitHolderDetails (partnership = {}, pages) {
+  async partnershipPermitHolderDetails(partnership = {}, pages) {
     const { memberListPage, memberDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, memberTradingNamePage, convictionsPage, bankruptcyPage } = pages.frontEnd
 
     await memberTradingNamePage.completePage(partnership)
@@ -208,7 +240,7 @@ class Tasks {
     return bankruptcyPage.completePage(partnership.bankruptcy)
   }
 
-  async groupPermitHolderDetails (group = {}, pages) {
+  async groupPermitHolderDetails(group = {}, pages) {
     const { memberListPage, memberDetailsPage, permitHolderContactDetailsPage, permitHolderAddressSelectPage, permitHolderAddressManualPage, memberTradingNamePage, postholderConvictionsPage, bankruptcyPage } = pages.frontEnd
 
     await memberTradingNamePage.completePage(group, memberTradingNamePage.groupTitle)
@@ -233,7 +265,7 @@ class Tasks {
     return bankruptcyPage.completePage(group.bankruptcy)
   }
 
-  async otherPermitHolderDetails (limitedCompany, partnership, pages) {
+  async otherPermitHolderDetails(limitedCompany, partnership, pages) {
     const { permitGroupDecisionPage } = pages.frontEnd
     const permitHolder = this.data.actualPermitHolder.toLowerCase()
     await permitGroupDecisionPage.completePage(permitHolder)
@@ -249,7 +281,7 @@ class Tasks {
     }
   }
 
-  async permitHolderDetails (permitHolder, data, pages) {
+  async permitHolderDetails(permitHolder, data, pages) {
     const { taskListPage, permitHolderSelectPage } = pages.frontEnd
     const { individual, limitedCompany, limitedLiabilityPartnership, partnership, publicBody, soleTrader } = data
     return taskListPage.completeTask('permitHolderDetails', async () => {
@@ -288,35 +320,35 @@ class Tasks {
     })
   }
 
-  async firePreventionPlan (files = [], pages) {
+  async firePreventionPlan(files = [], pages) {
     const { taskListPage, firePreventionPlanPage } = pages.frontEnd
     return taskListPage.completeTask('firePreventionPlan', async () => {
       return firePreventionPlanPage.completePage(files)
     })
   }
 
-  async mcpTemplate (pages) {
+  async mcpTemplate(pages) {
     const { taskListPage, mcpTemplatePage } = pages.frontEnd
     return taskListPage.completeTask('mcpTemplate', async () => {
       return mcpTemplatePage.completePage()
     })
   }
 
-  async mcpDetails (files = [], pages) {
+  async mcpDetails(files = [], pages) {
     const { taskListPage, mcpDetailsPage } = pages.frontEnd
     return taskListPage.completeTask('mcpDetails', async () => {
       return mcpDetailsPage.completePage(files)
     })
   }
 
-  async mcpBusinessActivity (pages) {
+  async mcpBusinessActivity(pages) {
     const { taskListPage, mcpBusinessActivityPage } = pages.frontEnd
     return taskListPage.completeTask('mcpBusinessActivity', async () => {
       return mcpBusinessActivityPage.completePage()
     })
   }
 
-  async wasteRecoveryPlan (state = '', files = [], pages) {
+  async wasteRecoveryPlan(state = '', files = [], pages) {
     const { taskListPage, wasteRecoverySelectPage, wasteRecoveryPlanPage } = pages.frontEnd
     return taskListPage.completeTask('wasteRecoveryPlan', async () => {
       await wasteRecoverySelectPage.completePage(state)
@@ -324,21 +356,21 @@ class Tasks {
     })
   }
 
-  async nonTechnicalSummary (files = [], pages) {
+  async nonTechnicalSummary(files = [], pages) {
     const { taskListPage, nonTechnicalSummaryPage } = pages.frontEnd
     return taskListPage.completeTask('nonTechnicalSummary', async () => {
       await nonTechnicalSummaryPage.completePage(files)
     })
   }
 
-  async screeningTool (files = [], pages) {
+  async screeningTool(files = [], pages) {
     const { taskListPage, screeningToolPage } = pages.frontEnd
     return taskListPage.completeTask('screeningTool', async () => {
       await screeningToolPage.completePage(files)
     })
   }
 
-  async confirmMiningWaste (miningWaste = {}, pages) {
+  async confirmMiningWaste(miningWaste = {}, pages) {
     const { taskListPage, confirmMiningWastePage, miningWasteWeightPage } = pages.frontEnd
     return taskListPage.completeTask('miningWaste', async () => {
       await confirmMiningWastePage.completePage(miningWaste)
@@ -346,7 +378,7 @@ class Tasks {
     })
   }
 
-  async siteNameAndLocation (site = {}, pages) {
+  async siteNameAndLocation(site = {}, pages) {
     const { taskListPage, siteNamePage, gridReferencePage, siteAddressSelectPage, siteAddressManualPage } = pages.frontEnd
     return taskListPage.completeTask('siteNameAndLocation', async () => {
       await siteNamePage.completePage(site)
@@ -355,35 +387,49 @@ class Tasks {
     })
   }
 
-  async sitePlan (files = [], pages) {
+  async sitePlan(files = [], pages) {
     const { taskListPage, sitePlanPage } = pages.frontEnd
     return taskListPage.completeTask('sitePlan', async () => {
       return sitePlanPage.completePage(files)
     })
   }
 
-  async uploadEnergyEfficiencyReport (files = [], pages) {
+  async uploadEnergyEfficiencyReport(files = [], pages) {
     const { taskListPage, uploadEnergyEfficiencyReportPage } = pages.frontEnd
     return taskListPage.completeTask('uploadEnergyEfficiencyReport', async () => {
       return uploadEnergyEfficiencyReportPage.completePage(files)
     })
   }
 
-  async uploadBestAvailableTechniquesAssessment (files = [], pages) {
+  async uploadSiteConditionReport(files = [], pages) {
+    const { taskListPage, uploadSiteConditionReportPage } = pages.frontEnd
+    return taskListPage.completeTask('uploadSiteConditionReport', async () => {
+      return uploadSiteConditionReportPage.completePage(files)
+    })
+  }
+
+  async uploadWasteTypes(files = [], pages) {
+    const { taskListPage, uploadWasteTypesPage } = pages.frontEnd
+    return taskListPage.completeTask('uploadWasteTypes', async () => {
+      return uploadWasteTypesPage.completePage(files)
+    })
+  }
+
+  async uploadBestAvailableTechniquesAssessment(files = [], pages) {
     const { taskListPage, uploadBestAvailableTechniquesAssessmentPage } = pages.frontEnd
     return taskListPage.completeTask('uploadBestAvailableTechniquesAssessment', async () => {
       return uploadBestAvailableTechniquesAssessmentPage.completePage(files)
     })
   }
 
-  async uploadAirDispersionModellingReport (files = [], pages) {
+  async uploadAirDispersionModellingReport(files = [], pages) {
     const { taskListPage, uploadAirDispersionModellingReportPage } = pages.frontEnd
     return taskListPage.completeTask('uploadAirDispersionModellingReport', async () => {
       await uploadAirDispersionModellingReportPage.completePage(files)
     })
   }
 
-  async proveTechnicalCompetence (competence = '', files = [], managersFiles = [], pages) {
+  async proveTechnicalCompetence(competence = '', files = [], managersFiles = [], pages) {
     const { taskListPage, technicalCompetenceSelectPage, wamitabEvidencePage, gettingQualificationEvidencePage, deemedEvidencePage, esaeuEvidencePage, technicallyCompetentManagersPage } = pages.frontEnd
     return taskListPage.completeTask('technicalCompetence', async () => {
       await technicalCompetenceSelectPage.completePage(competence)
@@ -410,7 +456,7 @@ class Tasks {
     })
   }
 
-  async invoicingDetails (invoice = {}, pages) {
+  async invoicingDetails(invoice = {}, pages) {
     const { taskListPage, invoiceAddressSelectPage, invoiceAddressManualPage, invoiceContactPage } = pages.frontEnd
     return taskListPage.completeTask('invoicingDetails', async () => {
       await this.addressDetails(invoice, invoiceAddressSelectPage, invoiceAddressManualPage)
@@ -418,28 +464,28 @@ class Tasks {
     })
   }
 
-  async confirmConfidentialityNeeds (details = '', pages) {
+  async confirmConfidentialityNeeds(details = '', pages) {
     const { taskListPage, confidentialityPage } = pages.frontEnd
     return taskListPage.completeTask('confirmConfidentialityNeeds', async () => {
       return confidentialityPage.completePage(details)
     })
   }
 
-   async aqmaDetails (aqmaDetailsRequired, aqmaDetails, pages) {
+  async aqmaDetails(aqmaDetailsRequired, aqmaDetails, pages) {
     const { taskListPage, aqmaDetailsPage } = pages.frontEnd
     return taskListPage.completeTask('aqmaDetails', async () => {
       return aqmaDetailsPage.completePage(aqmaDetailsRequired, aqmaDetails)
     })
   }
 
-  async businessActivity (naceCode, pages) {
+  async businessActivity(naceCode, pages) {
     const { taskListPage, businessActivityPage } = pages.frontEnd
     return taskListPage.completeTask('businessActivity', async () => {
       return businessActivityPage.completePage(naceCode)
     })
   }
 
-  async addressDetails (address, addressSelectPage, addressManualPage, title) {
+  async addressDetails(address, addressSelectPage, addressManualPage, title) {
     if (this.data.selectAddress) {
       return addressSelectPage.completePage(address, title)
     }
@@ -447,7 +493,7 @@ class Tasks {
     return addressManualPage.completePage(address, title)
   }
 
-  async makePayment (paymentDetails = {}, paymentType, pages) {
+  async makePayment(paymentDetails = {}, paymentType, pages) {
     const { applicationReceivedPage, bacsPaymentPage, bacsProofPage, paymentTypePage, cardPaymentPage, confirmPaymentPage } = pages.frontEnd
     await paymentTypePage.completePage(paymentType)
     switch (paymentType.toLowerCase()) {
@@ -465,6 +511,66 @@ class Tasks {
         throw new Error(`Unknown payment type "${paymentType}"`)
     }
     return applicationReceivedPage.completePage(paymentType)
+  }
+
+  // async uploadSiteConditionReport(files = [], pages) {
+  //   const { taskListPage, uploadSiteConditionReportPage } = pages.frontEnd
+  //   return taskListPage.completeTask('uploadSiteConditionReport', async () => {
+  //     return uploadSiteConditionReportPage.completePage(files)
+  //   })
+  // }
+
+  // async completeAllUploadTasks(files = [], pages) {
+  //   const { taskListPage, uploadWasteTypesPage } = pages.frontEnd
+  //   await taskListPage.completeTask('riskassessment', async () => {
+  //     return uploadWasteTypesPage.completePage(files)
+  //   })
+  // }
+
+
+  
+  async completeAllUploadTasks(files = [], pages) {
+    const { taskListPage, uploadWasteTypesPage } = pages.frontEnd
+   
+    await taskListPage.completeTask('riskassessment', async () => {
+      await uploadWasteTypesPage.completePage(files)
+    })
+
+
+    await taskListPage.completeTask('technicalstandards', async () => {
+      await uploadWasteTypesPage.completePage(files)
+    })
+
+
+    await taskListPage.completeTask('uploadnoisevibrationDocuments', async () => {
+      await uploadWasteTypesPage.completePage(files)
+    })
+
+    await taskListPage.completeTask('odourmanagementPlan', async () => {
+      await uploadWasteTypesPage.completePage(files)
+    })
+
+    await taskListPage.completeTask('pestmanagementPlan', async () => {
+      await uploadWasteTypesPage.completePage(files)
+    })
+
+    return taskListPage.completeTask('nonTechnicalSummary', async () => {
+      return uploadWasteTypesPage.completePage(files)
+    })
+
+    // Provide a management system summary
+    // Upload the waste recovery plan
+    // Complete the climate change risk screening
+    // Tell us about emissions and monitoring
+    // Tell us how you will manage clinical waste
+
+  }
+
+  async managementSummary(files = [], pages) {
+    const { taskListPage, managementsystemsPage } = pages.frontEnd
+    return taskListPage.completeTask('managementsystems', async () => {
+      await managementsystemsPage.completePage(files)
+    })
   }
 }
 

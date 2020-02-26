@@ -91,6 +91,62 @@ class TaskListPage extends FrontEndPageObject {
 
   get submitPayLink () { return { css: '#submit-pay-link' } }
 
+  get consultingLink () { return { css: '#need-to-consult-link' } }
+  get consultingCompleted () { return { css: '#need-to-consult-link-completed' } }
+
+  get uploadSiteConditionReportLink () { return { css: '#site-condition-report-link' } }
+  get uploadSiteConditionReportCompleted () { return { css: '#site-condition-report-link-completed' } }
+
+  get provideWasteWeightsLink () { return { css: '#waste-weights-link'}}
+  get provideWasteWeightsCompleted () { return { css: '#waste-weights-link-completed'}}
+
+  get provideWasteTreatmentLink () { return { css: '#waste-treatment-capacity-link'}}
+  get provideWasteTreatmentCompleted () { return { css: '#waste-treatment-capacity-link-completed'}}
+  
+  get provideDandRCodesLink () { return { css: '#recovery-and-disposal-codes-link'}}
+  get provideDandRCodesCompleted () { return { css: '#recovery-and-disposal-codes-link-completed'}}
+  
+  get uploadWasteTypesLink () { return { css: '#upload-waste-types-list-link'}}
+  get uploadWasteTypesCompleted () { return { css: '#upload-waste-types-list-link-completed'}}
+
+  // get uploadWasteTypesLink () { return { css: '#upload-waste-types-list-link'}}
+  // get uploadWasteTypesCompleted () { return { css: '#upload-waste-types-list-link-completed'}}
+  
+
+  get managementsystemsLink () { return { css: '#management-system-link'}}
+  get managementsystemsCompleted () { return { css: '#management-system-link-completed'}}  
+
+  get wasterecoveryplanLink () { return { css: '#waste-recovery-plan-link'}}
+  get wasterecoveryplanCompleted () { return { css: '#waste-recovery-plan-link-completed'}}  
+
+  get riskassessmentLink () { return { css: '#environmental-risk-assessment-link'}}
+  get riskassessmentCompleted () { return { css: '#environmental-risk-assessment-link-completed'}}  
+
+  get climatechangerishLink () { return { css: '#climate-change-risk-screening-link'}}
+  get climatechangeriskCompleted () { return { css: '#climate-change-risk-screening-link-completed'}}  
+
+  get emissionsmonitoringLink () { return { css: '#emissions-and-monitoring-link'}}
+  get emissionsmonitoringCompleted () { return { css: '#emissions-and-monitoring-link-completed'}} 
+
+  get technicalstandardsLink () { return { css: '#technical-standards-link'}}
+  get technicalstandardsCompleted () { return { css: '#technical-standards-link-completed'}}
+
+  get hazardouswasteLink () { return { css: '#hazardous-waste-link'}}
+  get hazardouswasteCompleted () { return { css: '#hazardous-waste-link-completed'}}  
+
+  get uploadnoisevibrationDocumentsLink () { return { css: '#noise-vibration-documents-link'}}
+  get uploadnoisevibrationDocumentsCompleted () { return { css: '#noise-vibration-documents-link-completed'}}
+
+  get emissionsmanagementPlanLink () { return { css: '#emissions-management-plan-link'}}
+  get emissionsmanagementPlanCompleted () { return { css: '#emissions-management-plan-link-completed'}}
+
+ 
+  get odourmanagementPlanLink () { return { css: '#odour-management-plan-link'}}
+  get odourmanagementPlanCompleted () { return { css: '#odour-management-plan-link-completed'}}
+
+  get pestmanagementPlanLink () { return { css: '#upload-pest-management-plan-link'}}
+  get pestmanagementPlanCompleted () { return { css: '#upload-pest-management-plan-link-completed'}}
+
   /****************************************************************************/
 
   async completeTask (name, task) {

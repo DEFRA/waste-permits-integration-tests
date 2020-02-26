@@ -44,23 +44,32 @@ class PageObject {
     return element.getAttribute('value')
   }
 
+  async getChecked (locator, timeout = config.timeout) {
+    const element = await this.waitUntilLoaded(locator, timeout)
+    return element.getAttribute("checked")
+  }
+
   async hasText (locator, expectedText, timeout = config.timeout) {
     const actualText = await this.getText(locator, timeout)
     return assert.equal(actualText, expectedText)
   }
 
+  async hasNoText (locator, expectedText, timeout = config.timeout) {
+    const actualText = await this.getText(locator, timeout)
+    return assert.notEqual(actualText, expectedText)
+  }
   async hasLinesOfText (locator, expectedLines, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
     const lines = (await element.getText()).split('\n')
-    return Promise.resolve(assert.sameMembers(lines, expectedLines))
+    const value = lines.indexOf(expectedLines);
+    return Promise.resolve(assert.notEqual(value, 0))
   }
 
   async hasNoLinesOfText (locator, notExpectedLines, timeout = config.timeout) {
     const element = await this.waitUntilLoaded(locator, timeout)
     const lines = (await element.getText()).split('\n')
     const value = lines.indexOf(notExpectedLines);
-    console.log('VALUE ' +value)
-    return Promise.resolve(assert.notEqual(value, -1))
+    return Promise.resolve(assert.equal(value, -1))
   }
 
   async hasValue (locator, expectedValue, timeout = config.timeout) {

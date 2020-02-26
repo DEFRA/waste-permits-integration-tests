@@ -16,7 +16,7 @@ class UploadPageObject extends FrontEndPageObject {
   }
 
   async completePage (files) {
-    await this.waitForPage()
+   //await this.waitForPage()
     let index = 0
 
     while (index < files.length) {

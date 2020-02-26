@@ -20,6 +20,7 @@ class CheckYourEmailPage extends FrontEndPageObject {
     if (env === 'development') {
       logger.log(await this.getText(this.recoveryLink))
     }
+    console.log(await this.getText(this.recoveryLink))
     return this.click(this.continueButton)
   }
 

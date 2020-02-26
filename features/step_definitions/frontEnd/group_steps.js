@@ -1,7 +1,7 @@
 const { Given, When } = require('cucumber')
 const path = require('path')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
-const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails, aqmaDetails, validPreAppNumber } = require('../../support/testData')
+const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails, aqmaDetails, validPreAppNumber, harbour, fisheries, sewer } = require('../../support/testData')
 
 function file (type) {
   return { name: path.join(__dirname, `../../uploadTestFiles/${type}-file-test.${type.toLowerCase()}`) }
@@ -114,9 +114,18 @@ When(/^I select the (.*) activity I want the permit to cover$/, async function (
 })
 
 
-When(/^I select all waste types$/, async function () {
-  return this.pages.frontEnd.activitiesSelectPage.selectWasteType()
+When(/^I select (.*) waste type$/, async function (wasteType) {
+  return this.pages.frontEnd.activitiesSelectPage.selectWasteType(wasteType)
 })
+
+When(/^I select (.*) assessment$/, async function (assessment) {
+  return this.pages.frontEnd.activitiesSelectPage.selectAssessmentType(assessment)
+})
+
+When(/^I select (.*) assessment and continue$/, async function (assessment) {
+  return this.pages.frontEnd.activitiesSelectPage.selectAssessmentTypeAndContinue(assessment)
+})
+
 
 When(/^I should be able to see text:(.*)$/, async function (text) {
   console.log(text)
@@ -200,10 +209,46 @@ When(/^I (.*) the fire plan$/, async function (confirm) {
   return this.tasks.firePreventionPlan([DOC, DOCX, PDF, ODS, ODT, JPG], this.pages)
 })
 
+
+When(/^I provide all the files for the bespoke application$/, async function () {
+   return this.tasks.completeAllUploadTasks([PDF], this.pages)
+})
+
+When(/^I provide management summary details$/, async function () {
+  return this.tasks.managementSummary([PDF], this.pages)
+})
+
+When(/^I upload the site condition report$/, async function () {
+  return this.tasks.uploadSiteConditionReport([PDF], this.pages)
+})
+
+
+When(/^I list the types of waste you want to accept$/, async function () {
+  return this.tasks.uploadWasteTypes([CSV], this.pages)
+})
+
+
+When(/^I provide a management system summary$/, async function () {
+  return this.tasks.nonTechnicalSummary([PDF], this.pages)
+})
+
 When(/^I (.*) the non-technical summary$/, async function (confirm) {
   if (confirm.toLowerCase() === 'skip') return
 
   return this.tasks.nonTechnicalSummary([PDF, DOC, DOCX, ODT], this.pages)
+})
+
+
+When(/^I provide the waste storage and throughput capacity for your activities$/, async function () {
+  return this.tasks.provideWasteWeightsValidation(this.pages)
+})
+
+When(/^I provide your waste treatment capacity$/, async function () {
+  return this.tasks.provideWasteTreatmentValidation(this.pages)
+})
+
+When(/^I provide list the disposal and recovery codes for your activities$/, async function () {
+  return this.tasks.provideDandRCodesValidation(this.pages)
 })
 
 When(/^I (.*) the completed screening tool$/, async function (confirm) {
@@ -319,6 +364,10 @@ When(/^I select (.*) to provide an air dispersion modelling report$/, async func
 
 When(/^I confirm my activities and assessments$/, async function () {
   return this.pages.frontEnd.confirmActivitiesAndAssessmentsPage.completePage()
+})
+
+When(/^I complete tell us who we need to consult$/, async function (){
+  return this.tasks.consultPageValidation(harbour,fisheries,sewer, this.pages)
 })
 
 When(/^I select (.*) to rated thermal input between 20MW and 50MW and (.*) for where the generator gets it's energy from$/, async function (thermalInput20to50MW, generatorEnergyType) {
