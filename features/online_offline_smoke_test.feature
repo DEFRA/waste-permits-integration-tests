@@ -1,6 +1,6 @@
 Feature: Tests to check Standard rules which are applicable online and SR's which are applicable for download form
 
-  @Smoke_dev
+#   @Smoke_dev
   @Smoke_test
   @Smoke_preprod
   Scenario: As a user, I should be able to download the forms for the offline permit category and I should be able to fill the forms online for the online permit

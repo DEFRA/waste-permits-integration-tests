@@ -1,6 +1,6 @@
 Feature: Error test trial
 
-    @Smoke_dev
+    # @Smoke_dev
     @Smoke_test
     Scenario: As a user I should get error for invalid entries
         Given the application has been launched
@@ -22,7 +22,7 @@ Feature: Error test trial
         And I should see an error "Select who will be the permit holder"    
 
 
-    @Smoke_dev
+    # @Smoke_dev
     @Smoke_test
     Scenario Outline: As a user I should get error for invalid contact details
         Given the application has been launched

@@ -1,6 +1,6 @@
 Feature: WE2081 - Show cost for bespoke permit
 
-  @Smoke_dev
+  # @Smoke_dev
 #  @Smoke_test
   Scenario Outline: As a user I should be able to apply for a bespoke waste permit when the facility is <FacilityType>
     Given the application has been launched

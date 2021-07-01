@@ -1,6 +1,6 @@
 Feature: Address entry Smoke test
 
-  @Smoke_dev
+  # @Smoke_dev
   @Smoke_test
   @Smoke_preprod
   Scenario: As a user I should be able to select addresses when applying for a standard rules waste permit
