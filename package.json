@@ -12,7 +12,7 @@
     "test:firefox-desktop-test-smoke-test": "node node_modules/cucumber/bin/cucumber-js ./features -p firefox-desktop-test-smoke-test -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-ben": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-ben -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-stuart": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-stuart -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
-    "test:chrome-desktop-test-smoke-dev": "node node_modules/cucumber/bin/cucumber-js --parallel 2 ./features -p chrome-desktop-test-smoke-dev -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
+    "test:chrome-desktop-test-smoke-dev": "node node_modules/cucumber/bin/cucumber-js --parallel 4 ./features -p chrome-desktop-test-smoke-dev -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-smoke-test": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-smoke-test -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-smoke-preprod": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-smoke-preprod -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-smoke-prod": "node node_modules/cucumber/bin/cucumber-js ./features -p chrome-desktop-test-smoke-prod -f node_modules/cucumber-pretty -f json:features/reports/cucumber_report_desktop.json"
