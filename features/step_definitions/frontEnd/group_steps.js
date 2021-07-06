@@ -215,7 +215,7 @@ When(/^I (.*) the completed screening tool$/, async function (confirm) {
 When(/^I (.*) the air dispersion modelling report$/, async function (confirm) {
   if (confirm.toLowerCase() === 'skip') return
 
-  return this.tasks.uploadAirDispersionModellingReport([XLS, XLSX, ODS, PDF, AAI, ADI, AMI, APL, BPI, CSV, DEM, DIN, EMI, FAC, HRL, MET, PFL, ROU, RUF, SFC, TER, VAR], this.pages)
+  return this.tasks.uploadAirDispersionModellingReport([XLS, XLSX], this.pages)
 })
 
 When(/^I (.*) the energy efficiency report$/, async function (confirm) {
@@ -321,7 +321,7 @@ When(/^I confirm my activities and assessments$/, async function () {
   return this.pages.frontEnd.confirmActivitiesAndAssessmentsPage.completePage()
 })
 
-When(/^I select (.*) to rated thermal input between 20MW and 50MW and (.*) for where the generator gets it's energy from$/, async function (thermalInput20to50MW, generatorEnergyType) {
+When(/^I select (.*) to rated thermal input between 20MW and 50MW and (.*) for where the generator gets its energy from$/, async function (thermalInput20to50MW, generatorEnergyType) {
   if (thermalInput20to50MW.toLowerCase() === 'skip') return
 
   this.data.thermalInput20to50MW = thermalInput20to50MW.toLowerCase()

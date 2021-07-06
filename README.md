@@ -7,10 +7,10 @@ This package runs integrations tests for the
 
 Requirements:
 
-- [NodeJS](https://nodejs.org/en/) LTS (Dubnium/10.x, at time of writing)
+- [NodeJS](https://nodejs.org/en/) LTS (14.7.X, at time of writing)
 - [Google Chrome](https://www.google.com/chrome/) Browser
 
-### Setup:
+### Setup
 
 ```bash
 # create env file
@@ -22,17 +22,19 @@ npm i
 mkdir features/reports
 ```
 
-### Run test locally, in chrome:
+### Run test locally, in chrome
 
 Open two terminals (A and B)
 
 In terminal A:
+
 ```bash
 # navigate to your waste-permits directory
 gulp
 ```
 
 In terminal B:
+
 ```bash
 # navigate to waste-permits-integration-tests directory
 npm run test:firefox-desktop-test-smoke-dev
