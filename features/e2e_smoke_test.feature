@@ -1,3 +1,4 @@
+@Smoke_dev
 Feature: Standard rules end to end Smoke test
 
   Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>
@@ -30,7 +31,6 @@ Feature: Standard rules end to end Smoke test
     And I check my answers
     And I choose to pay by <PaymentType>
 
-    @Smoke_dev
     Examples:
       | PermitHolder                        | PermitCategory                                                         | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType | GeneratorList | BusinessActivity | EprPermit |
       | Charity or trust: Public body       | Mining, oil and gas                                                    | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        | skip          | skip             | skip      |

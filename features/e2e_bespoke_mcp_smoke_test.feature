@@ -1,3 +1,4 @@
+@Smoke_dev
 Feature: Bespoke MCP end to end Smoke test
 
   Scenario Outline: As a user I should be able to apply for a bespoke MCP (<MCPType>) permit when the permit holder is a <PermitHolder>
@@ -35,7 +36,6 @@ Feature: Bespoke MCP end to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by <Payment>
-    @Smoke_dev
     Examples:
       | PermitHolder                        | Facility                                       | MCPType                | ExistingEPRPermit | Under500Hours | AirDispersionReport | EnergyEfficiencyReport | ThermalInput20to50 | EnergyType | BurningWasteBiomass | ExceedsOneMWThermal | HabitAssessment | AirDispersionReportUpload | ScreeningToolUpload | EnergyEfficiencyReportUpload | BestAvailableTechniquesAssessmentUpload | BusinessTypeUpload | SiteNameAndLocation | AQMA    | NaceCode | Payment |
       | Public body                         | Medium combustion plant or specified generator | Stationary MCP         | no                | yes           | skip                | skip                   | skip               | skip       | skip                | skip                | skip            | skip                      | skip                | skip                         | skip                                    | upload             | enter               | include | skip     | BACS    | 
@@ -51,7 +51,7 @@ Feature: Bespoke MCP end to end Smoke test
       | Public body                         | Medium combustion plant or specified generator | Stationary MCP also SG | no                | no            | yes                 | no                     | yes                | spark      | yes                 | yes                 | no              | upload                    | skip                | skip                         | upload                                  | upload             | enter               | include | skip     | BACS    | 
       | Limited liability partnership       | Medium combustion plant or specified generator | Mobile SG              | skip              | skip          | no                  | skip                   | skip               | skip       | skip                | skip                | skip            | skip                      | upload              | skip                         | skip                                    | skip               | skip                | skip    | skip     | CARD    | 
       | Individual                          | Medium combustion plant or specified generator | Mobile MCP             | skip              | skip          | no                  | no                     | skip               | skip       | skip                | skip                | skip            | skip                      | upload              | skip                         | skip                                    | upload             | skip                | skip    | skip     | BACS    |
-      | Public body                         | Medium combustion plant or specified generator | Mobile MCP             | skip              | skip          | skip                | yes                    | skip               | skip       | skip                | skip                | skip            | skip                      | skip                | upload                       | skip                                    | upload             | skip                | skip    | skip     | CARD    |
+      | Public body                         | Medium combustion plant or specified generator | Mobile MCP             | skip              | skip          | no                  | no                     | skip               | skip       | skip                | skip                | skip            | skip                      | upload             | skip                          | skip                                    | upload             | skip                | skip    | skip     | CARD    |
 
   
 
