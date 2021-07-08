@@ -1,4 +1,4 @@
-const { When } = require('cucumber')
+const { When } = require('@cucumber/cucumber')
 // var path = require('path')
 // const tasks = require('../page_objects/helpers/tasks')
 // const {email, contact, individual, limitedCompany, limitedLiabilityPartnership, soleTrader, site, invoice, confidentialityNeeds} = require('../support/testData')

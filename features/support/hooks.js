@@ -1,6 +1,6 @@
 const { driver } = require('./driver')
 
-const { After, Status } = require('cucumber')
+const { After, Status } = require('@cucumber/cucumber')
 
 After(async function (testCase) {
   if (testCase.result.status === Status.FAILED) {

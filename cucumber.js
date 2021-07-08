@@ -50,7 +50,7 @@ params.forEach(({ browser, format, type, tags }) => {
     .map((tag) => `@${tag.trim()}`)
     .join(' ')
 
-  const profile = `--tags ${tags} --world-parameters '${JSON.stringify(worldParameters)}'`
+  const profile = `--publish-quiet --tags ${tags} --world-parameters '${JSON.stringify(worldParameters)}'`
   console.log(colors.cyan(`${profileName}: ${profile}`))
   parameters[profileName] = profile
 })

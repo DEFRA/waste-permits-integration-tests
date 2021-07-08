@@ -3,7 +3,7 @@ const webdriver = require('selenium-webdriver')
 require('chromedriver')
 require('geckodriver')
 require('iedriver')
-require('cucumber')
+require('@cucumber/cucumber')
 const fs = require('fs')
 
 const PLATFORMS = {

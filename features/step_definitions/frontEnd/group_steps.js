@@ -1,4 +1,4 @@
-const { Given, When } = require('cucumber')
+const { Given, When } = require('@cucumber/cucumber')
 const path = require('path')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
 const { email, contact, charity, individual, limitedCompany, limitedLiabilityPartnership, miningWaste, partnership, publicBody, soleTrader, site, invoice, confidentialityNeeds, paymentDetails, aqmaDetails, validPreAppNumber } = require('../../support/testData')

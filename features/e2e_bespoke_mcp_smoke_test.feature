@@ -1,4 +1,4 @@
-@Smoke_dev
+
 Feature: Bespoke MCP end to end Smoke test
 
   Scenario Outline: As a user I should be able to apply for a bespoke MCP (<MCPType>) permit when the permit holder is a <PermitHolder>
@@ -36,9 +36,13 @@ Feature: Bespoke MCP end to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by <Payment>
+    @Smoke_prod
     Examples:
       | PermitHolder                        | Facility                                       | MCPType                | ExistingEPRPermit | Under500Hours | AirDispersionReport | EnergyEfficiencyReport | ThermalInput20to50 | EnergyType | BurningWasteBiomass | ExceedsOneMWThermal | HabitAssessment | AirDispersionReportUpload | ScreeningToolUpload | EnergyEfficiencyReportUpload | BestAvailableTechniquesAssessmentUpload | BusinessTypeUpload | SiteNameAndLocation | AQMA    | NaceCode | Payment |
       | Public body                         | Medium combustion plant or specified generator | Stationary MCP         | no                | yes           | skip                | skip                   | skip               | skip       | skip                | skip                | skip            | skip                      | skip                | skip                         | skip                                    | upload             | enter               | include | skip     | BACS    | 
+    @Smoke_dev
+    Examples:
+      | PermitHolder                        | Facility                                       | MCPType                | ExistingEPRPermit | Under500Hours | AirDispersionReport | EnergyEfficiencyReport | ThermalInput20to50 | EnergyType | BurningWasteBiomass | ExceedsOneMWThermal | HabitAssessment | AirDispersionReportUpload | ScreeningToolUpload | EnergyEfficiencyReportUpload | BestAvailableTechniquesAssessmentUpload | BusinessTypeUpload | SiteNameAndLocation | AQMA    | NaceCode | Payment |
       | Other organisation: Limited company | Medium combustion plant or specified generator | Stationary MCP         | no                | no            | skip                | yes                    | skip               | skip       | yes                 | no                  | no              | skip                      | upload              | upload                       | skip                                    | skip               | enter               | include | 01.13    | CARD    | 
       | Charity or trust: Limited company   | Medium combustion plant or specified generator | Stationary MCP         | no                | no            | skip                | yes                    | skip               | skip       | no                  | skip                | no              | skip                      | upload              | upload                       | skip                                    | skip               | enter               | include | 22.22    | BACS    | 
       | Other organisation: Group           | Medium combustion plant or specified generator | Stationary MCP         | no                | no            | skip                | yes                    | skip               | skip       | yes                 | yes                 | no              | skip                      | upload              | upload                       | upload                                  | skip               | enter               | include | 37.00    | CARD    |  

@@ -1,4 +1,4 @@
-const { Given, When } = require('cucumber')
+const { Given, When } = require('@cucumber/cucumber')
 const config = require('../../../config')
 const driver = require('../../support/driver')
 

@@ -1,4 +1,3 @@
-@Smoke_dev
 Feature: Standard rules end to end Smoke test
 
   Scenario Outline: As a user I should be able to apply for a standard rules waste permit <Permit> when the permit holder is a <PermitHolder>
@@ -30,10 +29,13 @@ Feature: Standard rules end to end Smoke test
     And I submit my application
     And I check my answers
     And I choose to pay by <PaymentType>
-
+    @Smoke_prod
     Examples:
       | PermitHolder                        | PermitCategory                                                         | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType | GeneratorList | BusinessActivity | EprPermit |
       | Charity or trust: Public body       | Mining, oil and gas                                                    | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        | skip          | skip             | skip      |
+    @Smoke_dev
+    Examples:
+      | PermitHolder                        | PermitCategory                                                         | Permit       | SuitableVehicleStorage    | EnterMiningWaste | WasteRecoveryPlan | FirePreventionPlan | SitePlan | EnterSiteName | TechnicalCompetence   | PaymentType | GeneratorList | BusinessActivity | EprPermit |
       | Charity or trust: Individual        | Composting, sewage or sludge treatment, biogas                         | SR2012 No 7  | is not required           | skip             | skip              | skip               | upload   | enter         | Deemed                | CARD        | skip          | skip             | skip      |
       | Public body                         | Mining, oil and gas                                                    | SR2014 No 2  | is not required           | enter            | skip              | skip               | upload   | enter         | skip                  | BACS        | skip          | skip             | skip      |
       | Limited company                     | Medium combustion plant - stationary and in operation after 20/12/2018 | SR2018 No 7  | is not required           | skip             | skip              | skip               | skip     | enter         | skip                  | BACS        | include       | include          | no        |
