@@ -13,7 +13,7 @@
     "test:chrome-desktop-test-smoke-dev": "node ./node_modules/.bin/cucumber-js --parallel 2 ./features -p chrome-desktop-test-smoke-dev -f @cucumber/pretty-formatter -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-smoke-test": "node ./node_modules/.bin/cucumber-js ./features -p chrome-desktop-test-smoke-test -f @cucumber/pretty-formatter -f json:features/reports/cucumber_report_desktop.json",
     "test:chrome-desktop-test-smoke-preprod": "node ./node_modules/.bin/cucumber-js ./features -p chrome-desktop-test-smoke-preprod -f @cucumber/pretty-formatter -f json:features/reports/cucumber_report_desktop.json",
-    "test:chrome-desktop-test-smoke-prod": "node ./node_modules/.bin/cucumber-js ./features -p chrome-desktop-test-smoke-prod -f @cucumber/pretty-formatter -f json:features/reports/cucumber_report_desktop.json"
+    "test:chrome-desktop-test-smoke-prod": "node ./node_modules/.bin/cucumber-js --parallel 2 ./features -p chrome-desktop-test-smoke-prod -f @cucumber/pretty-formatter -f json:features/reports/cucumber_report_desktop.json"
   },
   "repository": {
     "type": "git",

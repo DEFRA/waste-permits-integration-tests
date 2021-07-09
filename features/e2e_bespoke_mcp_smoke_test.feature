@@ -57,6 +57,3 @@ Feature: Bespoke MCP end to end Smoke test
       | Individual                          | Medium combustion plant or specified generator | Mobile MCP             | skip              | skip          | no                  | no                     | skip               | skip       | skip                | skip                | skip            | skip                      | upload              | skip                         | skip                                    | upload             | skip                | skip    | skip     | BACS    |
       | Public body                         | Medium combustion plant or specified generator | Mobile MCP             | skip              | skip          | no                  | no                     | skip               | skip       | skip                | skip                | skip            | skip                      | upload             | skip                          | skip                                    | upload             | skip                | skip    | skip     | CARD    |
 
-  
-
-

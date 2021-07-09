@@ -20,6 +20,18 @@ const PLATFORMS = {
   FIREFOX_DESKTOP_TEST: 'firefox-desktop-test'
 }
 
+const args = [
+  "--disable-extensions",
+  "--window-size=1070,1180",
+  "--no-sandbox", // required for Linux without GUI
+  "--disable-gpu", // required for Windows,
+  "--headless",
+]
+
+const chromeCapabilities = webdriver.Capabilities.chrome()
+      .set('goog:chromeOptions', { args })
+      .set("acceptInsecureCerts", true);
+
 function formatDate (date = new Date()) {
   let dayOfMonth = date.getDate()
   let month = date.getMonth() + 1
@@ -146,11 +158,14 @@ class Driver {
   getBrowser (parameters) {
     if (!this.browser) {
       switch (parameters.platform) {
-        case PLATFORMS.CHROME_PHONE_DEV:
-        case PLATFORMS.CHROME_PHONE_TEST:
+        
         case PLATFORMS.CHROME_DESKTOP_TEST:
         case PLATFORMS.CHROME_DESKTOP_HEADLESS_TEST:
         case PLATFORMS.CHROME_DESKTOP_DEV:
+          this.browser = new webdriver.Builder().withCapabilities(chromeCapabilities).build()
+          break
+        case PLATFORMS.CHROME_PHONE_DEV:
+        case PLATFORMS.CHROME_PHONE_TEST:
         case PLATFORMS.CHROME_TABLET_TEST:
           this.browser = new webdriver.Builder().withCapabilities(this.getDriverSpec(parameters.platform, parameters.width, parameters.height)).build()
           break
@@ -161,11 +176,9 @@ class Driver {
         case PLATFORMS.FIREFOX_DESKTOP_TEST:
         case PLATFORMS.IE_DESKTOP_TEST:
           this.browser = new webdriver.Builder().withCapabilities(this.getDriverSpec(parameters.platform)).build()
-         // this.browser.manage().window().setSize(parameters.width, parameters.height)
           break
         case PLATFORMS.IE_DESKTOP_DEV:
           this.browser = new webdriver.Builder().withCapabilities(this.getDriverSpec(parameters.platform)).build()
-         // this.browser.manage().window().setSize(parameters.width, parameters.height)
           break
         default:
           throw new Error('Unsupported platform')
