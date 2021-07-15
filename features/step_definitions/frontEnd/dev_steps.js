@@ -1,4 +1,4 @@
-const { When } = require('cucumber')
+const { When } = require('@cucumber/cucumber')
 const config = require('../../../config')
 const Tasks = require('../../page_objects/frontEnd/helpers/tasks')
 const { email, contact, partnership } = require('../../support/testData')

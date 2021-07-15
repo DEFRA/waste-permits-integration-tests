@@ -14,7 +14,7 @@ const {
   RESOURCE = 'resource',
   NODE_ENV = 'production',
   PLATFORM = 'firefox-desktop-test',
-  REPORT_FORMATTER = 'node_modules/cucumber-pretty',
+  REPORT_FORMATTER = '@cucumber/pretty-formatter',
   WIDTH = '1070',
   HEIGHT = '1180',
   TIMEOUT = '240000'

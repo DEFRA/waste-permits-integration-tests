@@ -1,4 +1,4 @@
-const { setWorldConstructor, setDefaultTimeout } = require('cucumber')
+const { setWorldConstructor, setDefaultTimeout } = require('@cucumber/cucumber')
 
 const driver = require('./driver').driver
 const Pages = require('../page_objects/pages')
